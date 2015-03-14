@@ -36,19 +36,10 @@
                     <ul class="nav navbar-nav navbar-left">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">About</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Themes<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-header">Manger</li>
-                                <li><a href="#">Manager 1</a></li>
-                                <li><a href="#">Manager 2</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Staff</li>
-                                <li><a href="#">Staff 1</a></li>
-                                <li><a href="#">Staff 2</a></li>
-                            </ul>
-                        </li>
                         <li><a href="#contact" data-toggle="modal">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#loginForm" data-toggle="modal">Login</a></li>
                     </ul>
                 </div><!-- .nav-collapse-->
             </div>
@@ -58,45 +49,45 @@
 
 
             <!--Carousel-->
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-                    <!--indicators-->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
+                <!--indicators-->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
 
-                    <!--Wrapper for slides-->
-                    <div class="carousel-inner">
-                        <div class="item active fixCarouselImg">
-                            <img src="img/Cat house.jpg" alt="Cat House 1" class="fixCarouselImg img-responsive center-block">
-                            <div class="carousel-caption">
-                                <p>This is Cat House</p>
-                            </div>
+                <!--Wrapper for slides-->
+                <div class="carousel-inner">
+                    <div class="item active fixCarouselImg">
+                        <img src="img/Cat house.jpg" alt="Cat House 1" class="fixCarouselImg img-responsive center-block">
+                        <div class="carousel-caption">
+                            <p>This is Cat House</p>
                         </div>
-                        <div class="item fixCarouselImg">
-                            <img src="img/Cat house2.jpg" alt="Cat House 2" class="fixCarouselImg img-responsive center-block">
-                            <div class="carousel-caption">
-                                <p>This is Cat House 2</p>
-                            </div>
+                    </div>
+                    <div class="item fixCarouselImg">
+                        <img src="img/Cat house2.jpg" alt="Cat House 2" class="fixCarouselImg img-responsive center-block">
+                        <div class="carousel-caption">
+                            <p>This is Cat House 2</p>
                         </div>
-                        <div class="item fixCarouselImg">
-                            <img src="img/Cat house3.jpg" alt="Cat House 2" class="fixCarouselImg img-responsive center-block">
-                            <div class="carousel-caption">
-                                <p>This is Cat House 3</p>
-                            </div>
+                    </div>
+                    <div class="item fixCarouselImg">
+                        <img src="img/Cat house3.jpg" alt="Cat House 2" class="fixCarouselImg img-responsive center-block">
+                        <div class="carousel-caption">
+                            <p>This is Cat House 3</p>
                         </div>
-                    </div><!--end of carousel inner-->
-                    <!--carousel controller-->
-                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                </div><!-- end of carousel-->
-         
+                    </div>
+                </div><!--end of carousel inner-->
+                <!--carousel controller-->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div><!-- end of carousel-->
+
 
             <div class="col-sm-4">
                 <h1>NyanCat HomeStay</h1>
@@ -162,8 +153,35 @@
                     </div>
                 </div>
             </div>
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-    </body>
-</html>
+
+            <div class="modal fade" id="loginForm">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form class="form-horizontal">
+                            <div class="modal-header"><h2>Manager/Staff Login</h2></div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="userName" class="col-sm-2 control-label">Username</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="userName" placeholder="Username">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">Password</label>
+                                    <div class="col col-sm-10">
+                                        <input type="password" class="form-control" id="password" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a class="btn btn-default" data-dismiss="modal">Close</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                </body>
+                </html>
