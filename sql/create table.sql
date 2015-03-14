@@ -1,0 +1,1 @@
+insert into staff values ("Kevin Lu Thin Fue","Indah Permai","940905-12-5327","0168117960","kevin999990","kevin0");
