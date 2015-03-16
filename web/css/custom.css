@@ -66,3 +66,7 @@ body {
 textarea{
     resize: none;
 }
+
+.col {
+    padding: 5px;
+}
