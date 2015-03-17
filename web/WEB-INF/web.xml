@@ -8,6 +8,10 @@
         <servlet-name>StaffControl</servlet-name>
         <servlet-class>Controller.StaffControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Staff</servlet-name>
         <url-pattern>/Staff</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>StaffControl</servlet-name>
         <url-pattern>/StaffControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
