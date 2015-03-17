@@ -7,6 +7,7 @@
         <title>NyanCat HomeStay</title>
 
         <!-- Bootstrap -->
+        <link rel="icon" href="img/logo2.png">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/custom.css" rel="stylesheet">
         <link href="css/half-slider.css" rel="stylesheet">
@@ -36,7 +37,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="Room.html">Room</a></li>
                         <li><a href="#feedback" data-toggle="modal">Feedback</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -45,6 +46,7 @@
                 </div><!-- .nav-collapse-->
             </div>
         </div> <!-- Navigation Bar End Here-->
+        
         <!--Carousel-->
         <header id="myCarousel" class="carousel slide">
             <!--indicators-->
@@ -53,25 +55,26 @@
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
             </ol>
-
             <!--Wrapper for slides-->
             <div class="carousel-inner">
                 <div class="item active">
+                    <div class="fill" style="background-image: url('img/Deluxe Suite.jpg')"></div>
+                    <div class="carousel-caption">
+                        <h1>Deluxe Suite</h1>
+                        <p><a class="btn btn-primary" href="Room.html">Book</a></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fill" style="background-image: url('img/Luxury Suite.jpg')"></div>
+                    <div class="carousel-caption">
+                        <h1>Luxury Suite</h1>
+                        <p><a class="btn btn-primary" href="Room.html">Book</a></p>
+                    </div>
+                </div>
+                <div class="item">
                     <div class="fill" style="background-image: url('img/Cat house.jpg')"></div>
                     <div class="carousel-caption">
-                        <p>This is Cat House</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fill" style="background-image: url('img/Cat house2.jpg')"></div>
-                    <div class="carousel-caption">
-                        <p>This is Cat House 2</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fill" style="background-image: url('img/Cat house3.jpg')"></div>
-                    <div class="carousel-caption">
-                        <p>This is Cat House 3</p>
+                        <h1>This is Cat House</h1>
                     </div>
                 </div>
             </div><!--end of carousel inner-->
@@ -85,43 +88,43 @@
         </header><!--end of carousel-->
 
         <div class="container">
-
-            <div class="row">
-
-                <div class="col-sm-10">
-                    <p><img src="img/logo.png" alt="logo" width="100%" ></p>
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="checkinDate"class="col-sm-2 control-label">Check-in:</label>
-                            <div class="col-sm-10">
-                                <input type="date" id="checkinDate" name="checkinDate" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="checkoutDate"class="col-sm-2 control-label">Check-out:</label>
-                            <div class="col-sm-10">
-                                <input type="date" id="checkoutDate" name="checkoutDate" class="form-control">
-                            </div>
-                        </div>
-                        <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-
-
-
-
-            <!--Footer-->
-            <hr>
-            <footer>
+            <div class="jumbotron">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; NyanCat HomeStay 2015</p>
+                    <img src="img/logo.png" alt="logo" class="img-responsive center-block">
+                    <div class="page-header">
+                        <h1>About Us</h1>
+                    </div>
+                    <div class="col col-md-10">
+                        <h3>Address:</h3>
+                        <p>NyanCat Homestay 230 East 17th Street, St James's Park, Likas.</p>
+                    </div>
+                    <div class="col col-md-10">
+                        <h3>Tel-No:</h3>
+                        <p>886-2-2585-3258</p>
+                    </div>
+                    <div class="col col-md-10">
+                        <h3>Fax:</h3>
+                        <p>886-2-2596-5160</p>
+                    </div>
+                    <div class="col col-md-10">
+                        <h3>E-mail:</h3>
+                        <p>nyannyanhomestay@gmail.com (For Administration)</p>
                     </div>
                 </div>
-                <!-- /.row -->
-            </footer>
-        </div><!--Body end here-->
+            </div>
+        </div>
+        <!--Body end here-->
+        <!--Footer-->
+        <hr>
+        <footer class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; NyanCat HomeStay 2015</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
         <!--feedback form-->
         <div class="modal fade" id="feedback" role="dialog">
             <div class="modal-dialog">
@@ -168,7 +171,7 @@
         <div class="modal fade" id="loginForm">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form class="form-horizontal" action="StaffControl" method="get">
+                    <form class="form-horizontal" action="StaffControl" method="get" role="form">
                         <div class="modal-header"><h2>Manager/Staff Login</h2></div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -198,3 +201,26 @@
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
+
+<!-- search form
+<div class="row">
+
+    <div class="col-sm-10">
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="checkinDate"class="col-sm-2 control-label">Check-in:</label>
+                <div class="col-sm-4">
+                    <input type="date" id="checkinDate" name="checkinDate" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="checkoutDate"class="col-sm-2 control-label">Check-out:</label>
+                <div class="col-sm-4">
+                    <input type="date" id="checkoutDate" name="checkoutDate" class="form-control">
+                </div>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div> -->
