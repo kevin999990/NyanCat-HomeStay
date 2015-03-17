@@ -82,7 +82,7 @@ public class StaffControl extends HttpServlet {
 
             if (login) {
                 session.setAttribute("staff", staff);
-                response.sendRedirect("#");
+                response.sendRedirect("./secureManager/controlPanel.jsp");
             } else {
                 response.sendRedirect("./error/loginError.html");
             }
