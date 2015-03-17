@@ -162,7 +162,9 @@ public class Staff implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Staff[ id=" + id + " ]";
+        return "Staff{" + "id=" + id + ", name=" + name + ", address=" + address + ", ic=" + ic + ", phoneNumber=" + phoneNumber + ", username=" + username + ", password=" + password + '}';
     }
+
+ 
     
 }
