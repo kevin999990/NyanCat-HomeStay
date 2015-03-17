@@ -61,31 +61,32 @@ public class StaffControl extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         StaffDa staffDa = new StaffDa(em);
-        String username = (String) request.getParameter("userName");
-        String password = (String) request.getParameter("password");
-       
-        List<Staff> staffs = staffDa.allStaff();
-        Staff staff = null;
-        boolean login = false;
-        for (int i = 0; i < staffs.size(); i++) {
-            if (staffs.get(i).getUsername().equalsIgnoreCase(username)) {
-                if (staffs.get(i).getPassword().equals(password)) {
-                    login = true;
-                    staff = staffs.get(i);
-                    break;
+        String button = (String) request.getParameter("login");
+        
+        if (button.equalsIgnoreCase("login")) {
+            String username = (String) request.getParameter("userName");
+            String password = (String) request.getParameter("password");
+
+            List<Staff> staffs = staffDa.allStaff();
+            Staff staff = null;
+            boolean login = false;
+            for (int i = 0; i < staffs.size(); i++) {
+                if (staffs.get(i).getUsername().equalsIgnoreCase(username)) {
+                    if (staffs.get(i).getPassword().equals(password)) {
+                        login = true;
+                        staff = staffs.get(i);
+                        break;
+                    }
                 }
             }
-        }
 
-        if(login)
-        {
-            session.setAttribute("staff", staff);
-            response.sendRedirect("#");
+            if (login) {
+                session.setAttribute("staff", staff);
+                response.sendRedirect("#");
+            } else {
+                response.sendRedirect("./error/loginError.html");
+            }
         }
-        else{
-            response.sendRedirect("./error/loginError.html");
-        }
-    
     }
 
     /**
