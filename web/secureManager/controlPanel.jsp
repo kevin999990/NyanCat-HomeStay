@@ -48,9 +48,9 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a class="disabled sr-only-focusable">Welcome ${staff.name}</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a class="disabled sr-only-focusable">Welcome ${staff.name}</a></li>
                         <li><a href="../Logout" data-toggle="modal">Logout</a></li>
                     </ul>
                 </div><!-- .nav-collapse-->
@@ -58,7 +58,8 @@
         </div> <!-- Navigation Bar End Here-->
         <div class="container">
             <h1>Hello World!</h1>
-            <h2>Welcome</h2> ${staff.toString()}
+            ${staff.toString()}
         </div>
+
     </body>
 </html>
