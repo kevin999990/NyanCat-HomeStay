@@ -34,8 +34,8 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li class="active"><a href="#">About</a></li>
                         <li><a href="#feedback" data-toggle="modal">Feedback</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -47,78 +47,10 @@
         <!--BODY-->
         <div class="container">
 
-            <div class="row">
-
-                <div class="col-sm-4">
-                    <p><img src="img/logo.png" alt="logo" width="100%" ></p>
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="checkinDate"class="col-sm-2 control-label">Check-in:</label>
-                            <div class="col-sm-10">
-                                <input type="date" id="checkinDate" name="checkinDate" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="checkoutDate"class="col-sm-2 control-label">Check-out:</label>
-                            <div class="col-sm-10">
-                                <input type="date" id="checkoutDate" name="checkoutDate" class="form-control">
-                            </div>
-                        </div>
-                        <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-
-                <!--Carousel-->
-                <div class="col col-sm-8">
-
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-                        <!--indicators-->
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>
-
-                        <!--Wrapper for slides-->
-                        <div class="carousel-inner">
-                            <div class="item active fixCarouselImg">
-                                <img src="img/Cat house.jpg" alt="Cat House 1" class="fixCarouselImg img-responsive center-block">
-                                <div class="carousel-caption">
-                                    <p>This is Cat House</p>
-                                </div>
-                            </div>
-                            <div class="item fixCarouselImg">
-                                <img src="img/Cat house2.jpg" alt="Cat House 2" class="fixCarouselImg img-responsive center-block">
-                                <div class="carousel-caption">
-                                    <p>This is Cat House 2</p>
-                                </div>
-                            </div>
-                            <div class="item fixCarouselImg">
-                                <img src="img/Cat house3.jpg" alt="Cat House 2" class="fixCarouselImg img-responsive center-block">
-                                <div class="carousel-caption">
-                                    <p>This is Cat House 3</p>
-                                </div>
-                            </div>
-                        </div><!--end of carousel inner-->
-
-                        <!--carousel controller
-                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>          
-                        -->
-                    </div>
-                </div><!-- end of carousel-->
+            <!--contain-->
 
 
-            </div>
-        </div><!--Body end here-->
-
-
-
+        </div>
         <!--Footer-->
         <div class="nav navbar-inverse navbar-fixed-bottom" role="navigation">
             <div class="container">
@@ -131,7 +63,8 @@
                 </div>
             </div>
         </div> <!-- Footer End Here-->
-        <!--feedback form-->
+
+        <!--modal for Feedback form -->
         <div class="modal fade" id="feedback" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -172,8 +105,9 @@
                     </form>
                 </div>
             </div>
-        </div><!--feedback form end here-->
-        <!--login form-->
+        </div><!-- feedback form end here -->
+
+        <!-- login form -->
         <div class="modal fade" id="loginForm">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -201,7 +135,6 @@
                 </div>
             </div>
         </div><!--login form end here-->
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
