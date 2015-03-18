@@ -48,6 +48,9 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
+                        <li><a href="#">Guest Check-in</a></li>
+                        <li><a href="#">Cencel Reservation</a></li>
+                        <li><a href="#">Manager Staff</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="disabled sr-only-focusable">Welcome ${staff.name}</a></li>
@@ -57,8 +60,38 @@
             </div>
         </div> <!-- Navigation Bar End Here-->
         <div class="container">
-            <h1>Hello World!</h1>
             ${staff.toString()}
+            <table class="table table-striped">
+                <thead>
+                    <tr><h1>Customer List</h1></tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>Date</td>
+                        <td>Check-in</td>
+                        <td>Cancel Reservation</td>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${staff.name}</td>
+                        <td>${staff.address}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td>${staff.name}</td>
+                        <td>${staff.ic}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                     <tr>
+                        <td>${staff.name}</td>
+                        <td>${staff.ic}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </body>

@@ -76,14 +76,17 @@ public class Staff implements Serializable {
         this.id = id;
     }
 
-    public Staff(Integer id, String name, String ic, String username, String password) {
+    public Staff(Integer id, String name, String address, String ic, String phoneNumber, String username, String password) {
         this.id = id;
         this.name = name;
+        this.address = address;
         this.ic = ic;
+        this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
     }
 
+    
     public Integer getId() {
         return id;
     }
