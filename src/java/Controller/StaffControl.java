@@ -18,18 +18,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 /**
  *
  * @author Kevin
  */
 public class StaffControl extends HttpServlet {
-
+    
     @PersistenceContext
     EntityManager em;
-
+    
     @Resource
-    //   UserTransaction utx;
+    UserTransaction utx;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -59,6 +60,7 @@ public class StaffControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         HttpSession session = request.getSession();
         StaffDa staffDa = new StaffDa(em);
         String button = (String) request.getParameter("login");
@@ -66,7 +68,7 @@ public class StaffControl extends HttpServlet {
         if (button.equalsIgnoreCase("login")) {
             String username = (String) request.getParameter("userName");
             String password = (String) request.getParameter("password");
-
+            
             List<Staff> staffs = staffDa.allStaff();
             Staff staff = null;
             boolean login = false;
@@ -79,7 +81,7 @@ public class StaffControl extends HttpServlet {
                     }
                 }
             }
-
+            
             if (login) {
                 session.setAttribute("staff", staff);
                 response.sendRedirect("./secureManager/controlPanel.jsp");
@@ -100,7 +102,25 @@ public class StaffControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        StaffDa staffDa = new StaffDa(em);
+        String action = request.getParameter("action");
+        try {
+            if (action.equalsIgnoreCase("add")) {
+                Staff staff = (Staff) session.getAttribute("newStaff");
+                System.out.print(staff.toString());
+                utx.begin();
+                staffDa.addStaff(staff);
+                utx.commit();
+                
+            }else if(action.equalsIgnoreCase("cancel"))
+            {
+                 response.sendRedirect("./secureManager/addStaff.jsp");
+            }
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+        
     }
 
     /**

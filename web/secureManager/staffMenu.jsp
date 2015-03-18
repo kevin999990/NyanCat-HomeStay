@@ -1,9 +1,11 @@
 <%-- 
-    Document   : controlPanel
-    Created on : Mar 18, 2015, 12:14:57 AM
+    Document   : staffMenu
+    Created on : Mar 18, 2015, 9:58:43 PM
     Author     : Kevin
 --%>
 
+<%@page import="Entity.Staff"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -33,6 +35,11 @@
         <![endif]-->
     </head>
     <body>
+        <%List<Staff> staffs = (List) session.getAttribute("allStaff");
+            if (staffs.isEmpty()) {
+                staffs = null;
+            }
+        %> 
         <!-- Header and Navigation Bar-->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -60,25 +67,32 @@
             </div>
         </div> <!-- Navigation Bar End Here-->
         <div class="container">
-            ${staff.toString()}
-            <table class="table table-striped">
+
+            <table>
                 <thead>
-                    <tr><h1>Customer List</h1></tr>
-                <tr>
-                    <td>Name</td>
-                    <td>Date</td>
-                    <td>Check-in</td>
-                    <td>Cancel Reservation</td>                        
-                </tr>
+                    <tr>
+                        <th>Staff ID</th>
+                        <th>Staff Name</th>
+                        <th>Staff IC</th>
+                        <th>Staff Address</th>
+                        <th>Staff Username</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
                 </thead>
                 <tbody>
+
+                    <% for (Staff sta : staffs) {%>
                     <tr>
-                        <td>${staff.name}</td>
-                        <td>${staff.address}</td>
+                        <td><%=sta.getId()%></td>
+                        <td><%=sta.getName()%></td>
+                        <td><%=sta.getIc()%></td>
+                        <td><%=sta.getAddress()%></td>
+                        <td><%=sta.getUsername()%></td>
                         <td></td>
                         <td></td>
                     </tr>
-
+                    <% }%>
                 </tbody>
             </table>
         </div>

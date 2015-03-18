@@ -1,14 +1,9 @@
-<%-- 
-    Document   : controlPanel
-    Created on : Mar 18, 2015, 12:14:57 AM
-    Author     : Kevin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<jsp:useBean id="staff" scope="session" class="Entity.Staff" />
-<jsp:setProperty name="staff" property="*"/>
+<jsp:useBean id="newStaff" scope="session" class="Entity.Staff" />
+<jsp:setProperty name="newStaff" property="*"/>
+
 <html>
     <head>
 
@@ -59,39 +54,63 @@
                 </div><!-- .nav-collapse-->
             </div>
         </div> <!-- Navigation Bar End Here-->
+
         <div class="container">
-            ${staff.toString()}
-            <table class="table table-striped">
-                <thead>
-                    <tr><h1>Customer List</h1></tr>
-                <tr>
-                    <td>Name</td>
-                    <td>Date</td>
-                    <td>Check-in</td>
-                    <td>Cancel Reservation</td>                        
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>${staff.name}</td>
-                        <td>${staff.address}</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+            <div class="row" >
+                <div class="col col-md-6 col-md-offset-2">
+                    <form method="post" action="../StaffControl">
+                    <table class="table table-bordered ">
+                        <tr>
+                            <td>ID:</td>
+                            <td>${newStaff.id}</td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td>${newStaff.name}</td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td>${newStaff.address}</td>
+                        </tr>
+                        <tr>
+                            <td>IC:</td>
+                            <td>${newStaff.ic}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone:</td>
+                            <td>${newStaff.phoneNumber}</td>
+                        </tr>
+                        <tr>
+                            <td>Username:</td>
+                            <td>${newStaff.username}</td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td>${newStaff.password}</td>
+                        </tr>
+                    </table>
+                        <input type="submit" class="btn btn-primary" value="add" name="action"> 
+                        <input type="submit" class="btn btn-danger" value="cancel" name="action">
+                    </form>
 
-                </tbody>
-            </table>
-        </div>
-
-        <!--Footer-->
-        <hr>
-        <footer class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; NyanCat HomeStay 2015</p>
                 </div>
-            </div>
-            <!-- /.row -->
-        </footer>
+            </div>  
+
+
+            <!--Footer-->
+            <hr>
+            <footer class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Copyright &copy; NyanCat HomeStay 2015</p>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </footer>
+
+
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
