@@ -13,9 +13,13 @@ and open the template in the editor.
     text-decoration: none;
 }
 
+
 body {
     padding-top: 70px;
     padding-bottom: 100px;
+    background-color: #cccccc   ;
+    
+    
 }
 .navbar-default {
 	background-color: #2C3E50;
@@ -57,11 +61,6 @@ body {
 	color: #FFFFFF;
 }
 
-.fixCarouselImg img{
-    width: auto;
-    height: 350px;
-    max-height: 350px;
-}
 
 textarea{
     resize: none;
@@ -71,3 +70,9 @@ textarea{
     padding: 5px;
 }
 
+section{
+    padding-top: 50px;
+    padding-bottom: 100px;
+    border-bottom: solid ;
+    background-color: white;       
+}
