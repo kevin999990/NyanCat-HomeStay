@@ -1,20 +1,31 @@
+CREATE TABLE task (
+	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+	taskName VARCHAR(50) NOT NULL,
+	DESCRIPTION VARCHAR(50), 
+	PRIMARY KEY (id)
+	);
+
 CREATE TABLE staff(
-id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-	name VARCHAR(24) NOT NULL,
-	address VARCHAR(1024),
+	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+	staffName VARCHAR(50) NOT NULL,
 	IC VARCHAR(14) NOT NULL UNIQUE,
-	PHONE_NUMBER VARCHAR(11), 
+	phoneNumber VARCHAR(11), 
+	address VARCHAR(200),
+	task INTEGER NOT NULL,
 	USERNAME VARCHAR(20) NOT NULL, 
 	PASSWORD VARCHAR(20) NOT NULL,
-	CONSTRAINT staff_pk PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	FOREIGN KEY(task) REFERENCES task(id)
 ) ;
 
-CREATE TABLE TASK (
+CREATE TABLE comment(
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-	name VARCHAR(3) NOT NULL,
-	DESCRIPTION VARCHAR(50), 
-	CONSTRAINT task_pk PRIMARY KEY (id)
-	);
+	commentName VARCHAR(50) not NULL,
+	comment VARCHAR(200),
+	phoneNumber VARCHAR(11), 
+	commentDate date,
+	PRIMARY KEY(id) 
+);
 
 CREATE TABLE roomtype(
 	id INTEGER NOT NULL,
@@ -22,35 +33,45 @@ CREATE TABLE roomtype(
 	price INTEGER,
 	PRIMARY KEY (id)
 );
+
 CREATE TABLE Room (
 	id INTEGER NOT NULL,
 	roomtype INTEGER ,
-	availability boolean,
+	available boolean,
 	PRIMARY KEY (id),
 	FOREIGN KEY (roomtype) REFERENCES roomtype (id) 
 );
 
 CREATE TABLE Customer(
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-	name VARCHAR(50) NOT NULL,
-	address VARCHAR(50),
+	customerName VARCHAR(50) NOT NULL,
+	address VARCHAR(200),
 	email VARCHAR(50),
-	PHONE_NUMBER VARCHAR(11),
+	phoneNumber VARCHAR(11),
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE reserve (
+CREATE TABLE booking (
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-	Customer_id INTEGER,
-	room_id INTEGER,
-	checkin VARCHAR(50),
-	checkout VARCHAR(50),
-	payment INTEGER,
+	Customer_id INTEGER NOT NULL,
+	room_id INTEGER NOT NULL,
+	dateFrom VARCHAR(50) NOT NULL,
+	dateTo VARCHAR(50) NOT NULL,
+	needToPay INTEGER,/*is the amount clear?*/
+	totalPaid INTEGER default 0,/*total paid in this transaction*/
+	status INTEGER NOT NULL, /*1=Reserve 2=CheckedIn 3=complete 4=Cancel*/
 	PRIMARY KEY (id),
 	FOREIGN KEY(Customer_id) REFERENCES Customer (id),
-	FOREIGN KEY(room_id) REFERENCES Room(id)
+	FOREIGN KEY(room_id) REFERENCES Room(id),
+	FOREIGN KEY(status) REFERENCES bookingstatus(id)
 );
 
+create table bookingstatus(
+id INTEGER NOT NULL,
+DESCRIPTION VARCHAR(10),
+PRIMARY KEY (id)
+);
+/*
 CREATE TABLE checkin (
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	Customer_id INTEGER,
@@ -59,4 +80,4 @@ CREATE TABLE checkin (
 	FOREIGN KEY(Customer_id) REFERENCES Customer (id),
 	FOREIGN KEY(room_id) REFERENCES Room(id)
 
-)
+);*/
