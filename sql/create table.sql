@@ -37,7 +37,7 @@ CREATE TABLE roomtype(
 CREATE TABLE Room (
 	id INTEGER NOT NULL,
 	roomtype INTEGER ,
-	/*availability boolean, //is this needed?*/
+	available boolean,
 	PRIMARY KEY (id),
 	FOREIGN KEY (roomtype) REFERENCES roomtype (id) 
 );
@@ -57,12 +57,19 @@ CREATE TABLE booking (
 	room_id INTEGER NOT NULL,
 	dateFrom VARCHAR(50) NOT NULL,
 	dateTo VARCHAR(50) NOT NULL,
-	payment BOOLEAN,
-	needToPay INTEGER,
+	needToPay INTEGER,/*is the amount clear?*/
+	totalPaid INTEGER default 0,/*total paid in this transaction*/
 	status INTEGER NOT NULL, /*1=Reserve 2=CheckedIn 3=complete 4=Cancel*/
 	PRIMARY KEY (id),
 	FOREIGN KEY(Customer_id) REFERENCES Customer (id),
-	FOREIGN KEY(room_id) REFERENCES Room(id)
+	FOREIGN KEY(room_id) REFERENCES Room(id),
+	FOREIGN KEY(status) REFERENCES bookingstatus(id)
+);
+
+create table bookingstatus(
+id INTEGER NOT NULL,
+DESCRIPTION VARCHAR(10),
+PRIMARY KEY (id)
 );
 /*
 CREATE TABLE checkin (
