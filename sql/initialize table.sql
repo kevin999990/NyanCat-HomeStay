@@ -4,9 +4,9 @@ INSERT INTO staff(name,address,ic,phone_number,username,password) VALUES
 	('Stellyn Muk','Tamparuli','000000-00-0000','0169876240','stellyn','stellyn');
 
 
-INSERT INTO ROOMTYPE VALUES (1,'Deluxe Suite',100);
-INSERT INTO ROOMTYPE VALUES (2,'Luxury Suite',150);
-INSERT INTO ROOMTYPE VALUES (3,'Premier Suite',200);
+INSERT INTO ROOMTYPE VALUES (1,'Premier Suite',150);
+INSERT INTO ROOMTYPE VALUES (2,'Deluxe Suite',250);
+INSERT INTO ROOMTYPE VALUES (3,'Luxury Suite',350);
 
 INSERT INTO ROOM VALUES (101,1,true);
 INSERT INTO ROOM VALUES (102,1,true);
