@@ -13,52 +13,56 @@ and open the template in the editor.
     text-decoration: none;
 }
 
+.container > section{
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 body {
     padding-top: 70px;
     padding-bottom: 100px;
     background-color: #cccccc   ;
-    
-    
+
+
 }
 .navbar-default {
-	background-color: #2C3E50;
-	border-color: #FFFFFF;
-	color: #FFFFFF;
+    background-color: #2C3E50;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .navbar-default .navbar-brand {
-	color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-	color: #18BC9C;
-	background-color: transparent;
+    color: #18BC9C;
+    background-color: transparent;
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-	color: #FFFFFF;
-	background-color: #1A242F;
+    color: #FFFFFF;
+    background-color: #1A242F;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-	color: #18BC9C;
-	background-color: transparent;
+    color: #18BC9C;
+    background-color: transparent;
 }
 
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-	background-color: #1A242F;
-	color: #FFFFFF;
+    background-color: #1A242F;
+    color: #FFFFFF;
 }
 
 
@@ -75,4 +79,16 @@ section{
     padding-bottom: 100px;
     border-bottom: solid ;
     background-color: white;       
+}
+.row{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+form.cmxform label.error, label.error {
+    /*for the form validation*/
+    /* remove the next line when you have trouble in IE6 with labels in list */
+    color: red;
+    font-style: italic
 }
