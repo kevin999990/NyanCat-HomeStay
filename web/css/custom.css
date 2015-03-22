@@ -13,9 +13,9 @@ and open the template in the editor.
     text-decoration: none;
 }
 
-.container > section{
-    padding-left: 20px;
-    padding-right: 20px;
+.container > *{
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 body {

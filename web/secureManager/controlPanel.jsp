@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 
 <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
-<jsp:setProperty name="loginStaff" property="*"/>
 <html>
     <head>
 
@@ -49,12 +48,12 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="#">Guest Check-in</a></li>
-                        <li><a href="#">Cencel Reservation</a></li>
+                        <li><a href="#">Cancel Reservation</a></li>
                         <li><a href="#">Manager Staff</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="disabled sr-only-focusable">Welcome ${staff.name}</a></li>
-                        <li><a href="../Logout" data-toggle="modal">Logout</a></li>
+                        <li><a class="disabled sr-only-focusable">Welcome ${loginStaff.staffname}</a></li>
+                        <li><a href="../LoginOut" data-toggle="modal">Logout</a></li>
                     </ul>
                 </div><!-- .nav-collapse-->
             </div>

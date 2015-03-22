@@ -133,7 +133,7 @@
                         </h1>
                         <!--Message-->
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <p>All of our rooms offer views of the Cat Garden
                                     the perfect place to relax with family, friends and colleagues. 
                                 </p>
@@ -147,10 +147,35 @@
                                     <li>WI-FI</li>
                                 </ul>
                                 <p>Breathe easy in our SMOKE FREE environment!</p>
+                                <h3>Click the suite name for more information</h3>
                             </div>
                         </div><!--/Message-->
 
-
+                        <div class="row">
+                            <div class="col-sm-6"><img class="img-responsive img-thumbnail" src="img/Primier Suite.jpg"></div>
+                            <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <a data-toggle="collapse" href="#premierSuite" aria-expanded="false" aria-controls="premierSuite">
+                                            <h4 class="panel-title">Premier Suite
+                                            </h4></a>
+                                    </div>
+                                </div>
+                                <div id="premierSuite" class="panel-collapse collapse" >
+                                    <div class="panel-body">
+                                        A premier choice at a favorable price, 
+                                        the popular Deluxe Double (24.85SQ. METER.) 
+                                        promises soothing warmth with a larger queen- sized double bed (160 X 200CM ),
+                                        42" LED screen TV with multimedin ports, 
+                                        wing chair, and marble-topped dressing 
+                                        table for single or double occupancy
+                                        suitable for travelers sharing rooms.
+                                    </div>
+                                </div>
+                                <h3 style="color: red">RM 150 per Night</h3>
+                                <p><a href="#reservationSection"  class="btn btn-default" id="premierSuiteBtn">Booking</a></p>
+                            </div>
+                        </div> 
                         <div class="row">
                             <div class="col-sm-6"><img class="img-responsive img-thumbnail" src="img/Deluxe Suite.jpg"></div>
                             <div class="col-sm-6">
@@ -171,7 +196,8 @@
                                         ensure guests can truly relax in style.
                                     </div>
                                 </div>
-                                <p><a href="#reservationSection" class="btn btn-default">Booking</a></p>
+                                <h3 style="color: red">RM 250 per Night</h3>
+                                <p><a href="#reservationSection" class="btn btn-default" id="deluxeSuiteBtn">Booking</a></p>
                             </div>
                         </div>
 
@@ -195,43 +221,33 @@
                                         and an extra telephone line are provided.
                                     </div>
                                 </div>
-                                <p><a href="#reservationSection" class="btn btn-default">Booking</a></p>
+                                <h3 style="color: red">RM 350 per Night</h3>
+                                <p><a href="#reservationSection" class="btn btn-default" id="luxurySuiteBtn">Booking</a></p>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-6"><img class="img-responsive img-thumbnail" src="img/Primier Suite.jpg"></div>
-                            <div class="col-sm-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <a data-toggle="collapse" href="#premierSuite" aria-expanded="false" aria-controls="premierSuite">
-                                            <h4 class="panel-title">Premier Suite
-                                            </h4></a>
-                                    </div>
-                                </div>
-                                <div id="premierSuite" class="panel-collapse collapse" >
-                                    <div class="panel-body">
-                                        A premier choice at a favorable price, 
-                                        the popular Deluxe Double (24.85SQ. METER.) 
-                                        promises soothing warmth with a larger queen- sized double bed (160 X 200CM ),
-                                        42" LED screen TV with multimedin ports, 
-                                        wing chair, and marble-topped dressing 
-                                        table for single or double occupancy
-                                        suitable for travelers sharing rooms.
-                                    </div>
-                                </div>
-                                <p><a href="#reservationSection"  class="btn btn-default">Booking</a></p>
-                            </div>
-                        </div> 
+
                     </div> 
             </section><!--/Room-->
             <!--reservationSection-->
             <section id="reservationSection">
                 <div class="row">
                     <div class="col col-md-6 col-md-offset-1">
-                        <form id="reservationForm" class="form-horizontal" action="guestReservation.jsp" method="get" role="form">
+                        <form id="reservationForm" class="form-horizontal" action="GuestReservation" method="get" role="form">
                             <h1 class="modal-header">Reservation</h1>
                             <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="roomType" class="col-sm-4 control-label">Room Type</label>
+                                    <div class="col-sm-8">
+                                        <select id="roomType"  name="roomType" class="form-control">
+                                            <option value="0">----</option>
+                                            <option value="1">Premier Suite</option>
+                                            <option value="2">Deluxe Suite</option>
+                                            <option value="3">Luxury Suite</option>
+                                        </select>
+                                    </div>
+
+                                </div>
                                 <div class="form-group">
                                     <label for="checkinDate"class="col-sm-4 control-label">Check-in:</label>
                                     <div class="col-sm-8">
@@ -248,14 +264,15 @@
                                 <div class="form-group">
                                     <label for="numberOfRoom" class="col-sm-4 control-label">Number Of Room</label>
                                     <div class="col-sm-8">
-                                        <select  name="numberOfRoom" class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
+                                        <select name="numberOfRoom" id="numberOfRoom" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
                                         </select>
                                     </div>
 
                                 </div>
+                                
                             </div>
                             <div class="modal-footer">
                                 <button type="reset" class="btn btn-default">Reset</button>
@@ -342,16 +359,6 @@
             <!-- /.row -->
         </footer><!--/Footer-->
 
-        <!--feedback form-->
-        <div class="modal fade" id="feedback" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                </div>
-            </div>
-        </div><!--feedback form end here-->
-
-
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -361,5 +368,11 @@
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/ReservationDate.js"></script>
         <script src="js/formValidation.js"></script>
+
+        <script>
+            var premier = 150;
+            var deluxe = 250;
+            var luxury = 350;
+        </script>
     </body>
 </html>

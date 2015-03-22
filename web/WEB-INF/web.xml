@@ -13,6 +13,10 @@
         <servlet-name>LoginOut</servlet-name>
         <servlet-class>Controller.LoginOut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GuestReservation</servlet-name>
+        <servlet-class>Controller.GuestReservation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Staff</servlet-name>
         <url-pattern>/Staff</url-pattern>
@@ -24,6 +28,10 @@
     <servlet-mapping>
         <servlet-name>LoginOut</servlet-name>
         <url-pattern>/LoginOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuestReservation</servlet-name>
+        <url-pattern>/GuestReservation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

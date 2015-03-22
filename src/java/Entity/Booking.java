@@ -79,6 +79,17 @@ public class Booking implements Serializable {
         this.dateto = dateto;
     }
 
+    public Booking(String datefrom, String dateto, Integer needtopay, Integer totalpaid, Bookingstatus status, Customer customerId, Room roomId) {
+        this.datefrom = datefrom;
+        this.dateto = dateto;
+        this.needtopay = needtopay;
+        this.totalpaid = totalpaid;
+        this.status = status;
+        this.customerId = customerId;
+        this.roomId = roomId;
+    }
+
+    
     public Integer getId() {
         return id;
     }
@@ -165,7 +176,8 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Booking[ id=" + id + " ]";
+        return "Booking{ datefrom=" + datefrom + ", dateto=" + dateto + ", needtopay=" + needtopay + ", totalpaid=" + totalpaid + ", status=" + status + ", customerId=" + customerId + ", roomId=" + roomId + '}';
     }
-    
+
+
 }
