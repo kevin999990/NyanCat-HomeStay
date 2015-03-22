@@ -46,28 +46,27 @@
         </div> <!-- Navigation Bar End Here-->
         <!--BODY-->
         <div class=" col-lg-10 col-lg-offset-1">
-            <h1 class="page-header">
-                Payment </h1>
+            <h1 class="page-header"> Payment </h1>
         </div>
 
-        <form class="form-inline">
 
 
-            <div class="row">
-                <div class="col-xs-6 col-sm-4">
-                    Transaction ID
-                    <input class="form-control" id="disabledInput" type="text" placeholder="HAHAHAAH" disabled>
-                </div>
-                <div class="col-xs-6 col-sm-4">
-                    Guest ID
-                    <input class="form-control" id="disabledInput" type="text" placeholder="HAHAHAAH" disabled>
-                </div>
-                <div class="col-xs-6 col-sm-4">
-                    Room ID
-                    <input class="form-control" id="disabledInput" type="text" placeholder="HAHAHAAH" disabled>
-                </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-4">
+                Transaction ID
+                <input class="form-control" id="disabledInput" type="text" placeholder="HAHAHAAH" disabled>
             </div>
+            <div class="col-xs-6 col-sm-4">
+                Guest ID
+                <input class="form-control" id="disabledInput" type="text" placeholder="HAHAHAAH" disabled>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                Room ID
+                <input class="form-control" id="disabledInput" type="text" placeholder="HAHAHAAH" disabled>
+            </div>
+        </div>
 
+        <form class="form-inline" method="POST">
             <fieldset>
                 <legend>Booking Summary</legend>
                 <table class="table table-condensed" style="width:100%">
@@ -88,85 +87,80 @@
                 </table>
             </fieldset>
 
-            <div class="row">
-                <fieldset>
-                    <div class="col-md-9 col-md-push-3">
-                        <div class="form-group">
-                            <legend>Personal Detail</legend>
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Jane Doe">
-                            <br/>
+            <fieldset>
+                <legend>Customer Information</legend>
+                <div class="row">
+                    <fieldset>
+                        <div class="col-md-9 col-md-push-3">
+                            <div class="form-group">
+                                <legend>Personal Detail</legend>
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Jane Doe" max="20">
+                                <br/>
 
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="jane.doe@example.com">
-                            <br/>
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="jane.doe@example.com">
+                                <br/>
 
 
-                            <label for="phone">Phone Number</label>
-                            <input type="text" class="form-control" id="phone" placeholder="60161234567 ">
-                            <br/>
+                                <label for="phone">Phone Number</label>
+                                <input type="text" class="form-control" id="phone" placeholder="60161234567" maxlength="12">
+                                <br/>
 
-                            <label for="ic">NIRC / Passport No.</label>
-                            <input type="number" class="form-control" id="ic" placeholder="908765-12-5678">
-                            <br/>
+                                <label for="ic">NIRC / Passport No.</label>
+                                <input type="number" class="form-control" id="ic" placeholder="908765-12-5678">
+                                <br/>
 
-                            <label for="address">Address</label>                       
-                            <textarea class="form-control" rows="3" id="address" placeholder="" ></textarea>
-                            <br/>
+                                <label for="address">Address</label>                       
+                                <textarea class="form-control" rows="3" id="address" placeholder="" maxlength="80" style="resize: none" ></textarea>
+                                <br/>
+                            </div>
                         </div>
-                    </div>
-                </fieldset>           
-            </div>
+                    </fieldset>           
+                </div>
 
-            <div class="row">
-                <fieldset>
-                    <legend>Payment Detail</legend>
-                    <div class="col-md-6 col-md-push-3">
-                        <div class="form-group">
-                            <label for="totalpayment">Total Amount </label>               
-                            <input class="form-control" id="disabledInput" type="text" placeholder="MYR 300" disabled>
-                            <br/>
+                <div class="row">
+                    <fieldset>
+                        <legend>Payment Detail</legend>
+                        <div class="col-md-6 col-md-push-3">
+                            <div class="form-group">
+                                <label for="totalpayment">Total Amount </label>               
+                                <input class="form-control" id="disabledInput" type="text" placeholder="MYR 300" disabled>
+                                <br/>
 
-                            <label for="cardname">Cardholder's Name</label>
-                            <input type="text" class="form-control" id="cardname" placeholder="Jane Doe">
-                            <br/>
+                                <label for="cardname">Cardholder's Name</label>
+                                <input type="text" class="form-control" id="cardname" placeholder="Jane Doe" maxlength="20">
+                                <br/>
 
-                            <label for="card">Card Type</label>
-                            <select class="form-control">
-                                <option>American Express</option>
-                                <option>MasterCard</option>
-                                <option>Visa</option>
-                                <option>Discover</option>                           
-                            </select>
-                            <br/>
-                            <label for="cardno">Card Number</label>
-                            <input type="number" class="form-control" id="cardno" placeholder="1234567890">
-                            <br/>
+                                <label for="card">Card Type</label>
+                                <select class="form-control">
+                                    <option>American Express</option>
+                                    <option>MasterCard</option>
+                                    <option>Visa</option>
+                                    <option>Discover</option>                           
+                                </select>
+                                <br/>
+                                <label for="cardno">Card Number</label>
+                                <input type="number" class="form-control" id="cardno" placeholder="1234567890" maxlength="11">
+                                <br/>
 
-                            <label for="cvv">CVV</label>                            
-                            <input type="number" class="form-control" id="cvv" placeholder="1234">
-                            <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
-                            <br/>
+                                <label for="cvv">CVV</label>                            
+                                <input type="number" class="form-control" id="cvv" placeholder="1234" maxlength="4">
+                                <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+                                <br/>
 
 
-                            <label for="expdate">Expiry Date</label>
-                            <input type="number" class="form-control" id="expdate" placeholder="12/20">
-                            <br/>
+                                <label for="expdate">Expiry Date</label>
+                                <input type="number" class="form-control" id="expdate" placeholder="12/20">
+                                <br/>
 
+                            </div>
                         </div>
-                    </div>
-                </fieldset>
-            </div>
-
+                    </fieldset>
+                </div>
+                <input type="submit" value="Submit"> <input type="reset" value="Reset">
+            </fieldset>
         </form>
-
-
-
-
-
-
-
-
 
 
         <!--Footer-->
