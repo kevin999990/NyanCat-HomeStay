@@ -14,12 +14,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -28,14 +29,14 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Kevin
  */
 @Entity
-@Table(name = "TASK")
+@Table(name = "ROOM")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Task.findAll", query = "SELECT t FROM Task t"),
-    @NamedQuery(name = "Task.findById", query = "SELECT t FROM Task t WHERE t.id = :id"),
-    @NamedQuery(name = "Task.findByTaskname", query = "SELECT t FROM Task t WHERE t.taskname = :taskname"),
-    @NamedQuery(name = "Task.findByDescription", query = "SELECT t FROM Task t WHERE t.description = :description")})
-public class Task implements Serializable {
+    @NamedQuery(name = "Room.findAll", query = "SELECT r FROM Room r"),
+    @NamedQuery(name = "Room.findById", query = "SELECT r FROM Room r WHERE r.id = :id"),
+    @NamedQuery(name = "Room.findByRoomnumber", query = "SELECT r FROM Room r WHERE r.roomnumber = :roomnumber"),
+    @NamedQuery(name = "Room.findByAvailable", query = "SELECT r FROM Room r WHERE r.available = :available")})
+public class Room implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,25 +45,26 @@ public class Task implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "TASKNAME")
-    private String taskname;
-    @Size(max = 50)
-    @Column(name = "DESCRIPTION")
-    private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "task")
-    private List<Staff> staffList;
+    @Column(name = "ROOMNUMBER")
+    private int roomnumber;
+    @Column(name = "AVAILABLE")
+    private Boolean available;
+    @JoinColumn(name = "ROOMTYPE", referencedColumnName = "ID")
+    @ManyToOne
+    private Roomtype roomtype;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "roomId")
+    private List<Booking> bookingList;
 
-    public Task() {
+    public Room() {
     }
 
-    public Task(Integer id) {
+    public Room(Integer id) {
         this.id = id;
     }
 
-    public Task(Integer id, String taskname) {
+    public Room(Integer id, int roomnumber) {
         this.id = id;
-        this.taskname = taskname;
+        this.roomnumber = roomnumber;
     }
 
     public Integer getId() {
@@ -73,29 +75,37 @@ public class Task implements Serializable {
         this.id = id;
     }
 
-    public String getTaskname() {
-        return taskname;
+    public int getRoomnumber() {
+        return roomnumber;
     }
 
-    public void setTaskname(String taskname) {
-        this.taskname = taskname;
+    public void setRoomnumber(int roomnumber) {
+        this.roomnumber = roomnumber;
     }
 
-    public String getDescription() {
-        return description;
+    public Boolean getAvailable() {
+        return available;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+    public Roomtype getRoomtype() {
+        return roomtype;
+    }
+
+    public void setRoomtype(Roomtype roomtype) {
+        this.roomtype = roomtype;
     }
 
     @XmlTransient
-    public List<Staff> getStaffList() {
-        return staffList;
+    public List<Booking> getBookingList() {
+        return bookingList;
     }
 
-    public void setStaffList(List<Staff> staffList) {
-        this.staffList = staffList;
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     @Override
@@ -108,10 +118,10 @@ public class Task implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Task)) {
+        if (!(object instanceof Room)) {
             return false;
         }
-        Task other = (Task) object;
+        Room other = (Room) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -120,7 +130,7 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Task[ id=" + id + " ]";
+        return "Entity.Room[ id=" + id + " ]";
     }
     
 }

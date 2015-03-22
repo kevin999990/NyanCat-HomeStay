@@ -25,10 +25,10 @@ import javax.transaction.UserTransaction;
  * @author Kevin
  */
 public class StaffControl extends HttpServlet {
-    
+
     @PersistenceContext
     EntityManager em;
-    
+
     @Resource
     UserTransaction utx;
 
@@ -60,35 +60,7 @@ public class StaffControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession session = request.getSession();
-        StaffDa staffDa = new StaffDa(em);
-        String button = (String) request.getParameter("login");
-        
-        if (button.equalsIgnoreCase("login")) {
-            String username = (String) request.getParameter("userName");
-            String password = (String) request.getParameter("password");
-            
-            List<Staff> staffs = staffDa.allStaff();
-            Staff staff = null;
-            boolean login = false;
-            for (int i = 0; i < staffs.size(); i++) {
-                if (staffs.get(i).getUsername().equalsIgnoreCase(username)) {
-                    if (staffs.get(i).getPassword().equals(password)) {
-                        login = true;
-                        staff = staffs.get(i);
-                        break;
-                    }
-                }
-            }
-            
-            if (login) {
-                session.setAttribute("staff", staff);
-                response.sendRedirect("./secureManager/controlPanel.jsp");
-            } else {
-                response.sendRedirect("./error/loginError.html");
-            }
-        }
+
     }
 
     /**
@@ -112,15 +84,14 @@ public class StaffControl extends HttpServlet {
                 utx.begin();
                 staffDa.addStaff(staff);
                 utx.commit();
-                
-            }else if(action.equalsIgnoreCase("cancel"))
-            {
-                 response.sendRedirect("./secureManager/addStaff.jsp");
+
+            } else if (action.equalsIgnoreCase("cancel")) {
+                response.sendRedirect("./secureManager/addStaff.jsp");
             }
         } catch (Exception e) {
             System.out.print(e.getMessage());
         }
-        
+
     }
 
     /**

@@ -7,8 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<jsp:useBean id="staff" scope="session" class="Entity.Staff" />
-<jsp:setProperty name="staff" property="*"/>
+<jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
+<jsp:setProperty name="loginStaff" property="*"/>
 <html>
     <head>
 
@@ -60,7 +60,7 @@
             </div>
         </div> <!-- Navigation Bar End Here-->
         <div class="container">
-            ${staff.toString()}
+            ${loginStaff.toString()}
             <table class="table table-striped">
                 <thead>
                     <tr><h1>Customer List</h1></tr>
@@ -73,8 +73,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>${staff.name}</td>
-                        <td>${staff.address}</td>
+                        <td>${loginStaff.staffname}</td>
+                        <td>${loginStaff.address}</td>
                         <td></td>
                         <td></td>
                     </tr>

@@ -20,7 +20,7 @@
 
             <!--login form-->
             <div class="modal-content col-md-6 col-md-offset-3">
-                <form id="loginForm" class="form-horizontal" action="StaffControl" method="get" role="form">
+                <form id="loginForm" class="form-horizontal" action="LoginOut" method="post" role="form">
                     <div class="modal-header"><h2>Manager/Staff Login</h2></div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="index.html" class="btn btn-default">Back</a>
+                        <a href="index.html" class="btn btn-default">Cancel</a>
                         <button type="submit"  value="login" name="login" class="btn btn-primary">Submit</button>
 
                     </div>

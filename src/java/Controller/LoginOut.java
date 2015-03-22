@@ -5,20 +5,32 @@
  */
 package Controller;
 
+import Entity.Staff;
+import Entity.StaffDa;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 /**
  *
  * @author Kevin
  */
-public class Logout extends HttpServlet {
+public class LoginOut extends HttpServlet {
+    @PersistenceContext
+    EntityManager em;
+
+    @Resource
+    UserTransaction utx;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,7 +82,35 @@ public class Logout extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        HttpSession session = request.getSession();
+        StaffDa staffDa = new StaffDa(em);
+        String button = (String) request.getParameter("login");
+        //login
+        if (button.equalsIgnoreCase("login")) {
+            String username = (String) request.getParameter("userName");
+            String password = (String) request.getParameter("password");
+
+            List<Staff> staffs = staffDa.allStaff();
+            Staff staff = null;
+            boolean login = false;
+            for (int i = 0; i < staffs.size(); i++) {
+                if (staffs.get(i).getUsername().equalsIgnoreCase(username)) {
+                    if (staffs.get(i).getPassword().equals(password)) {
+                        login = true;
+                        staff = staffs.get(i);
+                        break;
+                    }
+                }
+            }
+
+            if (login) {
+                session.setAttribute("loginStaff", staff);
+                response.sendRedirect("./secureManager/controlPanel.jsp");
+            } else {
+                response.sendRedirect("./error/loginError.html");
+            }
+        }//end of login
     }
 
     /**

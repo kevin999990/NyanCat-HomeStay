@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,41 +26,30 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Kevin
  */
 @Entity
-@Table(name = "TASK")
+@Table(name = "BOOKINGSTATUS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Task.findAll", query = "SELECT t FROM Task t"),
-    @NamedQuery(name = "Task.findById", query = "SELECT t FROM Task t WHERE t.id = :id"),
-    @NamedQuery(name = "Task.findByTaskname", query = "SELECT t FROM Task t WHERE t.taskname = :taskname"),
-    @NamedQuery(name = "Task.findByDescription", query = "SELECT t FROM Task t WHERE t.description = :description")})
-public class Task implements Serializable {
+    @NamedQuery(name = "Bookingstatus.findAll", query = "SELECT b FROM Bookingstatus b"),
+    @NamedQuery(name = "Bookingstatus.findById", query = "SELECT b FROM Bookingstatus b WHERE b.id = :id"),
+    @NamedQuery(name = "Bookingstatus.findByDescription", query = "SELECT b FROM Bookingstatus b WHERE b.description = :description")})
+public class Bookingstatus implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID")
-    private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "TASKNAME")
-    private String taskname;
-    @Size(max = 50)
+    @Column(name = "ID")
+    private Integer id;
+    @Size(max = 10)
     @Column(name = "DESCRIPTION")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "task")
-    private List<Staff> staffList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "status")
+    private List<Booking> bookingList;
 
-    public Task() {
+    public Bookingstatus() {
     }
 
-    public Task(Integer id) {
+    public Bookingstatus(Integer id) {
         this.id = id;
-    }
-
-    public Task(Integer id, String taskname) {
-        this.id = id;
-        this.taskname = taskname;
     }
 
     public Integer getId() {
@@ -71,14 +58,6 @@ public class Task implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTaskname() {
-        return taskname;
-    }
-
-    public void setTaskname(String taskname) {
-        this.taskname = taskname;
     }
 
     public String getDescription() {
@@ -90,12 +69,12 @@ public class Task implements Serializable {
     }
 
     @XmlTransient
-    public List<Staff> getStaffList() {
-        return staffList;
+    public List<Booking> getBookingList() {
+        return bookingList;
     }
 
-    public void setStaffList(List<Staff> staffList) {
-        this.staffList = staffList;
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     @Override
@@ -108,10 +87,10 @@ public class Task implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Task)) {
+        if (!(object instanceof Bookingstatus)) {
             return false;
         }
-        Task other = (Task) object;
+        Bookingstatus other = (Bookingstatus) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -120,7 +99,7 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Task[ id=" + id + " ]";
+        return "Entity.Bookingstatus[ id=" + id + " ]";
     }
     
 }

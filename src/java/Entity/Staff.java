@@ -6,6 +6,9 @@
 package Entity;
 
 import java.io.Serializable;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,16 +35,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Staff.findAll", query = "SELECT s FROM Staff s"),
     @NamedQuery(name = "Staff.findById", query = "SELECT s FROM Staff s WHERE s.id = :id"),
-    @NamedQuery(name = "Staff.findByName", query = "SELECT s FROM Staff s WHERE s.name = :name"),
-    @NamedQuery(name = "Staff.findByAddress", query = "SELECT s FROM Staff s WHERE s.address = :address"),
+    @NamedQuery(name = "Staff.findByStaffname", query = "SELECT s FROM Staff s WHERE s.staffname = :staffname"),
     @NamedQuery(name = "Staff.findByIc", query = "SELECT s FROM Staff s WHERE s.ic = :ic"),
-    @NamedQuery(name = "Staff.findByPhoneNumber", query = "SELECT s FROM Staff s WHERE s.phoneNumber = :phoneNumber"),
+    @NamedQuery(name = "Staff.findByPhonenumber", query = "SELECT s FROM Staff s WHERE s.phonenumber = :phonenumber"),
+    @NamedQuery(name = "Staff.findByAddress", query = "SELECT s FROM Staff s WHERE s.address = :address"),
     @NamedQuery(name = "Staff.findByUsername", query = "SELECT s FROM Staff s WHERE s.username = :username"),
     @NamedQuery(name = "Staff.findByPassword", query = "SELECT s FROM Staff s WHERE s.password = :password")})
 public class Staff implements Serializable {
-    @JoinColumn(name = "TASK", referencedColumnName = "ID")
-    @ManyToOne
-    private Task task;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,20 +50,20 @@ public class Staff implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 24)
-    @Column(name = "NAME")
-    private String name;
-    @Size(max = 1024)
-    @Column(name = "ADDRESS")
-    private String address;
+    @Size(min = 1, max = 50)
+    @Column(name = "STAFFNAME")
+    private String staffname;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 14)
     @Column(name = "IC")
     private String ic;
     @Size(max = 11)
-    @Column(name = "PHONE_NUMBER")
-    private String phoneNumber;
+    @Column(name = "PHONENUMBER")
+    private String phonenumber;
+    @Size(max = 200)
+    @Column(name = "ADDRESS")
+    private String address;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -73,6 +74,9 @@ public class Staff implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "PASSWORD")
     private String password;
+    @JoinColumn(name = "TASK", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Task task;
 
     public Staff() {
     }
@@ -81,17 +85,25 @@ public class Staff implements Serializable {
         this.id = id;
     }
 
-    public Staff(Integer id, String name, String address, String ic, String phoneNumber, String username, String password) {
+    public Staff(Integer id, String staffname, String ic, String username, String password) {
         this.id = id;
-        this.name = name;
-        this.address = address;
+        this.staffname = staffname;
         this.ic = ic;
-        this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
     }
 
+    public Staff(String staffname, String ic, String phonenumber, String address, String username, String password, Task task) {
+        this.staffname = staffname;
+        this.ic = ic;
+        this.phonenumber = phonenumber;
+        this.address = address;
+        this.username = username;
+        this.password = password;
+        this.task = task;
+    }
     
+
     public Integer getId() {
         return id;
     }
@@ -100,20 +112,12 @@ public class Staff implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getStaffname() {
+        return staffname;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStaffname(String staffname) {
+        this.staffname = staffname;
     }
 
     public String getIc() {
@@ -124,12 +128,20 @@ public class Staff implements Serializable {
         this.ic = ic;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getUsername() {
@@ -146,6 +158,14 @@ public class Staff implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     @Override
@@ -170,17 +190,8 @@ public class Staff implements Serializable {
 
     @Override
     public String toString() {
-        return "Staff{" + "id=" + id + ", name=" + name + ", address=" + address + ", ic=" + ic + ", phoneNumber=" + phoneNumber + ", username=" + username + ", password=" + password + '}';
+        return "Staff{" + "id=" + id + ", staffname=" + staffname + ", ic=" + ic + ", phonenumber=" + phonenumber + ", address=" + address + ", username=" + username + ", password=" + password + ", task=" + task.getTaskname() + '}';
     }
 
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }
-
- 
-    
+  
 }
