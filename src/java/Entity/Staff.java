@@ -6,6 +6,9 @@
 package Entity;
 
 import java.io.Serializable;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -88,6 +92,17 @@ public class Staff implements Serializable {
         this.username = username;
         this.password = password;
     }
+
+    public Staff(String staffname, String ic, String phonenumber, String address, String username, String password, Task task) {
+        this.staffname = staffname;
+        this.ic = ic;
+        this.phonenumber = phonenumber;
+        this.address = address;
+        this.username = username;
+        this.password = password;
+        this.task = task;
+    }
+    
 
     public Integer getId() {
         return id;
@@ -175,7 +190,8 @@ public class Staff implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Staff[ id=" + id + " ]";
+        return "Staff{" + "id=" + id + ", staffname=" + staffname + ", ic=" + ic + ", phonenumber=" + phonenumber + ", address=" + address + ", username=" + username + ", password=" + password + ", task=" + task.getTaskname() + '}';
     }
-    
+
+  
 }
