@@ -35,7 +35,8 @@ CREATE TABLE roomtype(
 );
 
 CREATE TABLE Room (
-	id INTEGER NOT NULL,
+	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+	roomnumber INTEGER not NULL,
 	roomtype INTEGER ,
 	available boolean,
 	PRIMARY KEY (id),
@@ -49,6 +50,13 @@ CREATE TABLE Customer(
 	email VARCHAR(50),
 	phoneNumber VARCHAR(11),
 	PRIMARY KEY (id)
+);
+
+
+create table bookingstatus(
+id INTEGER NOT NULL,
+DESCRIPTION VARCHAR(10),
+PRIMARY KEY (id)
 );
 
 CREATE TABLE booking (
@@ -66,11 +74,6 @@ CREATE TABLE booking (
 	FOREIGN KEY(status) REFERENCES bookingstatus(id)
 );
 
-create table bookingstatus(
-id INTEGER NOT NULL,
-DESCRIPTION VARCHAR(10),
-PRIMARY KEY (id)
-);
 /*
 CREATE TABLE checkin (
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
