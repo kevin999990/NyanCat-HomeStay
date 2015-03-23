@@ -4,6 +4,7 @@
     Author     : Kevin
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="Entity.Booking"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -66,8 +67,8 @@
                                     <% for (int i = 0; i < newBooking.size(); i++) {%>
                                     <tr>
                                         <td><%= i + 1%></td>
-                                        <td><%= newBooking.get(i).getDatefrom()%></td>
-                                        <td><%= newBooking.get(i).getDateto()%></td>
+                                        <td><%= new SimpleDateFormat("dd/MM/yyyy").format(newBooking.get(i).getDatefrom())%></td>
+                                        <td><%= new SimpleDateFormat("dd/MM/yyyy").format(newBooking.get(i).getDateto())%></td>
                                         <td><%= session.getAttribute("numberOfNight")%></td>
                                         <td><%= newBooking.get(i).getRoomId().getRoomtype().getDescription()%></td>
                                         <td><%= newBooking.get(i).getRoomId().getRoomtype().getPrice()%></td>
