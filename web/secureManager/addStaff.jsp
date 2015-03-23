@@ -1,7 +1,9 @@
+<%@page import="Entity.Staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<jsp:useBean id="staff" scope="session" class="Entity.Staff" />
+<jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
+<% Staff loginStaf = (Staff) session.getAttribute("loginStaff"); %>
 <%session.removeAttribute("newStaff");%>
 <jsp:useBean id="newStaff" scope="session" class="Entity.Staff" />
 <jsp:setProperty name="newStaff" property="*"/>
@@ -62,7 +64,7 @@
 
                     <form class="form-horizontal" role="form" action="staffConfirmation.jsp">
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Name</label>
+                            <label for="name" class="col-sm-2 control-label">${loginStaff.toString()}</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Stellyn">
                             </div>
