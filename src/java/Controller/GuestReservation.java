@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -77,17 +78,17 @@ public class GuestReservation extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-
+            HttpSession session = request.getSession();
             RoomDa roomDa = new RoomDa(em);
             List<Booking> newBooking = new ArrayList<Booking>();
             List<Room> roomList = roomDa.allRoom();
             List<Room> newRoomList = new ArrayList<Room>();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-            HttpSession session = request.getSession();
             int needToPaid = 0;
             int roomType = Integer.parseInt(request.getParameter("roomType"));
-            String dateFrom = request.getParameter("checkinDate");
-            String dateTo = request.getParameter("checkoutDate");
+            Date dateFrom = dateFormat.parse(request.getParameter("checkinDate"));
+            Date dateTo = dateFormat.parse(request.getParameter("checkoutDate"));
             int numberOfRoom = Integer.parseInt(request.getParameter("numberOfRoom"));
 
             //check room availability
@@ -150,12 +151,10 @@ public class GuestReservation extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private int checkDateDefference(String checkIn, String checkOut) throws ParseException {
+    private int checkDateDefference(Date dateFrom, Date dateTo) throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date inDate = dateFormat.parse(checkIn);
-        Date outDate = dateFormat.parse(checkOut);
 
-        long timeDiff = Math.abs(outDate.getTime() - inDate.getTime());
+        long timeDiff = Math.abs(dateTo.getTime() - dateFrom.getTime());
         double diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
         return (int) diffDays;
     }

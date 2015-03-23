@@ -64,8 +64,8 @@ CREATE TABLE booking (
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	Customer_id INTEGER NOT NULL,
 	room_id INTEGER NOT NULL,
-	dateFrom VARCHAR(50) NOT NULL,
-	dateTo VARCHAR(50) NOT NULL,
+	dateFrom date NOT NULL,
+	dateTo date NOT NULL,
 	needToPay INTEGER,/*is the amount clear?*/
 	totalPaid INTEGER default 0,/*total paid in this transaction*/
 	status INTEGER NOT NULL, /*1=Reserve 2=CheckedIn 3=complete 4=Cancel*/

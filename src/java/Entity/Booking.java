@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,8 +18,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -44,14 +46,14 @@ public class Booking implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
     @Column(name = "DATEFROM")
-    private String datefrom;
+    @Temporal(TemporalType.DATE)
+    private Date datefrom;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
     @Column(name = "DATETO")
-    private String dateto;
+    @Temporal(TemporalType.DATE)
+    private Date dateto;
     @Column(name = "NEEDTOPAY")
     private Integer needtopay;
     @Column(name = "TOTALPAID")
@@ -73,13 +75,7 @@ public class Booking implements Serializable {
         this.id = id;
     }
 
-    public Booking(Integer id, String datefrom, String dateto) {
-        this.id = id;
-        this.datefrom = datefrom;
-        this.dateto = dateto;
-    }
-
-    public Booking(String datefrom, String dateto, Integer needtopay, Integer totalpaid, Bookingstatus status, Customer customerId, Room roomId) {
+    public Booking(Date datefrom, Date dateto, Integer needtopay, Integer totalpaid, Bookingstatus status, Customer customerId, Room roomId) {
         this.datefrom = datefrom;
         this.dateto = dateto;
         this.needtopay = needtopay;
@@ -90,6 +86,7 @@ public class Booking implements Serializable {
     }
 
     
+
     public Integer getId() {
         return id;
     }
@@ -98,19 +95,19 @@ public class Booking implements Serializable {
         this.id = id;
     }
 
-    public String getDatefrom() {
+    public Date getDatefrom() {
         return datefrom;
     }
 
-    public void setDatefrom(String datefrom) {
+    public void setDatefrom(Date datefrom) {
         this.datefrom = datefrom;
     }
 
-    public String getDateto() {
+    public Date getDateto() {
         return dateto;
     }
 
-    public void setDateto(String dateto) {
+    public void setDateto(Date dateto) {
         this.dateto = dateto;
     }
 
@@ -176,8 +173,7 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "Booking{ datefrom=" + datefrom + ", dateto=" + dateto + ", needtopay=" + needtopay + ", totalpaid=" + totalpaid + ", status=" + status + ", customerId=" + customerId + ", roomId=" + roomId + '}';
+        return "Entity.Booking[ id=" + id + " ]";
     }
-
-
+    
 }

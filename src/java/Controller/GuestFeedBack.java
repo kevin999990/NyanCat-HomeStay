@@ -84,25 +84,25 @@ public class GuestFeedBack extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
-        HttpSession session = request.getSession();
-        CommentDa commentDa = new CommentDa(em);
-        String email = request.getParameter("feedbackEmail");
-        String message = request.getParameter("feedbackMessage");
-        String phone = request.getParameter("feedbackPhone");
-        String name = request.getParameter("feedbackName");
-        Date today = new Date();
-        Comment guestComment = new Comment(name, today, phone, email, message);
-        
-        utx.begin();
-        commentDa.addComment(guestComment);
-        utx.commit();
-        
-        response.sendRedirect("tqComment.html");
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        //Date toDay = dateFormat.format(new Date());
-        }catch(Exception e){
-            
+        try {
+            HttpSession session = request.getSession();
+            CommentDa commentDa = new CommentDa(em);
+            String email = request.getParameter("feedbackEmail");
+            String message = request.getParameter("feedbackMessage");
+            String phone = request.getParameter("feedbackPhone");
+            String name = request.getParameter("feedbackName");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Date today = dateFormat.parse(dateFormat.format(new Date()));
+            Comment guestComment = new Comment(name, today, phone, email, message);
+
+            utx.begin();
+            commentDa.addComment(guestComment);
+            utx.commit();
+
+            response.sendRedirect("tqComment.html");
+
+        } catch (Exception e) {
+
         }
     }
 
