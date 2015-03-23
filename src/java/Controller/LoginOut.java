@@ -26,6 +26,7 @@ import javax.transaction.UserTransaction;
  * @author Kevin
  */
 public class LoginOut extends HttpServlet {
+
     @PersistenceContext
     EntityManager em;
 
@@ -82,7 +83,7 @@ public class LoginOut extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
         StaffDa staffDa = new StaffDa(em);
         String button = (String) request.getParameter("login");

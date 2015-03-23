@@ -4,8 +4,10 @@
     Author     : Kevin
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="Entity.Booking"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="newBooking" scope="session" class="Entity.Booking" />
+<% List<Booking> newBooking = (List<Booking>) session.getAttribute("newBooking");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +16,7 @@
     </head>
     <body>
         <%@include file="navbar.html" %>
-   
+
         <!-- Header and Navigation Bar-->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -40,15 +42,48 @@
 
         <div class="container">
             <section>
+
+                <!-- Reservation Form -->
                 <div class="row">
                     <h1 class="page-header"> Guest Reservation </h1>
-                    <form id="guestReserveForm" class="form-horizontal" method="POST" role="form">
-
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                Show the room details and date
-                            </div>
+                    <!--Room Detail-->
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <h4 class="modal-header">Reserve Detail</h4>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>Room</td>
+                                        <td>From</td>
+                                        <td>To</td>
+                                        <td>Night</td>
+                                        <td>Suite</td>
+                                        <td>Rate per Night (RM)</td>
+                                        <td>Total (RM)</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (int i = 0; i < newBooking.size(); i++) {%>
+                                    <tr>
+                                        <td><%= i + 1%></td>
+                                        <td><%= newBooking.get(i).getDatefrom()%></td>
+                                        <td><%= newBooking.get(i).getDateto()%></td>
+                                        <td><%= session.getAttribute("numberOfNight")%></td>
+                                        <td><%= newBooking.get(i).getRoomId().getRoomtype().getDescription()%></td>
+                                        <td><%= newBooking.get(i).getRoomId().getRoomtype().getPrice()%></td>
+                                        <td><%= Integer.parseInt(session.getAttribute("numberOfNight").toString()) * newBooking.get(i).getRoomId().getRoomtype().getPrice()%></td>
+                                    </tr>
+                                    <% }%>
+                                    <tr> 
+                                        <td colspan="6"  >Grand Total:</td>
+                                        <td ><%= newBooking.get(0).getNeedtopay()%></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </div><!--/Room detail-->
+
+                    <form id="guestReserveForm" class="form-horizontal" method="POST" role="form">
                         <div class="row">
                             <div class="col-md-5 col-md-offset-1">
 
@@ -97,16 +132,16 @@
                                 <h4 class="modal-header">Payment Detail</h4>
 
                                 <div class="form-group">
-                                    <label for="totalpayment" class="col-sm-3 control-label">Total Amount </label>          
+                                    <label for="totalpayment" class="col-sm-3 control-label">Total Amount (RM)</label>          
                                     <div class="col-sm-9">
-                                        <input class="form-control" id="disabledInput" type="text" placeholder="MYR 300" disabled>
+                                        <input class="form-control" id="disabledInput" type="text" readonly value="<%=newBooking.get(0).getNeedtopay()%>">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cardname" class="col-sm-3 control-label">Cardholder's Name</label>
+                                    <label for="cardHolderName" class="col-sm-3 control-label">Cardholder's Name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="cardname" placeholder="Jane Doe" maxlength="20">
+                                        <input type="text" class="form-control" id="cardHolderName" name="cardHolderName" placeholder="Jane Doe" maxlength="20">
                                     </div>
                                 </div>
 
@@ -114,24 +149,24 @@
                                     <label for="card" class="col-sm-3 control-label">Card Type</label>
                                     <div class="col-sm-9">
                                         <select class="form-control">
-                                            <option>American Express</option>
-                                            <option>MasterCard</option>
                                             <option>Visa</option>
+                                            <option>MasterCard</option>
+                                            <option>American Express</option>
                                             <option>Discover</option>                           
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="cardno" class="col-sm-3 control-label">Card Number</label>
+                                    <label for="creditCardNumber" class="col-sm-3 control-label">Card Number</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="cardno" placeholder="1234567890" maxlength="11">
+                                        <input type="text" class="form-control" id="creditCardNumber" name="creditCardNumber" placeholder="1234567890" maxlength="11">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="cvv" class="col-sm-3 control-label">CVV  <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></label>  
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="cvv" placeholder="1234" maxlength="4">
+                                        <input type="text" class="form-control" id="cvv" name="cvv" placeholder="1234" maxlength="4">
 
                                     </div>
                                 </div>
@@ -139,7 +174,7 @@
                                 <div class="form-group">
                                     <label for="expdate" class="col-sm-3 control-label">Expiry Date</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="expdate" placeholder="12/20">
+                                        <input type="text" class="form-control" id="expdate" name="expdate" placeholder="12/20">
                                     </div>
                                 </div>
 
@@ -152,7 +187,7 @@
                         </div>
 
                     </form>
-                </div>
+                </div><!--/Reservation Form-->
 
             </section>
         </div><!-- /container-->
@@ -170,6 +205,8 @@
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="js/formValidation.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

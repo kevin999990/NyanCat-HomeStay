@@ -30,3 +30,46 @@ $("#loginForm").validate({
         password: "Plsese enter your password",
     }
 });
+$("#guestReserveForm").validate({
+    rules: {
+        customerName: "required",
+        email: {
+            required: true,
+            email: true
+        },
+        cardHolderName: "required",
+        phoneNumber:{
+            digits:true
+        },
+        creditCardNumber: {
+            required: true,
+            digits: true
+        },
+        cvv: {
+            required: true,
+            digits: true
+        },
+        expdate: "required",
+    },
+
+    messages: {
+        customerName: "Please enter your name.",
+        email: {
+            required: "Please enter your email",
+            email: "Please enter valid email."
+        },
+        phoneNumber:{
+            digits:"Only can enter digit."
+        },
+        cardHolderName: "Please enter card holder name.",
+        creditCardNumber: {
+            required: "Please enter credit card number",
+            digits: "Only can enter digit."
+        },
+        cvv: {
+            required: "Please check your credit card back side.",
+            digits: "Only can enter digit."
+        },
+        expdate: "Please enter credit card expire date.",
+    }
+});

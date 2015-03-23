@@ -6,16 +6,20 @@
 package Controller;
 
 import Entity.Booking;
-import Entity.BookingDa;
 import Entity.Bookingstatus;
 import Entity.Room;
 import Entity.RoomDa;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.jms.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
@@ -30,7 +34,7 @@ import javax.transaction.UserTransaction;
  * @author Kevin
  */
 public class GuestReservation extends HttpServlet {
-    
+
     @PersistenceContext
     EntityManager em;
     @Resource
@@ -74,41 +78,53 @@ public class GuestReservation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        RoomDa roomDa = new RoomDa(em);
-        List<Booking> newBooking = new ArrayList<Booking>();
-        List<Room> roomList = roomDa.allRoom();
-        List<Room> newRoomList = new ArrayList<Room>();
-        List<Room> bookedRoomList = new ArrayList<Room>();
-        HttpSession session = request.getSession();
-        int needToPaid = 0;
-        int roomType = Integer.parseInt(request.getParameter("roomType"));
-        String dateFrom = request.getParameter("checkinDate");
-        String dateTo = request.getParameter("checkoutDate");
-        int numberOfRoom = Integer.parseInt(request.getParameter("numberOfRoom"));
+        try {
 
-        //check room availability
-        for (int i = 0; i < roomList.size(); i++) {
-            if (roomList.get(i).getRoomtype().getId().equals(roomType) && roomList.get(i).getAvailable()) {
-                newRoomList.add(roomList.get(i));
+            RoomDa roomDa = new RoomDa(em);
+            List<Booking> newBooking = new ArrayList<Booking>();
+            List<Room> roomList = roomDa.allRoom();
+            List<Room> newRoomList = new ArrayList<Room>();
+
+            HttpSession session = request.getSession();
+            int needToPaid = 0;
+            int roomType = Integer.parseInt(request.getParameter("roomType"));
+            String dateFrom = request.getParameter("checkinDate");
+            String dateTo = request.getParameter("checkoutDate");
+            int numberOfRoom = Integer.parseInt(request.getParameter("numberOfRoom"));
+
+            //check room availability
+            for (int i = 0; i < roomList.size(); i++) {
+                if (roomList.get(i).getRoomtype().getId().equals(roomType) && roomList.get(i).getAvailable()) {
+                    newRoomList.add(roomList.get(i));
+                }
             }
-        }
-        
-        if (newRoomList.size() < numberOfRoom) {
-            session.setAttribute("massage", "Sorry, the number of room are not available.");
+
+            if (newRoomList.size() < numberOfRoom) {
+                session.setAttribute("massage", "Sorry, the number of room are not available.");
+                response.sendRedirect("#");
+            } else {
+                List<Room> bookedRoomList = new ArrayList<Room>();
+
+                for (int i = 0; i < numberOfRoom; i++) {
+                    bookedRoomList.add(newRoomList.get(i));
+                }
+
+                for (int i = 0; i < bookedRoomList.size(); i++) {
+                    needToPaid += bookedRoomList.get(i).getRoomtype().getPrice();
+                }
+
+                int numberOfNight = checkDateDefference(dateFrom, dateTo);
+                needToPaid = needToPaid * numberOfNight;
+
+                for (int i = 0; i < numberOfRoom; i++) {
+                    newBooking.add(new Booking(dateFrom, dateTo, needToPaid, 0, new Bookingstatus(1), null, newRoomList.get(i)));
+                }
+                session.setAttribute("newBooking", newBooking);
+                session.setAttribute("numberOfNight", numberOfNight);
+                response.sendRedirect("guestReservation.jsp");
+            }
+        } catch (Exception e) {
             response.sendRedirect("#");
-        } else {
-            
-            for (int i = 0; i < bookedRoomList.size(); i++) {
-                needToPaid += bookedRoomList.get(i).getRoomtype().getPrice();
-            }
-            
-            for (int i = 0; i < numberOfRoom; i++) {
-                newBooking.add(new Booking(dateFrom, dateTo, needToPaid, 0, new Bookingstatus(1), null, newRoomList.get(i)));
-            }
-            
-            session.setAttribute("newBooking", newBooking);
-            response.sendRedirect("guestReservation.jsp");
         }
     }
 
@@ -136,4 +152,13 @@ public class GuestReservation extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private int checkDateDefference(String checkIn, String checkOut) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date inDate = dateFormat.parse(checkIn);
+        Date outDate = dateFormat.parse(checkOut);
+
+        long timeDiff = Math.abs(outDate.getTime() - inDate.getTime());
+        double diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        return (int) diffDays;
+    }
 }

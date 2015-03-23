@@ -8,7 +8,6 @@
 <jsp:useBean id="newStaff" scope="session" class="Entity.Staff" />
 <jsp:setProperty name="newStaff" property="*"/>
 <html>
-    <head>
 
     <head>
         <meta charset="utf-8">
