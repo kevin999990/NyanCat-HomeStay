@@ -19,7 +19,7 @@
         <link rel="icon" href="${pageContext.request.contextPath}/img/logo2.png">
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"  rel="stylesheet" type="text/css" />
         <link href="${pageContext.request.contextPath}/css/custom.css"  rel="stylesheet" type="text/css" />
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/font-awesome_4.0.3_css_font-awesome.css" rel="stylesheet" type="text/css"/>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -126,7 +126,7 @@
 
 
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script src="js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>
             <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

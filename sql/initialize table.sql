@@ -33,7 +33,7 @@ INSERT into customer(customerName,address,email,phoneNumber) VALUES
 	('Bobo Tan','Taman Rainfield','bobotan@bobomail.com','01126236672');
 
 INSERT into customer(customerName,address,email,phoneNumber) VALUES
-	('Bobo Atlas Kek','Taman Bobo','boboAtlas@bobomail.com','0146593678');
+	('Bobo Atlas Kek','Taman Kuala Menggatal','boboAtlas@bobomail.com','0146593678');
 
 	INSERT into customer(customerName,address,email,phoneNumber) VALUES
 	('Bobo Dareen','Taman Penampang','dareenBobo@bobomail.com','0146578900');

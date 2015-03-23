@@ -108,7 +108,7 @@ public class GuestReservation extends HttpServlet {
             }
             
             session.setAttribute("newBooking", newBooking);
-            response.sendRedirect("../guestReservation.jsp");
+            response.sendRedirect("guestReservation.jsp");
         }
     }
 
