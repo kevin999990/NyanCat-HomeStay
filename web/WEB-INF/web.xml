@@ -17,6 +17,10 @@
         <servlet-name>GuestReservation</servlet-name>
         <servlet-class>Controller.GuestReservation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GuestFeedBack</servlet-name>
+        <servlet-class>Controller.GuestFeedBack</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Staff</servlet-name>
         <url-pattern>/Staff</url-pattern>
@@ -32,6 +36,10 @@
     <servlet-mapping>
         <servlet-name>GuestReservation</servlet-name>
         <url-pattern>/GuestReservation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuestFeedBack</servlet-name>
+        <url-pattern>/GuestFeedBack</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

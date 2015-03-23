@@ -14,10 +14,18 @@ $("#feedbackForm").validate({
             required: true,
             email: true
         },
+        feedbackPhone:{
+            digits:true
+            
+        },
+
     },
     messages: {
         feedbackName: "Please enter your name",
         email: "Please enter a valid email address",
+        feedbackPhone:{
+            digits:"Only can enter digit",
+        }
     }
 });
 $("#loginForm").validate({

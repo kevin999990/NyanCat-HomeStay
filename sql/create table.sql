@@ -21,9 +21,10 @@ CREATE TABLE staff(
 CREATE TABLE comment(
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	commentName VARCHAR(50) not NULL,
-	comment VARCHAR(200),
-	phoneNumber VARCHAR(11), 
 	commentDate date,
+	phoneNumber VARCHAR(11), 
+	email VARCHAR(50),
+	comment VARCHAR(200),
 	PRIMARY KEY(id) 
 );
 

@@ -33,9 +33,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Comment.findAll", query = "SELECT c FROM Comment c"),
     @NamedQuery(name = "Comment.findById", query = "SELECT c FROM Comment c WHERE c.id = :id"),
     @NamedQuery(name = "Comment.findByCommentname", query = "SELECT c FROM Comment c WHERE c.commentname = :commentname"),
-    @NamedQuery(name = "Comment.findByComment", query = "SELECT c FROM Comment c WHERE c.comment = :comment"),
+    @NamedQuery(name = "Comment.findByCommentdate", query = "SELECT c FROM Comment c WHERE c.commentdate = :commentdate"),
     @NamedQuery(name = "Comment.findByPhonenumber", query = "SELECT c FROM Comment c WHERE c.phonenumber = :phonenumber"),
-    @NamedQuery(name = "Comment.findByCommentdate", query = "SELECT c FROM Comment c WHERE c.commentdate = :commentdate")})
+    @NamedQuery(name = "Comment.findByEmail", query = "SELECT c FROM Comment c WHERE c.email = :email"),
+    @NamedQuery(name = "Comment.findByComment", query = "SELECT c FROM Comment c WHERE c.comment = :comment")})
 public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,15 +49,19 @@ public class Comment implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "COMMENTNAME")
     private String commentname;
-    @Size(max = 200)
-    @Column(name = "COMMENT")
-    private String comment;
-    @Size(max = 11)
-    @Column(name = "PHONENUMBER")
-    private String phonenumber;
     @Column(name = "COMMENTDATE")
     @Temporal(TemporalType.DATE)
     private Date commentdate;
+    @Size(max = 11)
+    @Column(name = "PHONENUMBER")
+    private String phonenumber;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Size(max = 50)
+    @Column(name = "EMAIL")
+    private String email;
+    @Size(max = 200)
+    @Column(name = "COMMENT")
+    private String comment;
 
     public Comment() {
     }
@@ -69,6 +74,22 @@ public class Comment implements Serializable {
         this.id = id;
         this.commentname = commentname;
     }
+
+    public Comment(String commentname, Date commentdate, String email, String comment) {
+        this.commentname = commentname;
+        this.commentdate = commentdate;
+        this.email = email;
+        this.comment = comment;
+    }
+
+    public Comment(String commentname, Date commentdate, String phonenumber, String email, String comment) {
+        this.commentname = commentname;
+        this.commentdate = commentdate;
+        this.phonenumber = phonenumber;
+        this.email = email;
+        this.comment = comment;
+    }
+    
 
     public Integer getId() {
         return id;
@@ -86,12 +107,12 @@ public class Comment implements Serializable {
         this.commentname = commentname;
     }
 
-    public String getComment() {
-        return comment;
+    public Date getCommentdate() {
+        return commentdate;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCommentdate(Date commentdate) {
+        this.commentdate = commentdate;
     }
 
     public String getPhonenumber() {
@@ -102,12 +123,20 @@ public class Comment implements Serializable {
         this.phonenumber = phonenumber;
     }
 
-    public Date getCommentdate() {
-        return commentdate;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCommentdate(Date commentdate) {
-        this.commentdate = commentdate;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     @Override
@@ -132,7 +161,9 @@ public class Comment implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Comment[ id=" + id + " ]";
+        return "Comment{" + "id=" + id + ", commentname=" + commentname + ", commentdate=" + commentdate + ", phonenumber=" + phonenumber + ", email=" + email + ", comment=" + comment + '}';
     }
+
+ 
     
 }
