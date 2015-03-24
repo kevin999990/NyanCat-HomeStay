@@ -26,42 +26,42 @@ public class BookingDa {
         em.persist(booking);
     }
 
-    public Booking getBooking(int id) {
-        return em.find(Booking.class, id);
+    public Booking getBooking(int bookingId) {
+        return em.find(Booking.class, bookingId);
     }
 
-    public void deleteBooking(int id) {
-        em.remove(getBooking(id));
+    public void deleteBooking(int bookingId) {
+        em.remove(getBooking(bookingId));
     }
 
     public void updateBooking(Booking booking) {
         em.merge(booking);
     }
 
-    public void setStatusToReserve(int id) {
+    public void setStatusToReserve(int bookingId) {
         BookingstatusDa bkstatusDa = new BookingstatusDa(em);
-        Booking booking = getBooking(id);
+        Booking booking = getBooking(bookingId);
         booking.setStatus(bkstatusDa.getBookingstatus(1));
         updateBooking(booking);
     }
 
-    public void setStatusToComplete(int id) {
+    public void setStatusToComplete(int bookingId) {
         BookingstatusDa bkstatusDa = new BookingstatusDa(em);
-        Booking booking = getBooking(id);
+        Booking booking = getBooking(bookingId);
         booking.setStatus(bkstatusDa.getBookingstatus(3));
         updateBooking(booking);
     }
 
-    public void setStatusToCheckedin(int id) {
+    public void setStatusToCheckedin(int bookingId) {
         BookingstatusDa bkstatusDa = new BookingstatusDa(em);
-        Booking booking = getBooking(id);
+        Booking booking = getBooking(bookingId);
         booking.setStatus(bkstatusDa.getBookingstatus(2));
         updateBooking(booking);
     }
 
-    public void setStatusToCancel(int id) {
+    public void setStatusToCancel(int bookingId) {
         BookingstatusDa bkstatusDa = new BookingstatusDa(em);
-        Booking booking = getBooking(id);
+        Booking booking = getBooking(bookingId);
         booking.setStatus(bkstatusDa.getBookingstatus(4));
         updateBooking(booking);
     }
