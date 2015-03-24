@@ -7,7 +7,9 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,11 +19,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,35 +42,35 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Booking.findByNeedtopay", query = "SELECT b FROM Booking b WHERE b.needtopay = :needtopay"),
     @NamedQuery(name = "Booking.findByTotalpaid", query = "SELECT b FROM Booking b WHERE b.totalpaid = :totalpaid")})
 public class Booking implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DATEFROM")
+    @Column(name = "DATEFROM", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date datefrom;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DATETO")
+    @Column(name = "DATETO", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dateto;
     @Column(name = "NEEDTOPAY")
     private Integer needtopay;
     @Column(name = "TOTALPAID")
     private Integer totalpaid;
-    @JoinColumn(name = "STATUS", referencedColumnName = "ID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookingId")
+    private List<Bookinglist> bookinglistList;
+    @JoinColumn(name = "STATUS", referencedColumnName = "ID", nullable = false)
     @ManyToOne(optional = false)
     private Bookingstatus status;
-    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "ID", nullable = false)
     @ManyToOne(optional = false)
     private Customer customerId;
-    @JoinColumn(name = "ROOM_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Room roomId;
 
     public Booking() {
     }
@@ -75,17 +79,14 @@ public class Booking implements Serializable {
         this.id = id;
     }
 
-    public Booking(Date datefrom, Date dateto, Integer needtopay, Integer totalpaid, Bookingstatus status, Customer customerId, Room roomId) {
+    public Booking(Date datefrom, Date dateto, Integer needtopay, Integer totalpaid, Bookingstatus status) {
         this.datefrom = datefrom;
         this.dateto = dateto;
         this.needtopay = needtopay;
         this.totalpaid = totalpaid;
         this.status = status;
-        this.customerId = customerId;
-        this.roomId = roomId;
-    }
 
-    
+    }
 
     public Integer getId() {
         return id;
@@ -127,6 +128,15 @@ public class Booking implements Serializable {
         this.totalpaid = totalpaid;
     }
 
+    @XmlTransient
+    public List<Bookinglist> getBookinglistList() {
+        return bookinglistList;
+    }
+
+    public void setBookinglistList(List<Bookinglist> bookinglistList) {
+        this.bookinglistList = bookinglistList;
+    }
+
     public Bookingstatus getStatus() {
         return status;
     }
@@ -141,14 +151,6 @@ public class Booking implements Serializable {
 
     public void setCustomerId(Customer customerId) {
         this.customerId = customerId;
-    }
-
-    public Room getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Room roomId) {
-        this.roomId = roomId;
     }
 
     @Override
@@ -173,9 +175,7 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "Booking{" + "id=" + id + ", datefrom=" + datefrom + ", dateto=" + dateto + ", needtopay=" + needtopay + ", totalpaid=" + totalpaid + ", status=" + status + ", customerId=" + customerId + ", roomId=" + roomId + '}';
+        return "Booking{" + "id=" + id + ", datefrom=" + datefrom + ", dateto=" + dateto + ", needtopay=" + needtopay + ", totalpaid=" + totalpaid + ", bookinglistList=" + bookinglistList + ", status=" + status + ", customerId=" + customerId + '}';
     }
 
-  
-    
 }

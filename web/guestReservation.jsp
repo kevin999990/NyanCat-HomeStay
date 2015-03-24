@@ -4,11 +4,13 @@
     Author     : Kevin
 --%>
 
+<%@page import="Entity.Bookinglist"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="Entity.Booking"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% List<Booking> newBooking = (List<Booking>) session.getAttribute("newBooking");%>
+<% Booking newBooking = (Booking) session.getAttribute("newBooking");%>
+<% List<Bookinglist> newBookinglist = (List<Bookinglist>) session.getAttribute("newBooklist");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,20 +66,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for (int i = 0; i < newBooking.size(); i++) {%>
+                                    <% for (int i = 0; i < newBookinglist.size(); i++) {%>
                                     <tr>
                                         <td><%= i + 1%></td>
-                                        <td><%= new SimpleDateFormat("dd/MM/yyyy").format(newBooking.get(i).getDatefrom())%></td>
-                                        <td><%= new SimpleDateFormat("dd/MM/yyyy").format(newBooking.get(i).getDateto())%></td>
+                                        <td><%= new SimpleDateFormat("dd/MM/yyyy").format(newBooking.getDatefrom())%></td>
+                                        <td><%= new SimpleDateFormat("dd/MM/yyyy").format(newBooking.getDateto())%></td>
                                         <td><%= session.getAttribute("numberOfNight")%></td>
-                                        <td><%= newBooking.get(i).getRoomId().getRoomtype().getDescription()%></td>
-                                        <td><%= newBooking.get(i).getRoomId().getRoomtype().getPrice()%></td>
-                                        <td><%= Integer.parseInt(session.getAttribute("numberOfNight").toString()) * newBooking.get(i).getRoomId().getRoomtype().getPrice()%></td>
+                                        <td><%= newBookinglist.get(i).getRoomId().getRoomtype().getDescription()%></td>
+                                        <td><%= newBookinglist.get(i).getRoomId().getRoomtype().getPrice()%></td>
+                                        <td><%= Integer.parseInt(session.getAttribute("numberOfNight").toString()) * newBookinglist.get(i).getRoomId().getRoomtype().getPrice()%></td>
                                     </tr>
                                     <% }%>
                                     <tr> 
                                         <td colspan="6"  >Grand Total:</td>
-                                        <td ><%= newBooking.get(0).getNeedtopay()%></td>
+                                        <td ><%= newBooking.getNeedtopay()%></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -135,7 +137,7 @@
                                 <div class="form-group">
                                     <label for="totalpayment" class="col-sm-3 control-label">Total Amount (RM)</label>          
                                     <div class="col-sm-9">
-                                        <input class="form-control" id="disabledInput" type="text" readonly value="<%=newBooking.get(0).getNeedtopay()%>">
+                                        <input class="form-control" id="disabledInput" type="text" readonly value="<%=newBooking.getNeedtopay()%>">
                                     </div>
                                 </div>
 

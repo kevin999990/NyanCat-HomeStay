@@ -39,7 +39,7 @@ public class CustomerDa {
     }
 
     public Customer currentCustomer() {
-        List<Customer> cusList = em.createNamedQuery("Comment.findAll").getResultList();
+        List<Customer> cusList = em.createNamedQuery("Customer.findAll").getResultList();
         Customer cus = new Customer(0);
         for (int i = 0; i < cusList.size(); i++) {
             if (cus.getId() < cusList.get(i).getId()) {

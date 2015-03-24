@@ -26,6 +26,10 @@ public class BookingDa {
         em.persist(booking);
     }
 
+    public void addBooking(List<Booking> booking) {
+        em.persist(booking);
+    }
+
     public Booking getBooking(int id) {
         return em.find(Booking.class, id);
     }
@@ -37,5 +41,16 @@ public class BookingDa {
     public List<Booking> allBooking() {
         return em.createNamedQuery("Booking.findAll").getResultList();
 
+    }
+
+    public Booking currentBooking() {
+        List<Booking> bookList = em.createNamedQuery("Booking.findAll").getResultList();
+        Booking book = new Booking(0);
+        for (int i = 0; i < bookList.size(); i++) {
+            if (book.getId() < bookList.get(i).getId()) {
+                book = bookList.get(i);
+            }
+        }
+        return book;
     }
 }

@@ -5,13 +5,8 @@
  */
 package Controller;
 
-import Entity.Booking;
-import Entity.BookingDa;
-import Entity.Bookingstatus;
-import Entity.Customer;
-import Entity.CustomerDa;
-import Entity.Room;
-import Entity.RoomDa;
+import Entity.*;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -77,9 +72,9 @@ public class GuestReservation extends HttpServlet {
         RoomDa roomDa = new RoomDa(em);
         try {
 
-            List<Booking> newBooking = new ArrayList<>();
             List<Room> roomList = roomDa.allRoom();
             List<Room> newRoomList = new ArrayList<>();
+            List<Bookinglist> newBooklist = new ArrayList<>();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
             int needToPaid = 0;
@@ -99,22 +94,21 @@ public class GuestReservation extends HttpServlet {
                 session.setAttribute("massage", "Sorry, the number of room are not available.");
                 response.sendRedirect("error/roomNumberError.html");
             } else {
-                List<Room> bookedRoomList = new ArrayList<Room>();
 
                 for (int i = 0; i < numberOfRoom; i++) {
-                    bookedRoomList.add(newRoomList.get(i));
+                    newBooklist.add(new Bookinglist(newRoomList.get(i)));
                 }
 
-                for (int i = 0; i < bookedRoomList.size(); i++) {
-                    needToPaid += bookedRoomList.get(i).getRoomtype().getPrice();
+                for (int i = 0; i < newBooklist.size(); i++) {
+                    needToPaid += newBooklist.get(i).getRoomId().getRoomtype().getPrice();
                 }
 
                 int numberOfNight = checkDateDefference(dateFrom, dateTo);
                 needToPaid = needToPaid * numberOfNight;
 
-                for (int i = 0; i < numberOfRoom; i++) {
-                    newBooking.add(new Booking(dateFrom, dateTo, needToPaid, 0, new Bookingstatus(1), null, newRoomList.get(i)));
-                }
+                Booking newBooking = new Booking(dateFrom, dateTo, needToPaid, 1, new BookingstatusDa(em).getBookingstatus(1));
+
+                session.setAttribute("newBooklist", newBooklist);
                 session.setAttribute("newBooking", newBooking);
                 session.setAttribute("numberOfNight", numberOfNight);
                 response.sendRedirect("guestReservation.jsp");
@@ -139,28 +133,35 @@ public class GuestReservation extends HttpServlet {
         RoomDa roomDa = new RoomDa(em);
         BookingDa bookingDa = new BookingDa(em);
         CustomerDa customerDa = new CustomerDa(em);
+        BookinglistDa bookinglistDa = new BookinglistDa(em);
+
         try {
             /* TODO output your page here. You may use following sample code. */
-            List<Booking> newBooking = (List<Booking>) session.getAttribute("newBooking");
-
+            Booking newBooking = (Booking) session.getAttribute("newBooking");
             Customer newCustomer = new Customer();
+            List<Bookinglist> booklist = (List<Bookinglist>) session.getAttribute("newBooklist");
+
             newCustomer.setAddress(request.getParameter("address"));
             newCustomer.setCustomername(request.getParameter("customerName"));
             newCustomer.setEmail(request.getParameter("email"));
             newCustomer.setPhonenumber(request.getParameter("phoneNumber"));
 
             utx.begin();
+
             
             customerDa.addCustomer(newCustomer);
-            
-            for (int i = 0; i < newBooking.size(); i++) {
-                newBooking.get(i).setCustomerId(customerDa.currentCustomer());
+            newBooking.setCustomerId(customerDa.currentCustomer());
+            bookingDa.addBooking(newBooking);
+            for (int i = 0; i < booklist.size(); i++) {
+                booklist.get(i).setBookingId(bookingDa.currentBooking());
+                bookinglistDa.addBookinglist(booklist.get(i));
             }
-            bookingDa.addBooking(null);
+
             utx.commit();
 
         } catch (NotSupportedException | SystemException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException ex) {
             Logger.getLogger(GuestReservation.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }
 

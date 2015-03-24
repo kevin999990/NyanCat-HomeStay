@@ -60,18 +60,26 @@ DESCRIPTION VARCHAR(10),
 PRIMARY KEY (id)
 );
 
+
 CREATE TABLE booking (
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	Customer_id INTEGER NOT NULL,
-	room_id INTEGER NOT NULL,
-	dateFrom date NOT NULL,
+		dateFrom date NOT NULL,
 	dateTo date NOT NULL,
 	needToPay INTEGER,/*is the amount clear?*/
 	totalPaid INTEGER default 0,/*total paid in this transaction*/
 	status INTEGER NOT NULL, /*1=Reserve 2=CheckedIn 3=complete 4=Cancel*/
 	PRIMARY KEY (id),
 	FOREIGN KEY(Customer_id) REFERENCES Customer (id),
-	FOREIGN KEY(room_id) REFERENCES Room(id),
+	
 	FOREIGN KEY(status) REFERENCES bookingstatus(id)
 );
 
+CREATE TABLE bookinglist(
+	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+	booking_id INTEGER NOT NULL,
+	room_id INTEGER NOT NULL,
+	PRIMARY KEY(id),
+	FOREIGN KEY(booking_id) REFERENCES booking(id),
+	FOREIGN KEY(room_id) REFERENCES Room(id)
+	);
