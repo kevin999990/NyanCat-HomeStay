@@ -194,6 +194,7 @@
                     alert("Please check the information is correct.");
                     $("#okbtn").hide();
                     $("#submitbtn").show();
+                    $("html, body").animate({scrollTop: 100}, 100);
                 });
                 $("#resetbtn").click(function () {
                     $("#submitbtn").hide();

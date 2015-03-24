@@ -87,12 +87,12 @@ public class LoginOut extends HttpServlet {
         HttpSession session = request.getSession();
         BookingDa bookingDa = new BookingDa(em);
         StaffDa staffDa = new StaffDa(em);
-        String button = (String) request.getParameter("login");
+        String action = (String) request.getParameter("action");
         
         List<Booking> pendingToCheckin = bookingDa.bookingPendingToCheckin();
         
         //login
-        if (button.equalsIgnoreCase("login")) {
+        if (action.equalsIgnoreCase("login")) {
             String username = (String) request.getParameter("userName");
             String password = (String) request.getParameter("password");
 
@@ -112,11 +112,11 @@ public class LoginOut extends HttpServlet {
 
             if (login) {
                 session.setAttribute("loginStaff", staff);
-                if (staff.getTask().getTaskname().equalsIgnoreCase("Manager")) {
+               // if (staff.getTask().getTaskname().equalsIgnoreCase("Manager")) {
                     session.removeAttribute("bookingPendingCheckin");
                     session.setAttribute("bookingPendingCheckin", pendingToCheckin);
                     response.sendRedirect("./secureManager/managerControlPanel.jsp");
-                }
+            //    }
             } else {
                 response.sendRedirect("./error/loginError.html");
             }

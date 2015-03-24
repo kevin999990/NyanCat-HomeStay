@@ -97,8 +97,9 @@
 
 
                             <td style="text-align: right">
-                                <a href="updateStaff.jsp?id=<%=sta.getId()%>" class="btn btn-primary">Update</a> 
-                                <a href="addStaff.jsp?id=<%=sta.getId()%>" class="btn btn-danger">Delete</a> 
+                                <a href="updateStaff.jsp?id=<%=sta.getId()%>" class="btn btn-primary">Update</a>
+                                <% if(!loginStaff.getId().toString().equalsIgnoreCase(sta.getId().toString())) { %>
+                                <a href="addStaff.jsp?id=<%=sta.getId()%>" class="btn btn-danger">Delete</a> <%}%>
                             </td>
                         </tr>
                         <% }%>

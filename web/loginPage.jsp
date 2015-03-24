@@ -38,7 +38,7 @@
                     </div>
                     <div class="modal-footer">
                         <a href="index.html" class="btn btn-default">Cancel</a>
-                        <button type="submit"  value="login" name="login" class="btn btn-primary">Submit</button>
+                        <button type="submit"  value="login" name="action" class="btn btn-primary">Submit</button>
 
                     </div>
                 </form><!--/login form-->
