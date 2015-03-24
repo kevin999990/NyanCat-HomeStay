@@ -21,6 +21,10 @@
         <servlet-name>GuestFeedBack</servlet-name>
         <servlet-class>Controller.GuestFeedBack</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkRoomSpace</servlet-name>
+        <servlet-class>Controller.checkRoomSpace</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Staff</servlet-name>
         <url-pattern>/Staff</url-pattern>
@@ -40,6 +44,10 @@
     <servlet-mapping>
         <servlet-name>GuestFeedBack</servlet-name>
         <url-pattern>/GuestFeedBack</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkRoomSpace</servlet-name>
+        <url-pattern>/checkRoomSpace</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
