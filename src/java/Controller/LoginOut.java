@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import Entity.Staff;
-import Entity.StaffDa;
+import Entity.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -85,13 +85,18 @@ public class LoginOut extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        BookingDa bookingDa = new BookingDa(em);
         StaffDa staffDa = new StaffDa(em);
         String button = (String) request.getParameter("login");
+        
+        List<Booking> pendingToCheckin = bookingDa.bookingPendingToCheckin();
+        
         //login
         if (button.equalsIgnoreCase("login")) {
             String username = (String) request.getParameter("userName");
             String password = (String) request.getParameter("password");
 
+            
             List<Staff> staffs = staffDa.allStaff();
             Staff staff = null;
             boolean login = false;
@@ -107,7 +112,11 @@ public class LoginOut extends HttpServlet {
 
             if (login) {
                 session.setAttribute("loginStaff", staff);
-                response.sendRedirect("./secureManager/controlPanel.jsp");
+                if (staff.getTask().getTaskname().equalsIgnoreCase("Manager")) {
+                    session.removeAttribute("bookingPendingCheckin");
+                    session.setAttribute("bookingPendingCheckin", pendingToCheckin);
+                    response.sendRedirect("./secureManager/managerControlPanel.jsp");
+                }
             } else {
                 response.sendRedirect("./error/loginError.html");
             }
@@ -124,4 +133,5 @@ public class LoginOut extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
 }

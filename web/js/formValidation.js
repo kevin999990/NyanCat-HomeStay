@@ -14,17 +14,16 @@ $("#feedbackForm").validate({
             required: true,
             email: true
         },
-        feedbackPhone:{
-            digits:true
-            
-        },
+        feedbackPhone: {
+            digits: true
 
+        },
     },
     messages: {
         feedbackName: "Please enter your name",
         email: "Please enter a valid email address",
-        feedbackPhone:{
-            digits:"Only can enter digit",
+        feedbackPhone: {
+            digits: "Only can enter digit",
         }
     }
 });
@@ -46,8 +45,8 @@ $("#guestReserveForm").validate({
             email: true
         },
         cardHolderName: "required",
-        phoneNumber:{
-            digits:true
+        phoneNumber: {
+            digits: true
         },
         creditCardNumber: {
             required: true,
@@ -59,15 +58,14 @@ $("#guestReserveForm").validate({
         },
         expdate: "required",
     },
-
     messages: {
         customerName: "Please enter your name.",
         email: {
             required: "Please enter your email",
             email: "Please enter valid email."
         },
-        phoneNumber:{
-            digits:"Only can enter digit."
+        phoneNumber: {
+            digits: "Only can enter digit."
         },
         cardHolderName: "Please enter card holder name.",
         creditCardNumber: {
@@ -79,5 +77,40 @@ $("#guestReserveForm").validate({
             digits: "Only can enter digit."
         },
         expdate: "Please enter credit card expire date.",
+    }
+});
+
+
+
+
+
+$("#manageStaffForm").validate({
+    rules: {
+        staffName: "required",
+        staffIc: "required",
+        phoneNumber: {
+            required: true,
+            digits: true
+        },
+        staffAddress: "required",
+        staffUsername: "required",
+        staffPassword: "required",
+        staffPasswordAgain: {
+            required: true,
+            equalTo: "#staffPassword"}
+    },
+    messages: {
+        staffName: "Please enter your name",
+        staffIc: "Please enter your ic",
+        phoneNumber: {
+            required: "Please enter your phone number",
+            digits: "Only can enter digit"
+        },
+        staffAddress: "Please enter your address",
+        staffUsername: "Please enter your username",
+        staffPassword: "Please enter your password",
+        staffPasswordAgain: {
+            required: "Please confirm your password",
+            equalTo: "The password must be same"}
     }
 });

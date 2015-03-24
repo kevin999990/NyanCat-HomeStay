@@ -5,6 +5,7 @@
  */
 package Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -80,5 +81,16 @@ public class BookingDa {
             }
         }
         return book;
+    }
+
+    public List<Booking> bookingPendingToCheckin() {
+        List<Booking> bookList = em.createNamedQuery("Booking.findAll").getResultList();
+        List<Booking> newbookList = new ArrayList<>();
+        for (int i = 0; i < bookList.size(); i++) {
+            if (bookList.get(i).getStatus().getId() <= 2 && bookList.get(i).getStatus().getId() >= 1) {
+                newbookList.add(bookList.get(i));
+            }
+        }
+        return newbookList;
     }
 }

@@ -4,14 +4,17 @@
     Author     : Kevin
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="Entity.*"%>
+<%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
+
 <html>
     <head>
 
-    <head>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,8 +33,13 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+
     </head>
     <body>
+        <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
+        
+        <% List<Booking> bookingPendingCheckin = (List<Booking>) session.getAttribute("bookingPendingCheckin");%>
         <!-- Header and Navigation Bar-->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -47,9 +55,8 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="#">Guest Check-in</a></li>
-                        <li><a href="#">Cancel Reservation</a></li>
-                        <li><a href="#">Manager Staff</a></li>
+                        <li><a href="managerControlPanel.jsp">Guest Check-in</a></li>
+                        <li><a href="../StaffControl">Manage Staff</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="disabled sr-only-focusable">Welcome ${loginStaff.staffname}</a></li>
@@ -58,28 +65,39 @@
                 </div><!-- .nav-collapse-->
             </div>
         </div> <!-- Navigation Bar End Here-->
-        <div class="container">
-            ${loginStaff.toString()}
-            <table class="table table-striped">
-                <thead>
-                    <tr><h1>Customer List</h1></tr>
-                <tr>
-                    <td>Name</td>
-                    <td>Date</td>
-                    <td>Check-in</td>
-                    <td>Cancel Reservation</td>                        
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>${loginStaff.staffname}</td>
-                        <td>${loginStaff.address}</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
 
-                </tbody>
-            </table>
+        <div class="container">
+
+            <section>
+                <h1 class="page-header">Customer List</h1>
+
+
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Check-in Date</td>
+                            <td>E-mail</td>
+                            <td></td>              
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (int i = 0; i < bookingPendingCheckin.size(); i++) {%>
+                        <tr>
+
+                            <td><%=bookingPendingCheckin.get(i).getCustomerId().getCustomername()%></td>
+
+                            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(bookingPendingCheckin.get(i).getDatefrom())%></td>
+                            <td><%=bookingPendingCheckin.get(i).getCustomerId().getEmail()%></td>
+                            <td style="text-align: right"> <a href="#" class="btn btn-primary">Check-in</a>
+                                <a href="#" class="btn btn-danger">Cancel Reservation</a></td>
+                        </tr>
+                        <%}%>
+
+                    </tbody>
+                </table>
+            </section>
         </div>
 
         <!--Footer-->
@@ -92,5 +110,10 @@
             </div>
             <!-- /.row -->
         </footer>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="js/formValidation.js"></script>
     </body>
 </html>

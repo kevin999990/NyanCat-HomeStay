@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import Entity.Staff;
-import Entity.StaffDa;
+import Entity.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -43,9 +43,16 @@ public class StaffControl extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-        }
+
+        HttpSession session = request.getSession();
+
+        List<Staff> staffList = new StaffDa(em).allStaff();
+        List<Task> taskList = new TaskDa(em).allTask();
+        session.removeAttribute("allStaffList");
+
+        session.setAttribute("allStaffList", staffList);
+        session.setAttribute("allTaskList", taskList);
+        response.sendRedirect("secureManager/staffMenu.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +67,7 @@ public class StaffControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
     /**
@@ -76,18 +83,17 @@ public class StaffControl extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         StaffDa staffDa = new StaffDa(em);
-        String action = request.getParameter("action");
-        try {
-            if (action.equalsIgnoreCase("add")) {
-                Staff staff = (Staff) session.getAttribute("newStaff");
-                System.out.print(staff.toString());
-                utx.begin();
-                staffDa.addStaff(staff);
-                utx.commit();
+        String name = request.getParameter("staffName");
+        String ic = request.getParameter("staffIc");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String addredd = request.getParameter("staffAddress");
+        String username = request.getParameter("staffUsername");
+        String password = request.getParameter("staffPassword");
 
-            } else if (action.equalsIgnoreCase("cancel")) {
-                response.sendRedirect("./secureManager/addStaff.jsp");
-            }
+        Staff staff = new Staff(name, ic, phoneNumber, addredd, username, password, null);
+
+        try {
+
         } catch (Exception e) {
             System.out.print(e.getMessage());
         }
