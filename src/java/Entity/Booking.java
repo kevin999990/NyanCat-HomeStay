@@ -173,7 +173,9 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Booking[ id=" + id + " ]";
+        return "Booking{" + "id=" + id + ", datefrom=" + datefrom + ", dateto=" + dateto + ", needtopay=" + needtopay + ", totalpaid=" + totalpaid + ", status=" + status + ", customerId=" + customerId + ", roomId=" + roomId + '}';
     }
+
+  
     
 }

@@ -84,7 +84,7 @@
                         </div>
                     </div><!--/Room detail-->
 
-                    <form id="guestReserveForm" class="form-horizontal" method="POST" role="form">
+                    <form id="guestReserveForm" action="GuestReservation"  class="form-horizontal" method="POST" role="form">
                         <div class="row">
                             <div class="col-md-5 col-md-offset-1">
 

@@ -6,7 +6,10 @@
 package Controller;
 
 import Entity.Booking;
+import Entity.BookingDa;
 import Entity.Bookingstatus;
+import Entity.Customer;
+import Entity.CustomerDa;
 import Entity.Room;
 import Entity.RoomDa;
 import java.io.IOException;
@@ -14,7 +17,6 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,17 +53,35 @@ public class GuestReservation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        RoomDa roomDa = new RoomDa(em);
+        BookingDa bookingDa = new BookingDa(em);
+        CustomerDa customerDa = new CustomerDa(em);
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            List<Booking> newBook = (List<Booking>) session.getAttribute("newBooking");
+
+            Customer newCustomer = new Customer();
+            newCustomer.setAddress(request.getParameter("address"));
+            newCustomer.setCustomername(request.getParameter("customerName"));
+            newCustomer.setEmail(request.getParameter("email"));
+            newCustomer.setPhonenumber(request.getParameter("phoneNumber"));
+            newCustomer.setBookingList(newBook);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet GuestReservation</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GuestReservation at " + request.getContextPath() + "</h1>");
+
+            out.println("<p>" + newCustomer.toString() + "</p>");
+
             out.println("</body>");
             out.println("</html>");
+
+            //  utx.begin();
+            // customerDa.addCustomer(newCustomer);
+            //bookingDa.addBooking(newBook);
         }
     }
 
@@ -77,12 +97,13 @@ public class GuestReservation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        RoomDa roomDa = new RoomDa(em);
         try {
-            HttpSession session = request.getSession();
-            RoomDa roomDa = new RoomDa(em);
-            List<Booking> newBooking = new ArrayList<Booking>();
+
+            List<Booking> newBooking = new ArrayList<>();
             List<Room> roomList = roomDa.allRoom();
-            List<Room> newRoomList = new ArrayList<Room>();
+            List<Room> newRoomList = new ArrayList<>();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
             int needToPaid = 0;
@@ -100,7 +121,7 @@ public class GuestReservation extends HttpServlet {
 
             if (newRoomList.size() < numberOfRoom) {
                 session.setAttribute("massage", "Sorry, the number of room are not available.");
-                response.sendRedirect("#");
+                response.sendRedirect("error/roomNumberError.html");
             } else {
                 List<Room> bookedRoomList = new ArrayList<Room>();
 
@@ -123,7 +144,7 @@ public class GuestReservation extends HttpServlet {
                 response.sendRedirect("guestReservation.jsp");
             }
         } catch (Exception e) {
-            response.sendRedirect("#");
+
         }
     }
 
@@ -138,6 +159,7 @@ public class GuestReservation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         processRequest(request, response);
     }
 
