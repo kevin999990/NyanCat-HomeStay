@@ -24,7 +24,7 @@ import javax.transaction.UserTransaction;
  *
  * @author Kevin
  */
-public class StaffControl extends HttpServlet {
+public class RoomControl extends HttpServlet {
 
     @PersistenceContext
     EntityManager em;
@@ -46,15 +46,11 @@ public class StaffControl extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        List<Staff> staffList = new StaffDa(em).allStaff();
-        List<Task> taskList = new TaskDa(em).allTask();
+        List<Room> roomList = new RoomDa(em).allRoom();
 
-        session.removeAttribute("allStaffList");
-        session.removeAttribute("allTaskList");
-
-        session.setAttribute("allStaffList", staffList);
-        session.setAttribute("allTaskList", taskList);
-        response.sendRedirect("secureManager/staffMenu.jsp");
+        session.removeAttribute("allRoomList");
+        session.setAttribute("allRoomList", roomList);
+        response.sendRedirect("secureManager/roomMenu.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -86,39 +82,34 @@ public class StaffControl extends HttpServlet {
         try {
 
             HttpSession session = request.getSession();
-            StaffDa staffDa = new StaffDa(em);
+            RoomDa roomDa = new RoomDa(em);
             session.removeAttribute("message");
-            String name = request.getParameter("staffName");
-            String ic = request.getParameter("staffIc");
-            String phoneNumber = request.getParameter("phoneNumber");
-            String addredd = request.getParameter("staffAddress");
-            String username = request.getParameter("staffUsername");
-            String password = request.getParameter("staffPassword");
-            String task = request.getParameter("task");
+            
+            
             String action = request.getParameter("action");
             if (action.equalsIgnoreCase("add")) {
                 Staff staff = new Staff(name, ic, phoneNumber, addredd, username, password, getTask(task));
                 utx.begin();
-                staffDa.addStaff(staff);
+                //staffDa.addStaff(staff);
                 utx.commit();
-                session.setAttribute("message", "Success Add Staff");
-                
+                session.setAttribute("message", "Success Add Room");
+
             } else if (action.equalsIgnoreCase("Update")) {
-                int id = Integer.parseInt(request.getParameter("staffId"));
-                Staff staff = new Staff(name, ic, phoneNumber, addredd, username, password, getTask(task));
-                staff.setId(id);
+               // int id = Integer.parseInt(request.getParameter("staffId"));
+                //Staff staff = new Staff(name, ic, phoneNumber, addredd, username, password, getTask(task));
+                //staff.setId(id);
                 utx.begin();
-                staffDa.updateStaff(staff);
+                //staffDa.updateStaff(staff);
                 utx.commit();
-                session.setAttribute("message", "Success Update Staff");
+                session.setAttribute("message", "Success Update Room");
 
             } else if (action.equalsIgnoreCase("Delete")) {
-                int id = Integer.parseInt(request.getParameter("staffId"));
+              //  int id = Integer.parseInt(request.getParameter("staffId"));
 
                 utx.begin();
-                staffDa.deleteStaff(id);
+               // staffDa.deleteStaff(id);
                 utx.commit();
-                session.setAttribute("message", "Success Delete Staff");
+                session.setAttribute("message", "Success Delete Room");
             }
 
             processRequest(request, response);

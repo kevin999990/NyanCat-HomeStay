@@ -58,7 +58,7 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="managerControlPanel.jsp">Guest Check-in</a></li>
+                        <li><a href="managerControlPanel.jsp">Manage Reservation</a></li>
                         <li><a href="../StaffControl">Manage Staff</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -72,7 +72,7 @@
 
         <div class="container">
             <section>
-                <h1 class="page-header">Staff Manage</h1>
+                <h1 class="page-header"><%=request.getParameter("action")%> Staff</h1>
 
 
 
@@ -159,7 +159,9 @@
                     <div class="modal-footer">
                         <button type="reset"  id="resetbtn" class="btn btn-default" value="Reset"> Reset</button>
                         <button type="button" id="okbtn" class="btn btn-primary" >OK</button>
-                        <button type="submit" id="submitbtn" class="btn btn-primary" value="Submit" name="action">Submit</button>
+                        <%if (request.getParameter("action").equalsIgnoreCase("Delete")) {%>
+                        <button type="submit" id="submitbtn" class="btn btn-danger" value="Delete" name="action">Delete</button>
+                        <%} else {%><button type="submit" id="submitbtn" class="btn btn-primary" value="Update" name="action">Update</button><%}%>
                     </div>
 
                 </form>
@@ -186,36 +188,54 @@
             <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js" type="text/javascript"></script>
             <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
             <script>
-                $("#submitbtn").hide();
-                $("#okbtn").click(function () {
+
+                var actionbtn = $("#submitbtn").val();
+                if (actionbtn != "Delete") {
+                    $("#submitbtn").hide();
+                    $("#okbtn").click(function () {
+                        $("#manageStaffForm input").attr('readonly', 'true');
+                        $("#manageStaffForm textarea").attr('readonly', 'true');
+                        $("#manageStaffForm select").attr('disabled', 'true');
+                        alert("Please check the information is correct.");
+                        $("#okbtn").hide();
+                        $("#submitbtn").show();
+                        $("html, body").animate({scrollTop: 100}, 100);
+                    });
+                    $("#resetbtn").click(function () {
+                        $("#submitbtn").hide();
+                        $("#okbtn").show();
+                        $("#manageStaffForm input").removeAttr('readonly');
+                        $("#manageStaffForm textarea").removeAttr('readonly');
+                        $("#disabledInput").attr('readonly', true);
+                        $("#manageStaffForm select").removeAttr('disabled');
+
+                    });
+
+                    $("#submitbtn").click(function () {
+                        $("#submitbtn").hide();
+                        $("#okbtn").show();
+                        $("#manageStaffForm input").removeAttr('readonly');
+                        $("#disabledInput").attr('readonly', true);
+                        $("#manageStaffForm textarea").removeAttr('readonly');
+                        $("#manageStaffForm select").removeAttr('disabled');
+                    });
+
+
+                } else {
+                    $("#okbtn").hide();
                     $("#manageStaffForm input").attr('readonly', 'true');
                     $("#manageStaffForm textarea").attr('readonly', 'true');
                     $("#manageStaffForm select").attr('disabled', 'true');
-                    alert("Please check the information is correct.");
-                    $("#okbtn").hide();
-                    $("#submitbtn").show();
-                    $("html, body").animate({scrollTop: 100}, 100);
-                });
-                $("#resetbtn").click(function () {
-                    $("#submitbtn").hide();
-                    $("#okbtn").show();
-                    $("#manageStaffForm input").removeAttr('readonly');
-                    $("#manageStaffForm textarea").removeAttr('readonly');
-                    $("#disabledInput").attr('readonly', true);
-                    $("#manageStaffForm select").removeAttr('disabled');
 
-                });
+                    $("#submitbtn").click(function () {
 
-                $("#submitbtn").click(function () {
-                    $("#submitbtn").hide();
-                    $("#okbtn").show();
-                    $("#manageStaffForm input").removeAttr('readonly');
-                    $("#disabledInput").attr('readonly', true);
-                    $("#manageStaffForm textarea").removeAttr('readonly');
-                    $("#manageStaffForm select").removeAttr('disabled');
-                });
-
-
+                        return  confirm("Are you sure wan to delete this staff?");
+                        $("#manageStaffForm input").removeAttr('readonly');
+                        $("#disabledInput").attr('readonly', true);
+                        $("#manageStaffForm textarea").removeAttr('readonly');
+                        $("#manageStaffForm select").removeAttr('disabled');
+                    });
+                }
 
 
 

@@ -45,7 +45,7 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="managerControlPanel.jsp">Guest Check-in</a></li>
+                        <li><a href="managerControlPanel.jsp">Manage Reservation</a></li>
                         <li><a href="../StaffControl">Manage Staff</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

@@ -54,7 +54,7 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="managerControlPanel.jsp">Guest Check-in</a></li>
+                        <li><a href="managerControlPanel.jsp">Manage Reservation</a></li>
                         <li><a href="../StaffControl">Manage Staff</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -68,7 +68,7 @@
         <div class="container">
             <section>
                 <h1 class="page-header">Manage Staff</h1>
-                
+
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -97,16 +97,20 @@
 
 
                             <td style="text-align: right">
-                                <a href="updateStaff.jsp?id=<%=sta.getId()%>" class="btn btn-primary">Update</a>
-                                <% if(!loginStaff.getId().toString().equalsIgnoreCase(sta.getId().toString())) { %>
-                                <a href="addStaff.jsp?id=<%=sta.getId()%>" class="btn btn-danger">Delete</a> <%}%>
+                                <form action="updateStaff.jsp?id=<%=sta.getId()%>" method="post">
+                                    <button name="action" value="Update" class="btn btn-primary">Update</button>
+                                    <% if (!loginStaff.getId().toString().equalsIgnoreCase(sta.getId().toString())) {%>
+                                    <button name="action" value="Delete" class="btn btn-danger">Delete</button> <%}%>
+                                </form>
                             </td>
                         </tr>
                         <% }%>
                     </tbody>
-                     
+
                 </table>
-                    <a href="addStaff.jsp" class="btn btn-primary pull-right">Add Staff</a> 
+
+                <a href="addStaff.jsp" class="btn btn-primary pull-right">Add Staff</a> 
+                <h2 class="red" id="h2message"><%= String.valueOf(session.getAttribute("message"))%></h2>
             </section>
         </div>
 
@@ -125,5 +129,11 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="js/formValidation.js"></script>
+        <script>
+            
+            var message = $("#h2message").val();
+            if(message===null)
+                $("#h2message").html("hi");
+        </script>
     </body>
 </html>
