@@ -32,6 +32,21 @@ public class RoomDa {
     public void deleteRoom(int id) {
         em.remove(getRoom(id));
     }
+    
+    public void updateRoom(Room room) {
+        em.merge(room);
+    }
+    
+    public void changeRoomtoNotAvailable(int id){
+         Room room =em.find(Room.class, id);
+         room.setAvailable(Boolean.FALSE);
+         updateRoom(room);
+    }
+    public void changeRoomtoAvailable(int id){
+         Room room =em.find(Room.class, id);
+         room.setAvailable(Boolean.TRUE);
+         updateRoom(room);
+    }
 
     public List<Room> allRoom() {
         return em.createNamedQuery("Room.findAll").getResultList();

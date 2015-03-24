@@ -26,16 +26,44 @@ public class BookingDa {
         em.persist(booking);
     }
 
-    public void addBooking(List<Booking> booking) {
-        em.persist(booking);
-    }
-
     public Booking getBooking(int id) {
         return em.find(Booking.class, id);
     }
 
     public void deleteBooking(int id) {
         em.remove(getBooking(id));
+    }
+
+    public void updateBooking(Booking booking) {
+        em.merge(booking);
+    }
+
+    public void setStatusToReserve(int id) {
+        BookingstatusDa bkstatusDa = new BookingstatusDa(em);
+        Booking booking = getBooking(id);
+        booking.setStatus(bkstatusDa.getBookingstatus(1));
+        updateBooking(booking);
+    }
+
+    public void setStatusToComplete(int id) {
+        BookingstatusDa bkstatusDa = new BookingstatusDa(em);
+        Booking booking = getBooking(id);
+        booking.setStatus(bkstatusDa.getBookingstatus(3));
+        updateBooking(booking);
+    }
+
+    public void setStatusToCheckedin(int id) {
+        BookingstatusDa bkstatusDa = new BookingstatusDa(em);
+        Booking booking = getBooking(id);
+        booking.setStatus(bkstatusDa.getBookingstatus(2));
+        updateBooking(booking);
+    }
+
+    public void setStatusToCancel(int id) {
+        BookingstatusDa bkstatusDa = new BookingstatusDa(em);
+        Booking booking = getBooking(id);
+        booking.setStatus(bkstatusDa.getBookingstatus(4));
+        updateBooking(booking);
     }
 
     public List<Booking> allBooking() {

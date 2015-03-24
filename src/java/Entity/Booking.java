@@ -7,9 +7,7 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,13 +17,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,38 +33,39 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Booking.findAll", query = "SELECT b FROM Booking b"),
     @NamedQuery(name = "Booking.findById", query = "SELECT b FROM Booking b WHERE b.id = :id"),
+    @NamedQuery(name = "Booking.findByBookingdate", query = "SELECT b FROM Booking b WHERE b.bookingdate = :bookingdate"),
     @NamedQuery(name = "Booking.findByDatefrom", query = "SELECT b FROM Booking b WHERE b.datefrom = :datefrom"),
     @NamedQuery(name = "Booking.findByDateto", query = "SELECT b FROM Booking b WHERE b.dateto = :dateto"),
     @NamedQuery(name = "Booking.findByNeedtopay", query = "SELECT b FROM Booking b WHERE b.needtopay = :needtopay"),
     @NamedQuery(name = "Booking.findByTotalpaid", query = "SELECT b FROM Booking b WHERE b.totalpaid = :totalpaid")})
 public class Booking implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "ID")
     private Integer id;
+    @Column(name = "BOOKINGDATE")
+    @Temporal(TemporalType.DATE)
+    private Date bookingdate;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DATEFROM", nullable = false)
+    @Column(name = "DATEFROM")
     @Temporal(TemporalType.DATE)
     private Date datefrom;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DATETO", nullable = false)
+    @Column(name = "DATETO")
     @Temporal(TemporalType.DATE)
     private Date dateto;
     @Column(name = "NEEDTOPAY")
     private Integer needtopay;
     @Column(name = "TOTALPAID")
     private Integer totalpaid;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookingId")
-    private List<Bookinglist> bookinglistList;
-    @JoinColumn(name = "STATUS", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "STATUS", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Bookingstatus status;
-    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Customer customerId;
 
@@ -79,14 +76,21 @@ public class Booking implements Serializable {
         this.id = id;
     }
 
+    public Booking(Integer id, Date datefrom, Date dateto) {
+        this.id = id;
+        this.datefrom = datefrom;
+        this.dateto = dateto;
+    }
+
     public Booking(Date datefrom, Date dateto, Integer needtopay, Integer totalpaid, Bookingstatus status) {
+        this.bookingdate = new Date();
         this.datefrom = datefrom;
         this.dateto = dateto;
         this.needtopay = needtopay;
         this.totalpaid = totalpaid;
         this.status = status;
-
     }
+    
 
     public Integer getId() {
         return id;
@@ -94,6 +98,14 @@ public class Booking implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Date getBookingdate() {
+        return bookingdate;
+    }
+
+    public void setBookingdate(Date bookingdate) {
+        this.bookingdate = bookingdate;
     }
 
     public Date getDatefrom() {
@@ -126,15 +138,6 @@ public class Booking implements Serializable {
 
     public void setTotalpaid(Integer totalpaid) {
         this.totalpaid = totalpaid;
-    }
-
-    @XmlTransient
-    public List<Bookinglist> getBookinglistList() {
-        return bookinglistList;
-    }
-
-    public void setBookinglistList(List<Bookinglist> bookinglistList) {
-        this.bookinglistList = bookinglistList;
     }
 
     public Bookingstatus getStatus() {
@@ -175,7 +178,7 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "Booking{" + "id=" + id + ", datefrom=" + datefrom + ", dateto=" + dateto + ", needtopay=" + needtopay + ", totalpaid=" + totalpaid + ", bookinglistList=" + bookinglistList + ", status=" + status + ", customerId=" + customerId + '}';
+        return "Entity.Booking[ id=" + id + " ]";
     }
-
+    
 }

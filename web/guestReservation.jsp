@@ -15,40 +15,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Guest Reservation</title>
+
     </head>
     <body>
         <%@include file="navbar.html" %>
-
-        <!-- Header and Navigation Bar-->
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">  
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">NyanCat HomeStay</a>
-                </div>
-
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li class="active"><a href="index.html">Home</a></li>
-                    </ul>
-
-                </div><!-- .nav-collapse-->
-            </div>
-        </div><!-- Navigation Bar End Here-->
-        <!--BODY-->
 
         <div class="container">
             <section>
 
                 <!-- Reservation Form -->
                 <div class="row">
-                    <h1 class="page-header"> Guest Reservation </h1>
+                    <h1 id="h1title" class="page-header"> Guest Reservation </h1>
                     <!--Room Detail-->
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
@@ -185,8 +163,9 @@
                         </div>
 
                         <div class="modal-footer">
-                            <input type="reset"  class="btn btn-default" value="Reset"> 
-                            <input type="submit" class="btn btn-primary" value="Submit"> 
+                            <button type="reset"  id="resetbtn" class="btn btn-default" value="Reset"> Reset</button>
+                            <button type="button" id="okbtn" class="btn btn-primary" >OK</button>
+                            <button type="submit" id="submitbtn" class="btn btn-primary" value="Submit">Submit</button>
                         </div>
 
                     </form>
@@ -212,4 +191,41 @@
         <script src="js/formValidation.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
+
+    <script>
+        $("#submitbtn").hide();
+        $("#okbtn").click(function () {
+            $("#guestReserveForm input").attr('readonly', 'true');
+            $("#guestReserveForm textarea").attr('readonly', 'true');
+            $("#guestReserveForm select").attr('readonly', 'true');
+            //$("#h1title").html('<span style="color:red">Please check the information is correct.</span>');
+            alert("Please check the information is correct.");
+            //$("html, body").animate({scrollTop: 0}, 300);
+            $("#okbtn").hide();
+            $("#submitbtn").show();
+        });
+        $("#resetbtn").click(function () {
+            $("#submitbtn").hide();
+            $("#okbtn").show();
+            $("#guestReserveForm input").removeAttr('readonly');
+            $("#guestReserveForm textarea").removeAttr('readonly');
+            $("#disabledInput").attr('readonly',true);
+            $("#guestReserveForm select").removeAttr('readonly');
+            $("#h1title").html('Guest Reservation');
+        });
+
+        $("#submitbtn").click(function () {
+            $("#submitbtn").hide();
+            $("#okbtn").show();
+            $("#guestReserveForm input").removeAttr('readonly');
+            $("#disabledInput").attr('readonly',true);
+            $("#guestReserveForm textarea").removeAttr('readonly');
+            $("#guestReserveForm select").removeAttr('readonly');
+            $("#h1title").html('Guest Reservation');
+
+        });
+
+
+
+    </script>
 </html>

@@ -64,6 +64,7 @@ PRIMARY KEY (id)
 CREATE TABLE booking (
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	Customer_id INTEGER NOT NULL,
+	bookingdate date,
 		dateFrom date NOT NULL,
 	dateTo date NOT NULL,
 	needToPay INTEGER,/*is the amount clear?*/
@@ -71,7 +72,6 @@ CREATE TABLE booking (
 	status INTEGER NOT NULL, /*1=Reserve 2=CheckedIn 3=complete 4=Cancel*/
 	PRIMARY KEY (id),
 	FOREIGN KEY(Customer_id) REFERENCES Customer (id),
-	
 	FOREIGN KEY(status) REFERENCES bookingstatus(id)
 );
 

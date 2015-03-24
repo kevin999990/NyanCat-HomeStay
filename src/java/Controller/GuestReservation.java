@@ -106,7 +106,7 @@ public class GuestReservation extends HttpServlet {
                 int numberOfNight = checkDateDefference(dateFrom, dateTo);
                 needToPaid = needToPaid * numberOfNight;
 
-                Booking newBooking = new Booking(dateFrom, dateTo, needToPaid, 1, new BookingstatusDa(em).getBookingstatus(1));
+                Booking newBooking = new Booking(dateFrom, dateTo, needToPaid, 0, new BookingstatusDa(em).getBookingstatus(1));
 
                 session.setAttribute("newBooklist", newBooklist);
                 session.setAttribute("newBooking", newBooking);
@@ -137,8 +137,8 @@ public class GuestReservation extends HttpServlet {
 
         try {
             /* TODO output your page here. You may use following sample code. */
-            Booking newBooking = (Booking) session.getAttribute("newBooking");
             Customer newCustomer = new Customer();
+            Booking newBooking = (Booking) session.getAttribute("newBooking");
             List<Bookinglist> booklist = (List<Bookinglist>) session.getAttribute("newBooklist");
 
             newCustomer.setAddress(request.getParameter("address"));
@@ -147,17 +147,19 @@ public class GuestReservation extends HttpServlet {
             newCustomer.setPhonenumber(request.getParameter("phoneNumber"));
 
             utx.begin();
-
-            
             customerDa.addCustomer(newCustomer);
             newBooking.setCustomerId(customerDa.currentCustomer());
             bookingDa.addBooking(newBooking);
             for (int i = 0; i < booklist.size(); i++) {
                 booklist.get(i).setBookingId(bookingDa.currentBooking());
                 bookinglistDa.addBookinglist(booklist.get(i));
+                roomDa.changeRoomtoNotAvailable(booklist.get(i).getRoomId().getId());
             }
-
             utx.commit();
+
+            session.removeAttribute("newBooking");
+            session.removeAttribute("newBooklist");
+            response.sendRedirect("reservationSuccess.html");
 
         } catch (NotSupportedException | SystemException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException ex) {
             Logger.getLogger(GuestReservation.class.getName()).log(Level.SEVERE, null, ex);
@@ -181,5 +183,7 @@ public class GuestReservation extends HttpServlet {
         long timeDiff = Math.abs(dateTo.getTime() - dateFrom.getTime());
         double diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
         return (int) diffDays;
+
     }
+
 }
