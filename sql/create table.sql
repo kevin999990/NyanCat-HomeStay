@@ -75,13 +75,3 @@ CREATE TABLE booking (
 	FOREIGN KEY(status) REFERENCES bookingstatus(id)
 );
 
-/*
-CREATE TABLE checkin (
-	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-	Customer_id INTEGER,
-	room_id INTEGER,
-	PRIMARY KEY (id),
-	FOREIGN KEY(Customer_id) REFERENCES Customer (id),
-	FOREIGN KEY(room_id) REFERENCES Room(id)
-
-);*/
