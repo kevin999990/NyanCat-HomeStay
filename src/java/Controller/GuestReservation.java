@@ -13,13 +13,14 @@ import Entity.CustomerDa;
 import Entity.Room;
 import Entity.RoomDa;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,6 +29,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 /**
@@ -52,37 +58,7 @@ public class GuestReservation extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        RoomDa roomDa = new RoomDa(em);
-        BookingDa bookingDa = new BookingDa(em);
-        CustomerDa customerDa = new CustomerDa(em);
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            List<Booking> newBook = (List<Booking>) session.getAttribute("newBooking");
 
-            Customer newCustomer = new Customer();
-            newCustomer.setAddress(request.getParameter("address"));
-            newCustomer.setCustomername(request.getParameter("customerName"));
-            newCustomer.setEmail(request.getParameter("email"));
-            newCustomer.setPhonenumber(request.getParameter("phoneNumber"));
-            newCustomer.setBookingList(newBook);
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GuestReservation</title>");
-            out.println("</head>");
-            out.println("<body>");
-
-            out.println("<p>" + newCustomer.toString() + "</p>");
-
-            out.println("</body>");
-            out.println("</html>");
-
-            //  utx.begin();
-            // customerDa.addCustomer(newCustomer);
-            //bookingDa.addBooking(newBook);
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -159,8 +135,33 @@ public class GuestReservation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        RoomDa roomDa = new RoomDa(em);
+        BookingDa bookingDa = new BookingDa(em);
+        CustomerDa customerDa = new CustomerDa(em);
+        try {
+            /* TODO output your page here. You may use following sample code. */
+            List<Booking> newBooking = (List<Booking>) session.getAttribute("newBooking");
 
-        processRequest(request, response);
+            Customer newCustomer = new Customer();
+            newCustomer.setAddress(request.getParameter("address"));
+            newCustomer.setCustomername(request.getParameter("customerName"));
+            newCustomer.setEmail(request.getParameter("email"));
+            newCustomer.setPhonenumber(request.getParameter("phoneNumber"));
+
+            utx.begin();
+            
+            customerDa.addCustomer(newCustomer);
+            
+            for (int i = 0; i < newBooking.size(); i++) {
+                newBooking.get(i).setCustomerId(customerDa.currentCustomer());
+            }
+            bookingDa.addBooking(null);
+            utx.commit();
+
+        } catch (NotSupportedException | SystemException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException ex) {
+            Logger.getLogger(GuestReservation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

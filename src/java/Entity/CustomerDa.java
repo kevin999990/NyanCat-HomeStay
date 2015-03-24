@@ -14,7 +14,8 @@ import javax.persistence.PersistenceContext;
  * @author Kevin
  */
 public class CustomerDa {
-     @PersistenceContext
+
+    @PersistenceContext
     EntityManager em;
 
     public CustomerDa(EntityManager em) {
@@ -35,6 +36,17 @@ public class CustomerDa {
 
     public List<Customer> allCustomer() {
         return em.createNamedQuery("Customer.findAll").getResultList();
+    }
 
+    public Customer currentCustomer() {
+        List<Customer> cusList = em.createNamedQuery("Comment.findAll").getResultList();
+        Customer cus = new Customer(0);
+        for (int i = 0; i < cusList.size(); i++) {
+            if (cus.getId() < cusList.get(i).getId()) {
+                cus = cusList.get(i);
+            }
+
+        }
+        return cus;
     }
 }
