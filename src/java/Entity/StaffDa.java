@@ -33,6 +33,10 @@ public class StaffDa {
     public void deleteStaff(int id) {
         em.remove(getStaff(id));
     }
+    
+    public void updateStaff(Staff staff) {
+        em.merge(staff);
+    }
 
     public List<Staff> allStaff() {
         return em.createNamedQuery("Staff.findAll").getResultList();

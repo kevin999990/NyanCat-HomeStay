@@ -28,7 +28,20 @@
     <body>
         <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
         <%
+            List< Staff> staffs = (List) session.getAttribute("allStaffList");
+            String staffId = request.getParameter("id");
+            Staff sta = new Staff();
+            if (staffId != null) {
+
+                for (int i = 0; i < staffs.size(); i++) {
+                    if (Integer.parseInt(staffId) == staffs.get(i).getId()) {
+                        sta = staffs.get(i);
+                    }
+                }
+            }
+
             List<Task> taskList = (List) session.getAttribute("allTaskList");
+
         %>
         <!-- Header and Navigation Bar-->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -59,7 +72,7 @@
 
         <div class="container">
             <section>
-                <h1 class="page-header">Add Staff</h1>
+                <h1 class="page-header">Staff Manage</h1>
 
 
 
@@ -74,50 +87,50 @@
                                     <span class="small red">Fill all field with <span class=" h4" >*</span></span>
                                 </div>
                             </div>
-                            <input hidden id="staffId" name="staffId" value="">
+                            <input hidden id="staffId" name="staffId" value="<%=sta.getId()%>">
                             <div class="form-group">
                                 <label for="staffName" class="col-sm-4 control-label">Name<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staffName" name="staffName">
+                                    <input type="text" class="form-control" id="staffName" name="staffName" value="<%=sta.getStaffname()%>">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="staffIc" class="col-sm-4 control-label">IC<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staffIc" name="staffIc" >
+                                    <input type="text" readonly class="form-control" id="staffIc" name="staffIc" value="<%=sta.getIc()%>">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="phoneNumber" class="col-sm-4 control-label">Phone Number<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" maxlength="12">
+                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="<%=sta.getPhonenumber()%>" maxlength="12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="staffAddress" class="col-sm-4 control-label">Address<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <textarea class="form-control" id="staffAddress" name="staffAddress"></textarea>
+                                    <textarea class="form-control" id="staffAddress" name="staffAddress"><%=sta.getAddress()%></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="staffUsername" class="col-sm-4 control-label">User Name<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staffUsername" name="staffUsername" >
+                                    <input type="text" class="form-control" id="staffUsername" name="staffUsername" value="<%=sta.getUsername()%>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="staffPassword" class="col-sm-4 control-label">New Password<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="staffPassword" name="staffPassword" >
+                                    <input type="password" class="form-control" id="staffPassword" name="staffPassword" value="<%=sta.getPassword()%>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="staffPasswordAgain" class="col-sm-4 control-label">Retype Password<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="staffPasswordAgain" name="staffPasswordAgain" >
+                                    <input type="password" class="form-control" id="staffPasswordAgain" name="staffPasswordAgain" value="<%=sta.getPassword()%>">
                                 </div>
                             </div>
 
@@ -126,18 +139,27 @@
                                 <div class="col-sm-8">
 
                                     <select class="form-control" name="task" id="task">
-                                        <% for (int i = 0; i < taskList.size(); i++) {%>
+                                        <% for (int i = 0; i < taskList.size(); i++) {
+
+                                                if (taskList.get(i).getTaskname().equalsIgnoreCase(sta.getTask().getTaskname())) {
+                                        %>
+
+                                        <option selected><%=taskList.get(i).getTaskname()%></option><%} else {%>
                                         <option><%=taskList.get(i).getTaskname()%></option><%}%>
+
+                                        <%}%>
                                     </select>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="reset"  id="resetbtn" class="btn btn-default" value="Reset"> Reset</button>
                         <button type="button" id="okbtn" class="btn btn-primary" >OK</button>
-                        <button type="submit" id="submitbtn" class="btn btn-primary" value="add" name="action">Submit</button>
+                        <button type="submit" id="submitbtn" class="btn btn-primary" value="Submit" name="action">Submit</button>
                     </div>
 
                 </form>

@@ -68,6 +68,7 @@
         <div class="container">
             <section>
                 <h1 class="page-header">Manage Staff</h1>
+                
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -96,13 +97,15 @@
 
 
                             <td style="text-align: right">
-                                <a href="addStaff.jsp?id=<%=sta.getId()%>" class="btn btn-primary">Update</a> 
+                                <a href="updateStaff.jsp?id=<%=sta.getId()%>" class="btn btn-primary">Update</a> 
                                 <a href="addStaff.jsp?id=<%=sta.getId()%>" class="btn btn-danger">Delete</a> 
                             </td>
                         </tr>
                         <% }%>
                     </tbody>
+                     
                 </table>
+                    <a href="addStaff.jsp" class="btn btn-primary pull-right">Add Staff</a> 
             </section>
         </div>
 

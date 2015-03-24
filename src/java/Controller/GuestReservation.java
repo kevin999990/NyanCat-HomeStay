@@ -111,7 +111,7 @@ public class GuestReservation extends HttpServlet {
                 session.setAttribute("newBooklist", newBooklist);
                 session.setAttribute("newBooking", newBooking);
                 session.setAttribute("numberOfNight", numberOfNight);
-               // response.sendRedirect("guestReservation.jsp");
+                response.sendRedirect("guestReservation.jsp");
             }
         } catch (Exception e) {
 
@@ -153,7 +153,7 @@ public class GuestReservation extends HttpServlet {
             for (int i = 0; i < booklist.size(); i++) {
                 booklist.get(i).setBookingId(bookingDa.currentBooking());
                 bookinglistDa.addBookinglist(booklist.get(i));
-               // roomDa.changeRoomtoNotAvailable(booklist.get(i).getRoomId().getId());
+              //  roomDa.changeRoomtoNotAvailable(booklist.get(i).getRoomId().getId());
             }
             utx.commit();
 

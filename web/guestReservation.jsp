@@ -68,17 +68,21 @@
                         <div class="row">
                             <div class="col-md-5 col-md-offset-1">
 
-                                <h4 class="modal-header">Personal Detail</h4>
-
+                                <h4 class="modal-header">Personal Detail  </h4>
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-1">
+                                        <span class="small red">Fill all field with <span class=" h4" >*</span></span>
+                                    </div>
+                                </div>
                                 <div class="form-group">
-                                    <label for="customerName" class="col-sm-3 control-label">Name</label>
+                                    <label for="customerName" class="col-sm-3 control-label">Name <span class="h4 red"> *</span></label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Jane Doe">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email" class="col-sm-3 control-label">Email</label>
+                                    <label for="email" class="col-sm-3 control-label">Email<span class="h4 red"> *</span></label>
                                     <div class="col-sm-9">
                                         <input type="email" class="form-control" id="email" name="email" placeholder="jane.doe@example.com">
                                     </div>
@@ -99,7 +103,7 @@
                                     </div>
                                 </div> -->
                                 <div class="form-group">
-                                    <label for="address" class="col-sm-3 control-label">Address</label>   
+                                    <label for="address" class="col-sm-3 control-label">Address<span class="h4 red"> *</span></label>   
                                     <div class="col-sm-9">
                                         <textarea class="form-control" rows="3" id="address" name="address" maxlength="80" style="resize: none" ></textarea>
                                     </div>
@@ -120,7 +124,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cardHolderName" class="col-sm-3 control-label">Cardholder's Name</label>
+                                    <label for="cardHolderName" class="col-sm-3 control-label">Cardholder's Name<span class="h4 red"> *</span></label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="cardHolderName" name="cardHolderName" placeholder="Jane Doe" maxlength="20">
                                     </div>
@@ -138,14 +142,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="creditCardNumber" class="col-sm-3 control-label">Card Number</label>
+                                    <label for="creditCardNumber" class="col-sm-3 control-label">Card Number<span class="h4 red"> *</span></label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="creditCardNumber" name="creditCardNumber" placeholder="1234567890" maxlength="11">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cvv" class="col-sm-3 control-label">CVV  <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></label>  
+                                    <label for="cvv" class="col-sm-3 control-label">CVV<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span> <span class="h4 red"> *</span> </label>  
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="cvv" name="cvv" placeholder="1234" maxlength="4">
 
@@ -153,7 +157,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="expdate" class="col-sm-3 control-label">Expiry Date</label>
+                                    <label for="expdate" class="col-sm-3 control-label">Expiry Date<span class="h4 red"> *</span></label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="expdate" name="expdate" placeholder="12/20">
                                     </div>
@@ -193,14 +197,13 @@
     </body>
 
     <script>
+
         $("#submitbtn").hide();
         $("#okbtn").click(function () {
             $("#guestReserveForm input").attr('readonly', 'true');
             $("#guestReserveForm textarea").attr('readonly', 'true');
-            $("#guestReserveForm select").attr('readonly', 'true');
-            //$("#h1title").html('<span style="color:red">Please check the information is correct.</span>');
+            $("#guestReserveForm select").attr('disabled', 'true');
             alert("Please check the information is correct.");
-            //$("html, body").animate({scrollTop: 0}, 300);
             $("#okbtn").hide();
             $("#submitbtn").show();
         });
@@ -209,23 +212,21 @@
             $("#okbtn").show();
             $("#guestReserveForm input").removeAttr('readonly');
             $("#guestReserveForm textarea").removeAttr('readonly');
-            $("#disabledInput").attr('readonly',true);
-            $("#guestReserveForm select").removeAttr('readonly');
-            $("#h1title").html('Guest Reservation');
+            $("#disabledInput").attr('readonly', true);
+            $("#guestReserveForm select").removeAttr('disabled');
+
         });
 
         $("#submitbtn").click(function () {
             $("#submitbtn").hide();
             $("#okbtn").show();
             $("#guestReserveForm input").removeAttr('readonly');
-            $("#disabledInput").attr('readonly',true);
+            $("#disabledInput").attr('readonly', true);
             $("#guestReserveForm textarea").removeAttr('readonly');
-            $("#guestReserveForm select").removeAttr('readonly');
-            $("#h1title").html('Guest Reservation');
+            $("#guestReserveForm select").removeAttr('disabled');
+
 
         });
-
-
 
     </script>
 </html>
