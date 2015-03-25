@@ -130,6 +130,8 @@ public class GuestReservation extends HttpServlet {
             newCustomer.setEmail(request.getParameter("email"));
             newCustomer.setPhonenumber(request.getParameter("phoneNumber"));
 
+            newBooking.setTotalpaid(newBooking.getNeedtopay());
+            newBooking.setNeedtopay(0);
             utx.begin();
             customerDa.addCustomer(newCustomer);
             newBooking.setCustomerId(customerDa.currentCustomer());

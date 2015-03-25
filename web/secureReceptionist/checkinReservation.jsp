@@ -37,9 +37,12 @@
             }
 
             for (Room rlist : roomList) {
-                if ((rlist.getRoomtype().getId() == currentBooking.getBookinglistList().get(0).getRoomtypeId().getId()) && rlist.getAvailable()) {
-                    availableRoomList.add(rlist);
+                if ((rlist.getRoomtype().getId() == currentBooking.getBookinglistList().get(0).getRoomtypeId().getId())) {
+                    if (rlist.getAvailable()) {
+                        availableRoomList.add(rlist);
+                    }
                 }
+
             }
 
             for (int i = 0; i < currentBooking.getBookinglistList().size(); i++) {
@@ -129,7 +132,7 @@
                     %>
                     <div class="modal-footer">
                         <a href="reservationMenu.jsp" class="btn btn-default">Back</a>
-                        <form action="../ReservationControl">
+                        <form action="../ReservationControl" method="post">
                             <button type="submit" id="submitbtn" class="btn btn-primary" value="Checkin" name="action">Check-In</button>
                         </form>
 

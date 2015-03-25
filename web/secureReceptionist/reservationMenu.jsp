@@ -58,7 +58,7 @@
         </div> <!-- Navigation Bar End Here-->
         <div class="container">
             <section>
-                <h1 class="page-header">Customer List</h1>
+                <h1 class="page-header">Pending Checkin</h1>
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -71,7 +71,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for (Booking bk : bookingPendingCheckin) {%>
+                        <% for (Booking bk : bookingPendingCheckin) {
+                                if (bk.getStatus().getId() == 1) {%>
                         <tr>
                             <td><%=bk.getCustomerId().getCustomername()%></td>
                             <td><%=new SimpleDateFormat("dd/MM/yyyy").format(bk.getDatefrom())%></td>
@@ -80,21 +81,44 @@
                             <td style="text-align: left"> 
 
 
-                                <% if (bk.getStatus().getId() == 2) { %>
-                                <button type="submit" value="Checkout" name="action"class="btn btn-info">Check-Out</button>>    
-                                <%} else if (bk.getDatefrom().before(new Date())) {%>
-                                <a href="cancelReservation.jsp?id=<%=bk.getId()%>"  class="btn btn-danger">Cancel Reservation</a>
-                                <%} else {%>
                                 <a href="checkinReservation.jsp?id=<%=bk.getId()%>" class="btn btn-primary">Check-In</a>
                                 <a href="cancelReservation.jsp?id=<%=bk.getId()%>"  class="btn btn-danger">Cancel Reservation</a>
-                                <%}%>
-
-
-
-
                             </td>
                         </tr>
-                        <%}%>
+                        <%}
+                            }%>
+                    </tbody>
+                </table>
+
+
+                <h1 class="page-header">Checked In</h1>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Check-Out Date</td>
+                            <td>Room</td>
+                            <td></td>              
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (Booking bk : bookingPendingCheckin) {
+                                if (bk.getStatus().getId() == 2) {%>
+
+                        <tr>
+                            <td><%=bk.getCustomerId().getCustomername()%></td>
+                            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(bk.getDateto())%></td>
+
+                            <%for (int i = 0; i < bk.getBookinglistList().size(); i++) {%>
+                            <td><%=bk.getBookinglistList().get(i).getRoomId().getRoomnumber()%></td>
+                            <%}%>
+
+                            <td style="text-align: left"> 
+                                <button type="submit" value="Checkout" name="action"class="btn btn-info">Check-Out</button>
+                            </td>
+                        </tr>
+                        <%}
+                            }%>
 
                     </tbody>
 

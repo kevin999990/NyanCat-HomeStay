@@ -59,7 +59,10 @@
 
         <div class="container">
             <section>
-
+                <a href="#" class="btn btn-primary">Generate Report</a>
+                <a href="#" class="btn btn-primary">Generate Report</a>
+                <a href="#" class="btn btn-primary">Generate Report</a>
+                <a href="#" class="btn btn-primary">Generate Report</a>
             </section>
         </div>
 

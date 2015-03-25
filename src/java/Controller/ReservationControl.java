@@ -25,10 +25,10 @@ import javax.transaction.UserTransaction;
  * @author Kevin
  */
 public class ReservationControl extends HttpServlet {
-    
+
     @PersistenceContext
     EntityManager em;
-    
+
     @Resource
     UserTransaction utx;
 
@@ -46,7 +46,7 @@ public class ReservationControl extends HttpServlet {
         HttpSession session = request.getSession();
         BookingDa bookingDa = new BookingDa(em);
         List<Room> roomList = new RoomDa(em).allRoom();
-        
+
         List<Booking> pendingToCheckin = bookingDa.activeBooking();
         session.removeAttribute("allRoomList");
         session.removeAttribute("bookingPendingCheckin");
@@ -89,26 +89,38 @@ public class ReservationControl extends HttpServlet {
             String action = request.getParameter("action");
             BookingDa bookingDa = new BookingDa(em);
             RoomDa roomDa = new RoomDa(em);
-            
+
             if (action.equalsIgnoreCase("cancel")) {
                 utx.begin();
                 bookingDa.setStatusToCancel(bookingId);
                 utx.commit();
                 session.setAttribute("message", "Success Cancel Reservation");
-                
+
             } else if (action.equalsIgnoreCase("Checkin")) {
                 Booking currentBooking = (Booking) session.getAttribute("currentBooking");
-                
+                BookingstatusDa bkStatusDa = new BookingstatusDa(em);
                 utx.begin();
                 for (Bookinglist bklist : currentBooking.getBookinglistList()) {
                     roomDa.changeToNotAvailable(bklist.getRoomId().getId());
                 }
-                bookingDa.setStatusToCheckedin(currentBooking.getId());
+                currentBooking.setStatus(bkStatusDa.getBookingstatus(2));
+                bookingDa.updateBooking(currentBooking);
                 utx.commit();
-                session.setAttribute("message", "Success Cancel Reservation");
-                
+                session.setAttribute("message", "Success Check-in");
+
+            } else if (action.equalsIgnoreCase("Checkout")) {
+//                Booking currentBooking = (Booking) session.getAttribute("currentBooking");
+//
+//                utx.begin();
+//                for (Bookinglist bklist : currentBooking.getBookinglistList()) {
+//                    roomDa.changeToNotAvailable(bklist.getRoomId().getId());
+//                }
+//                bookingDa.setStatusToCheckedin(currentBooking.getId());
+//                utx.commit();
+//                session.setAttribute("message", "Success Cancel Reservation");
+
             }
-            
+
             processRequest(request, response);
         } catch (Exception e) {
         }

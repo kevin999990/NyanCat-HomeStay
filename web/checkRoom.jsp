@@ -69,7 +69,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="reset" class="btn btn-default">Reset</button>
+                                <a href="index.html" class="btn btn-default">Back</a>
                                 <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

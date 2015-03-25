@@ -71,6 +71,7 @@
                             <th> ID</th>
                             <th> Room Number</th>
                             <th> Room Type</th>
+                            <th> Available</th>
 
                             <th></th>
                         </tr>
@@ -81,6 +82,7 @@
                             <td><%=room.getId()%></td>
                             <td><%=room.getRoomnumber()%></td>
                             <td><%=room.getRoomtype().getDescription()%></td>
+                            <td><%=room.getAvailable()%></td>
                             <td style="text-align: left">
                                 <form action="updateRoom.jsp?id=<%=room.getId()%>" method="post">
                                     <button name="action" value="Update" class="btn btn-primary">Update</button>
