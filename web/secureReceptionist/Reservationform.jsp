@@ -47,8 +47,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="../ReservationControl">Manage Reservation</a></li>
-                        <li><a href="../RoomControl">Manage Room</a></li>
-                        <li><a href="../StaffControl">Manage Staff</a></li>
+               
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="disabled sr-only-focusable">Welcome ${loginStaff.staffname}</a></li>

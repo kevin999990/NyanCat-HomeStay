@@ -88,15 +88,14 @@ public class LoginOut extends HttpServlet {
         BookingDa bookingDa = new BookingDa(em);
         StaffDa staffDa = new StaffDa(em);
         String action = (String) request.getParameter("action");
-        
+
         List<Booking> pendingToCheckin = bookingDa.activeBooking();
-        
+
         //login
         if (action.equalsIgnoreCase("login")) {
             String username = (String) request.getParameter("userName");
             String password = (String) request.getParameter("password");
 
-            
             List<Staff> staffs = staffDa.allStaff();
             Staff staff = null;
             boolean login = false;
@@ -112,14 +111,17 @@ public class LoginOut extends HttpServlet {
 
             if (login) {
                 session.setAttribute("loginStaff", staff);
-               // if (staff.getTask().getTaskname().equalsIgnoreCase("Manager")) {
-                    
+                if (staff.getTask().getTaskname().equalsIgnoreCase("Manager")) {
                     response.sendRedirect("./secureManager/managerControlPanel.jsp");
-            //    }
-            } else {
-                response.sendRedirect("./error/loginError.html");
+
+                } else if (staff.getTask().getTaskname().equalsIgnoreCase("Receptionist")) {
+                    response.sendRedirect("ReservationControl");
+                } else {
+                    response.sendRedirect("./error/loginError.html");
+                }
             }
-        }//end of login
+        }
+
     }
 
     /**
@@ -131,6 +133,4 @@ public class LoginOut extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    
 }

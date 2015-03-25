@@ -49,7 +49,6 @@
                 currentBooking.getBookinglistList().get(i).setRoomId(availableRoomList.get(i));
             }
 
-
         %>
         <!-- Header and Navigation Bar-->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -66,9 +65,8 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="managerControlPanel.jsp">Manage Reservation</a></li>
-                        <li><a href="../RoomControl">Manage Room</a></li>
-                        <li><a href="../StaffControl">Manage Staff</a></li>
+                        <li><a href="../ReservationControl">Manage Reservation</a></li>
+                       
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="disabled sr-only-focusable">Welcome ${loginStaff.staffname}</a></li>
