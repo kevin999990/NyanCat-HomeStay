@@ -32,3 +32,19 @@ var checkout = $('#checkoutDate').datepicker({
 }).on('changeDate', function (ev) {
     checkout.hide();
 }).data('datepicker');
+
+
+         $("#checkoutDate").on('hide', function () {
+
+                from = $("#checkinDate").val().split("/");
+                f = new Date(from[2], from[1] - 1, from[0]);
+                to = $("#checkoutDate").val().split("/");
+                t = new Date(to[2], to[1] - 1, to[0]);
+
+                var checkinDate = new Date(f);
+                var checkoutDate = new Date(t);
+                var timeDiff = Math.abs(checkoutDate.getTime() - checkinDate.getTime());
+                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                document.getElementById('numberOfNight').value = diffDays;
+            })

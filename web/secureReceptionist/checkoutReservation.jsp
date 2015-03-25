@@ -1,3 +1,4 @@
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="Entity.*"%>
@@ -6,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <<head>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +24,17 @@
     <body>
         <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
 
+        <%
+            List<Booking> bookingPendingCheckin = (List<Booking>) session.getAttribute("bookingPendingCheckin");
+            Booking currentBooking = new Booking();
+            for (Booking bk : bookingPendingCheckin) {
+                if (bk.getId() == Integer.parseInt(request.getParameter("id"))) {
+                    currentBooking = bk;
+                }
+            }
+
+
+        %>
         <!-- Header and Navigation Bar-->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -52,46 +64,58 @@
 
         <div class="container">
             <section>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Customer Name:</td>
+                            <td><%=currentBooking.getCustomerId().getCustomername()%></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Email:</td>
+                            <td><%=currentBooking.getCustomerId().getEmail()%></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Phone Number:</td>
+                            <td><%=currentBooking.getCustomerId().getPhonenumber()%></td>
+                        </tr>
+                        <tr>
+                            <td>Need to Pay</td>
+                            <td><%=currentBooking.getNeedtopay()%></td>
+                        </tr>
+                        <tr>
+                            <td>Room</td>
+                            <td>
+                                <%for (int i = 0; i < currentBooking.getBookinglistList().size(); i++) {%>
+                                <%=currentBooking.getBookinglistList().get(i).getRoomId().getRoomnumber()%>
+                                <%}%>
+                            </td>
+                        </tr>
 
-                <div class="row">
-                    <div class="col col-md-6 col-md-offset-1">
-                        <form id="reservationForm" class="form-horizontal" action="../CheckRoom" method="get" role="form">
-                            <h1 class="modal-header">Reservation</h1>
-                            <div class="modal-body">
+                        <tr>
+                            <td>Booking Room</td>
+                            <td><%=currentBooking.getBookinglistList().size() + " " + currentBooking.getBookinglistList().get(0).getRoomtypeId().getDescription()%></td>
+                        </tr>
 
-                                <div class="form-group">
-                                    <label for="checkinDate"class="col-sm-4 control-label">Check-in:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="checkinDate" class="form-control" name="checkinDate" required >
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="checkoutDate"class="col-sm-4 control-label">Check-out:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="checkoutDate"  class="form-control" name="checkoutDate" required>
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="numberOfNight" class="col-sm-4 control-label">Night:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="numberOfNight" readonly  class="form-control" name="numberOfNight">
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="reset" class="btn btn-default">Reset</button>
-                                <button type="submit" value="staff" name="action" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
+                    </tbody>
+                </table>
+
+                <form action="../ReservationControl" method="POST">
+                    <%
+                        session.removeAttribute("currentBooking");
+                        session.setAttribute("currentBooking", currentBooking);
+                    %>
+                    <div class="modal-footer">
+                        <a href="reservationMenu.jsp" class="btn btn-default">Back</a>
+                        <button class="btn btn-info"name="action" value="Checkout">Check-out</button>
+
                     </div>
-                </div>        
+                </form>
+
 
             </section>
         </div>
-
-
 
         <!--Footer-->
         <hr>
@@ -102,20 +126,11 @@
                 </div>
             </div>
             <!-- /.row -->
-        </footer><!--/Footer-->
-
-
+        </footer>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="${pageContext.request.contextPath}/js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/jquery.validate_1.13.1_additional-methods.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js"></script>
-        <script src="${pageContext.request.contextPath}/js/ReservationDate.js"></script>
         <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
-        <script>
-
-
-        </script>
     </body>
 </html>

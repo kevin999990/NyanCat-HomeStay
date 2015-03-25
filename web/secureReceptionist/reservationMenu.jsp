@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <<head>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -109,21 +109,23 @@
                             <td><%=bk.getCustomerId().getCustomername()%></td>
                             <td><%=new SimpleDateFormat("dd/MM/yyyy").format(bk.getDateto())%></td>
 
-                            <%for (int i = 0; i < bk.getBookinglistList().size(); i++) {%>
-                            <td><%=bk.getBookinglistList().get(i).getRoomId().getRoomnumber()%></td>
-                            <%}%>
+                            <td><%for (int i = 0; i < bk.getBookinglistList().size(); i++) {%>
+                                <%=bk.getBookinglistList().get(i).getRoomId().getRoomnumber()%>
+                                <%}%>
+                            </td>
 
                             <td style="text-align: left"> 
-                                <button type="submit" value="Checkout" name="action"class="btn btn-info">Check-Out</button>
+                                <a href="checkoutReservation.jsp?id=<%=bk.getId()%>" class="btn btn-info">Check-Out</a>
                             </td>
                         </tr>
-                        <%}
+
+                        <%    }
                             }%>
 
                     </tbody>
 
                 </table>
-                <a href="#" class="btn btn-primary pull-right">Add Reservation</a> 
+                <a href="addReservation.jsp" class="btn btn-primary pull-right">Add Reservation</a> 
                 <h2 class="red" id="h2message"><%= String.valueOf(session.getAttribute("message"))%></h2>
             </section>
         </div>

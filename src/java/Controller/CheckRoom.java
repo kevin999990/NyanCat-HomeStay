@@ -62,6 +62,8 @@ public class CheckRoom extends HttpServlet {
             session.setAttribute("roomNumber", roomNumber);
             session.setAttribute("dateFrom", dateFrom);
             session.setAttribute("dateTo", dateTo);
+            session.setAttribute("action", request.getParameter("action"));
+            
             response.sendRedirect("checkRoom.jsp");
 
         } catch (Exception e) {

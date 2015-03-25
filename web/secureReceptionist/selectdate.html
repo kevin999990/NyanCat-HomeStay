@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>NyanCat HomeStay</title>
+
+        <link rel="icon" href="img/logo2.png">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
+        <link href="css/half-slider.css" rel="stylesheet">
+        <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="css/font-awesome_4.0.3_css_font-awesome.css" rel="stylesheet" type="text/css"/>
+
+
+    </head>
+
+    <body>
+        <div class="container">
+           
+
+                <div class="row">
+                    <div class="col col-md-6 col-md-offset-1">
+                        <form id="reservationForm" class="form-horizontal" action="CheckRoom" method="get" role="form">
+                            <h1 class="modal-header">Reservation</h1>
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="checkinDate"class="col-sm-4 control-label">Check-in:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="checkinDate" class="form-control" name="checkinDate" required >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkoutDate"class="col-sm-4 control-label">Check-out:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="checkoutDate"  class="form-control" name="checkoutDate" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="numberOfNight" class="col-sm-4 control-label">Night:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="numberOfNight" readonly  class="form-control" name="numberOfNight">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="reset" class="btn btn-default">Reset</button>
+                                <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>        
+
+        </div>
+      
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="js/jquery.validate_1.13.1_additional-methods.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/ReservationDate.js"></script>
+        <script src="js/formValidation.js"></script>
+
+        <script>
+
+            $("#checkoutDate").on('hide', function () {
+
+                from = $("#checkinDate").val().split("/");
+                f = new Date(from[2], from[1] - 1, from[0]);
+                to = $("#checkoutDate").val().split("/");
+                t = new Date(to[2], to[1] - 1, to[0]);
+
+                var checkinDate = new Date(f);
+                var checkoutDate = new Date(t);
+                var timeDiff = Math.abs(checkoutDate.getTime() - checkinDate.getTime());
+                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                document.getElementById('numberOfNight').value = diffDays;
+            })
+
+        </script>
+    </body>
+</html>

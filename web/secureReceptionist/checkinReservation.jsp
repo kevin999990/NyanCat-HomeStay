@@ -30,16 +30,16 @@
             Booking currentBooking = new Booking();
             String bookingId = request.getParameter("id");
 
-            for (Booking b : bookingPendingCheckin) {
-                if (b.getId() == Integer.parseInt(bookingId)) {
-                    currentBooking = b;
+            for (int i = 0; i < bookingPendingCheckin.size(); i++) {
+                if (bookingPendingCheckin.get(i).getId() == Integer.parseInt(bookingId)) {
+                    currentBooking = bookingPendingCheckin.get(i);
                 }
             }
 
-            for (Room rlist : roomList) {
-                if ((rlist.getRoomtype().getId() == currentBooking.getBookinglistList().get(0).getRoomtypeId().getId())) {
-                    if (rlist.getAvailable()) {
-                        availableRoomList.add(rlist);
+            for (int i = 0; i < roomList.size(); i++) {
+                if ((roomList.get(i).getRoomtype().getId() == currentBooking.getBookinglistList().get(0).getRoomtypeId().getId())) {
+                    if (roomList.get(i).getAvailable()) {
+                        availableRoomList.add(roomList.get(i));
                     }
                 }
 

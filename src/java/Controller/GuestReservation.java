@@ -95,8 +95,11 @@ public class GuestReservation extends HttpServlet {
             session.setAttribute("newBooklist", newBooklist);
             session.setAttribute("newBooking", newBooking);
             session.setAttribute("numberOfNight", numberOfNight);
-            response.sendRedirect("guestReservation.jsp");
-
+            if (session.getAttribute("action").toString().equalsIgnoreCase("staff")) {
+                response.sendRedirect("secureReceptionist/Reservationform.jsp");
+            } else {
+                response.sendRedirect("guestReservation.jsp");
+            }
         } catch (Exception e) {
 
         }
@@ -130,8 +133,12 @@ public class GuestReservation extends HttpServlet {
             newCustomer.setEmail(request.getParameter("email"));
             newCustomer.setPhonenumber(request.getParameter("phoneNumber"));
 
-            newBooking.setTotalpaid(newBooking.getNeedtopay());
-            newBooking.setNeedtopay(0);
+            if (!session.getAttribute("action").toString().equalsIgnoreCase("staff")) {
+                newBooking.setTotalpaid(newBooking.getNeedtopay());
+                newBooking.setNeedtopay(0);
+            }
+
+            
             utx.begin();
             customerDa.addCustomer(newCustomer);
             newBooking.setCustomerId(customerDa.currentCustomer());
@@ -145,8 +152,11 @@ public class GuestReservation extends HttpServlet {
 
             session.removeAttribute("newBooking");
             session.removeAttribute("newBooklist");
-            response.sendRedirect("reservationSuccess.html");
-
+            if (session.getAttribute("action").toString().equalsIgnoreCase("staff")) {
+                response.sendRedirect("ReservationControl");
+            } else {
+                response.sendRedirect("reservationSuccess.html");
+            }
         } catch (NotSupportedException | SystemException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException ex) {
             Logger.getLogger(GuestReservation.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
