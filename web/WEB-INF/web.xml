@@ -29,6 +29,10 @@
         <servlet-name>checkRoomSpace</servlet-name>
         <servlet-class>Controller.checkRoomSpace</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckRoom</servlet-name>
+        <servlet-class>Controller.CheckRoom</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Staff</servlet-name>
         <url-pattern>/Staff</url-pattern>
@@ -56,6 +60,10 @@
     <servlet-mapping>
         <servlet-name>checkRoomSpace</servlet-name>
         <url-pattern>/checkRoomSpace</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckRoom</servlet-name>
+        <url-pattern>/CheckRoom</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

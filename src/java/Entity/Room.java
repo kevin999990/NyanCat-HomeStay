@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +17,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,7 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Room.findAll", query = "SELECT r FROM Room r"),
     @NamedQuery(name = "Room.findById", query = "SELECT r FROM Room r WHERE r.id = :id"),
-    @NamedQuery(name = "Room.findByRoomnumber", query = "SELECT r FROM Room r WHERE r.roomnumber = :roomnumber")})
+    @NamedQuery(name = "Room.findByRoomnumber", query = "SELECT r FROM Room r WHERE r.roomnumber = :roomnumber"),
+    @NamedQuery(name = "Room.findByAvailable", query = "SELECT r FROM Room r WHERE r.available = :available")})
 public class Room implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,6 +46,10 @@ public class Room implements Serializable {
     @NotNull
     @Column(name = "ROOMNUMBER")
     private int roomnumber;
+    @Column(name = "AVAILABLE")
+    private Boolean available;
+    @OneToMany(mappedBy = "roomId")
+    private List<Bookinglist> bookinglistList;
     @JoinColumn(name = "ROOMTYPE", referencedColumnName = "ID")
     @ManyToOne
     private Roomtype roomtype;
@@ -53,16 +61,16 @@ public class Room implements Serializable {
         this.id = id;
     }
 
-    public Room(Integer id, int roomnumber) {
-        this.id = id;
-        this.roomnumber = roomnumber;
-    }
-
     public Room(int roomnumber, Roomtype roomtype) {
         this.roomnumber = roomnumber;
         this.roomtype = roomtype;
     }
     
+
+    public Room(Integer id, int roomnumber) {
+        this.id = id;
+        this.roomnumber = roomnumber;
+    }
 
     public Integer getId() {
         return id;
@@ -78,6 +86,23 @@ public class Room implements Serializable {
 
     public void setRoomnumber(int roomnumber) {
         this.roomnumber = roomnumber;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+    @XmlTransient
+    public List<Bookinglist> getBookinglistList() {
+        return bookinglistList;
+    }
+
+    public void setBookinglistList(List<Bookinglist> bookinglistList) {
+        this.bookinglistList = bookinglistList;
     }
 
     public Roomtype getRoomtype() {

@@ -30,18 +30,22 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Bookinglist.findAll", query = "SELECT b FROM Bookinglist b"),
     @NamedQuery(name = "Bookinglist.findById", query = "SELECT b FROM Bookinglist b WHERE b.id = :id")})
 public class Bookinglist implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "ID")
     private Integer id;
-    @JoinColumn(name = "BOOKING_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "BOOKING_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Booking bookingId;
-    @JoinColumn(name = "ROOM_ID", referencedColumnName = "ID", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "ROOM_ID", referencedColumnName = "ID")
+    @ManyToOne
     private Room roomId;
+    @JoinColumn(name = "ROOMTYPE_ID", referencedColumnName = "ID")
+    @ManyToOne
+    private Roomtype roomtypeId;
 
     public Bookinglist() {
     }
@@ -50,19 +54,12 @@ public class Bookinglist implements Serializable {
         this.id = id;
     }
 
-    public Bookinglist(Booking bookingId, Room roomId) {
-        this.bookingId = bookingId;
-        this.roomId = roomId;
-    }
-
-    public Bookinglist(Room roomId) {
-        this.roomId = roomId;
-    }
-    
-    
-
     public Integer getId() {
         return id;
+    }
+
+    public Bookinglist(Roomtype roomtypeId) {
+        this.roomtypeId = roomtypeId;
     }
 
     public void setId(Integer id) {
@@ -83,6 +80,14 @@ public class Bookinglist implements Serializable {
 
     public void setRoomId(Room roomId) {
         this.roomId = roomId;
+    }
+
+    public Roomtype getRoomtypeId() {
+        return roomtypeId;
+    }
+
+    public void setRoomtypeId(Roomtype roomtypeId) {
+        this.roomtypeId = roomtypeId;
     }
 
     @Override
@@ -107,8 +112,7 @@ public class Bookinglist implements Serializable {
 
     @Override
     public String toString() {
-        return "Bookinglist{" + "id=" + id + ", bookingId=" + bookingId + ", roomId=" + roomId + '}';
+        return "Entity.Bookinglist[ id=" + id + " ]";
     }
-
 
 }

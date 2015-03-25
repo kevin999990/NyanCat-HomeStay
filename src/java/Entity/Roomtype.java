@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Roomtype.findByDescription", query = "SELECT r FROM Roomtype r WHERE r.description = :description"),
     @NamedQuery(name = "Roomtype.findByPrice", query = "SELECT r FROM Roomtype r WHERE r.price = :price")})
 public class Roomtype implements Serializable {
+    @OneToMany(mappedBy = "roomtypeId")
+    private List<Bookinglist> bookinglistList;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -110,6 +112,15 @@ public class Roomtype implements Serializable {
     @Override
     public String toString() {
         return "Entity.Roomtype[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<Bookinglist> getBookinglistList() {
+        return bookinglistList;
+    }
+
+    public void setBookinglistList(List<Bookinglist> bookinglistList) {
+        this.bookinglistList = bookinglistList;
     }
     
 }

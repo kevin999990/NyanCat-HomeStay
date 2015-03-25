@@ -234,21 +234,10 @@
             <section id="reservationSection">
                 <div class="row">
                     <div class="col col-md-6 col-md-offset-1">
-                        <form id="reservationForm" class="form-horizontal" action="GuestReservation" method="get" role="form">
+                        <form id="reservationForm" class="form-horizontal" action="CheckRoom" method="get" role="form">
                             <h1 class="modal-header">Reservation</h1>
                             <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="roomType" class="col-sm-4 control-label">Room Type</label>
-                                    <div class="col-sm-8">
-                                        <select id="roomType"  name="roomType" class="form-control">
 
-                                            <option value="1">Premier Suite</option>
-                                            <option value="2">Deluxe Suite</option>
-                                            <option value="3">Luxury Suite</option>
-                                        </select>
-                                    </div>
-
-                                </div>
                                 <div class="form-group">
                                     <label for="checkinDate"class="col-sm-4 control-label">Check-in:</label>
                                     <div class="col-sm-8">
@@ -262,16 +251,6 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="numberOfRoom" class="col-sm-4 control-label">Number Of Room</label>
-                                    <div class="col-sm-8">
-                                        <select name="numberOfRoom" id="numberOfRoom" class="form-control">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label for="numberOfNight" class="col-sm-4 control-label">Night:</label>
                                     <div class="col-sm-8">
@@ -388,7 +367,7 @@
                 var checkoutDate = new Date(t);
                 var timeDiff = Math.abs(checkoutDate.getTime() - checkinDate.getTime());
                 var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-                
+
                 document.getElementById('numberOfNight').value = diffDays;
             })
 

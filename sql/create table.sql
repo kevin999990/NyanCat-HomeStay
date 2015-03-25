@@ -39,6 +39,7 @@ CREATE TABLE Room (
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	roomnumber INTEGER not NULL,
 	roomtype INTEGER ,
+	available boolean,
 	PRIMARY KEY (id),
 	FOREIGN KEY (roomtype) REFERENCES roomtype (id) 
 );
@@ -77,8 +78,10 @@ CREATE TABLE booking (
 CREATE TABLE bookinglist(
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	booking_id INTEGER NOT NULL,
-	room_id INTEGER NOT NULL,
+	roomType_id INTEGER,
+	room_id INTEGER,
 	PRIMARY KEY(id),
 	FOREIGN KEY(booking_id) REFERENCES booking(id),
-	FOREIGN KEY(room_id) REFERENCES Room(id)
+	FOREIGN KEY(room_id) REFERENCES Room(id),
+	FOREIGN KEY(roomType_id) REFERENCES roomtype(id)
 	);

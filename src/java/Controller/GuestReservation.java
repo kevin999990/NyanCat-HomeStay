@@ -77,42 +77,26 @@ public class GuestReservation extends HttpServlet {
             List<Bookinglist> newBooklist = new ArrayList<>();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-            int needToPaid = 0;
             int roomType = Integer.parseInt(request.getParameter("roomType"));
             Date dateFrom = dateFormat.parse(request.getParameter("checkinDate"));
             Date dateTo = dateFormat.parse(request.getParameter("checkoutDate"));
             int numberOfRoom = Integer.parseInt(request.getParameter("numberOfRoom"));
 
-            //check room availability
-            for (int i = 0; i < roomList.size(); i++) {
-                if (roomList.get(i).getRoomtype().getId().equals(roomType)) {
-                    newRoomList.add(roomList.get(i));
-                }
+            int needToPaid = getTotalPrice(roomType, numberOfRoom);
+            int numberOfNight = checkDateDefference(dateFrom, dateTo);
+            needToPaid = needToPaid * numberOfNight;
+
+            for (int i = 0; i < numberOfRoom; i++) {
+                newBooklist.add(new Bookinglist(new RoomtypeDa(em).getRoomtype(roomType)));
             }
 
-            if (newRoomList.size() < numberOfRoom) {
-                session.setAttribute("massage", "Sorry, the number of room are not available.");
-                response.sendRedirect("error/roomNumberError.html");
-            } else {
+            Booking newBooking = new Booking(dateFrom, dateTo, needToPaid, 0, new BookingstatusDa(em).getBookingstatus(1));
 
-                for (int i = 0; i < numberOfRoom; i++) {
-                    newBooklist.add(new Bookinglist(newRoomList.get(i)));
-                }
+            session.setAttribute("newBooklist", newBooklist);
+            session.setAttribute("newBooking", newBooking);
+            session.setAttribute("numberOfNight", numberOfNight);
+            response.sendRedirect("guestReservation.jsp");
 
-                for (int i = 0; i < newBooklist.size(); i++) {
-                    needToPaid += newBooklist.get(i).getRoomId().getRoomtype().getPrice();
-                }
-
-                int numberOfNight = checkDateDefference(dateFrom, dateTo);
-                needToPaid = needToPaid * numberOfNight;
-
-                Booking newBooking = new Booking(dateFrom, dateTo, needToPaid, 0, new BookingstatusDa(em).getBookingstatus(1));
-
-                session.setAttribute("newBooklist", newBooklist);
-                session.setAttribute("newBooking", newBooking);
-                session.setAttribute("numberOfNight", numberOfNight);
-                response.sendRedirect("guestReservation.jsp");
-            }
         } catch (Exception e) {
 
         }
@@ -178,12 +162,20 @@ public class GuestReservation extends HttpServlet {
     }// </editor-fold>
 
     private int checkDateDefference(Date dateFrom, Date dateTo) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         long timeDiff = Math.abs(dateTo.getTime() - dateFrom.getTime());
         double diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
         return (int) diffDays;
 
+    }
+
+    private int getTotalPrice(int roomTypeId, int numberOfRoom) {
+        int totalPrice = 0;
+        Roomtype roomtype = new RoomtypeDa(em).getRoomtype(roomTypeId);
+        for (int i = 0; i < numberOfRoom; i++) {
+            totalPrice += roomtype.getPrice();
+        }
+        return totalPrice;
     }
 
 }
