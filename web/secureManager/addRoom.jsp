@@ -26,11 +26,13 @@
         <![endif]-->
     </head>
     <body>
-        <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
+
         <%
-            List<Task> taskList = (List) session.getAttribute("allTaskList");
+            List<Roomtype> roomtypeList = (List) session.getAttribute("allRoomTypeList");
+          
         %>
         <!-- Header and Navigation Bar-->
+        <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">  
@@ -45,7 +47,7 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="../StaffControl">Manage Staff</a></li>
+                        <li><a href="../RoomControl">Manage Room</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="disabled sr-only-focusable">Welcome ${loginStaff.staffname}</a></li>
@@ -58,13 +60,13 @@
 
         <div class="container">
             <section>
-                <h1 class="page-header">Add Staff</h1>
+                <h1 class="page-header">Add Room</h1>
 
 
 
 
 
-                <form id="manageStaffForm" action="../StaffControl"  class="form-horizontal" method="POST" role="form">
+                <form id="manageRoomForm" action="../RoomControl"  class="form-horizontal" method="POST" role="form">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-1">
 
@@ -73,60 +75,23 @@
                                     <span class="small red">Fill all field with <span class=" h4" >*</span></span>
                                 </div>
                             </div>
-                            <input hidden id="staffId" name="staffId" value="">
+                            <input hidden id="roomNumber" name="staffId" value="">
                             <div class="form-group">
-                                <label for="staffName" class="col-sm-4 control-label">Name<span class="red h4" > *</span></label>
+                                <label for="roomNumber" class="col-sm-4 control-label">Room Number<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staffName" name="staffName">
+                                    <input type="text" class="form-control" id="roomNumber" name="roomNumber">
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="staffIc" class="col-sm-4 control-label">IC<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staffIc" name="staffIc" >
-                                </div>
-                            </div>
+
 
                             <div class="form-group">
-                                <label for="phoneNumber" class="col-sm-4 control-label">Phone Number<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" maxlength="12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="staffAddress" class="col-sm-4 control-label">Address<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" id="staffAddress" name="staffAddress"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="staffUsername" class="col-sm-4 control-label">User Name<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staffUsername" name="staffUsername" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="staffPassword" class="col-sm-4 control-label">New Password<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="staffPassword" name="staffPassword" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="staffPasswordAgain" class="col-sm-4 control-label">Retype Password<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="staffPasswordAgain" name="staffPasswordAgain" >
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="task" class="col-sm-4 control-label">Task</label>
+                                <label for="roomtype" class="col-sm-4 control-label">Room Type</label>
                                 <div class="col-sm-8">
 
-                                    <select class="form-control" name="task" id="task">
-                                        <% for (int i = 0; i < taskList.size(); i++) {%>
-                                        <option><%=taskList.get(i).getTaskname()%></option><%}%>
+                                    <select class="form-control" name="roomtype" id="roomtype">
+                                        <% for (int i = 0; i < roomtypeList.size(); i++) {%>
+                                        <option><%=roomtypeList.get(i).getDescription()%></option><%}%>
                                     </select>
                                 </div>
                             </div>
@@ -165,9 +130,9 @@
             <script>
                 $("#submitbtn").hide();
                 $("#okbtn").click(function () {
-                    $("#manageStaffForm input").attr('readonly', 'true');
-                    $("#manageStaffForm textarea").attr('readonly', 'true');
-                    $("#manageStaffForm select").attr('disabled', 'true');
+                    $("#manageRoomForm input").attr('readonly', 'true');
+                    $("#manageRoomForm textarea").attr('readonly', 'true');
+                    $("#manageRoomForm select").attr('disabled', 'true');
                     alert("Please check the information is correct.");
                     $("#okbtn").hide();
                     $("#submitbtn").show();
@@ -176,10 +141,10 @@
                 $("#resetbtn").click(function () {
                     $("#submitbtn").hide();
                     $("#okbtn").show();
-                    $("#manageStaffForm input").removeAttr('readonly');
-                    $("#manageStaffForm textarea").removeAttr('readonly');
+                    $("#manageRoomForm input").removeAttr('readonly');
+                    $("#manageRoomForm textarea").removeAttr('readonly');
                     $("#disabledInput").attr('readonly', true);
-                    $("#manageStaffForm select").removeAttr('disabled');
+                    $("#manageRoomForm select").removeAttr('disabled');
 
 
                 });
@@ -187,10 +152,10 @@
                 $("#submitbtn").click(function () {
                     $("#submitbtn").hide();
                     $("#okbtn").show();
-                    $("#manageStaffForm input").removeAttr('readonly');
+                    $("#manageRoomForm input").removeAttr('readonly');
                     $("#disabledInput").attr('readonly', true);
-                    $("#manageStaffForm textarea").removeAttr('readonly');
-                    $("#manageStaffForm select").removeAttr('disabled');
+                    $("#manageRoomForm textarea").removeAttr('readonly');
+                    $("#manageRoomForm select").removeAttr('disabled');
                 });
 
 

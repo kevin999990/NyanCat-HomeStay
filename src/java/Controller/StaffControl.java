@@ -69,6 +69,8 @@ public class StaffControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.setAttribute("message", "");
         processRequest(request, response);
     }
 
@@ -102,7 +104,7 @@ public class StaffControl extends HttpServlet {
                 staffDa.addStaff(staff);
                 utx.commit();
                 session.setAttribute("message", "Success Add Staff");
-                
+
             } else if (action.equalsIgnoreCase("Update")) {
                 int id = Integer.parseInt(request.getParameter("staffId"));
                 Staff staff = new Staff(name, ic, phoneNumber, addredd, username, password, getTask(task));

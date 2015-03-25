@@ -9,6 +9,10 @@
         <servlet-class>Controller.StaffControl</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RoomControl</servlet-name>
+        <servlet-class>Controller.RoomControl</servlet-class>
+    </servlet>
+    <servlet>
         <description>To perform login and logout verification</description>
         <servlet-name>LoginOut</servlet-name>
         <servlet-class>Controller.LoginOut</servlet-class>
@@ -28,6 +32,10 @@
     <servlet-mapping>
         <servlet-name>Staff</servlet-name>
         <url-pattern>/Staff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoomControl</servlet-name>
+        <url-pattern>/RoomControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StaffControl</servlet-name>

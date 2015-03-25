@@ -55,6 +55,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="managerControlPanel.jsp">Manage Reservation</a></li>
+                        <li><a href="../RoomControl">Manage Room</a></li>
                         <li><a href="../StaffControl">Manage Staff</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -96,11 +97,11 @@
                             <td><%=sta.getTask().getTaskname()%></td>
 
 
-                            <td style="text-align: right">
+                            <td style="text-align: left">
                                 <form action="updateStaff.jsp?id=<%=sta.getId()%>" method="post">
                                     <button name="action" value="Update" class="btn btn-primary">Update</button>
-                                    <% if (!loginStaff.getId().toString().equalsIgnoreCase(sta.getId().toString())) {%>
-                                    <button name="action" value="Delete" class="btn btn-danger">Delete</button> <%}%>
+                                    <% if (loginStaff.getId() != sta.getId()) {%>
+                                    <button name="action" value="Delete"  class="btn btn-danger">Delete</button> <%}%>
                                 </form>
                             </td>
                         </tr>
@@ -130,9 +131,9 @@
         <script src="js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="js/formValidation.js"></script>
         <script>
-            
+
             var message = $("#h2message").val();
-            if(message===null)
+            if (message === null)
                 $("#h2message").html("hi");
         </script>
     </body>

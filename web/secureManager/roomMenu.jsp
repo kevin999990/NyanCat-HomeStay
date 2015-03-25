@@ -1,20 +1,16 @@
 <%-- 
-    Document   : controlPanel
-    Created on : Mar 18, 2015, 12:14:57 AM
+    Document   : staffMenu
+    Created on : Mar 18, 2015, 9:58:43 PM
     Author     : Kevin
 --%>
 
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="Entity.*"%>
-<%@page import="java.util.*"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Entity.Room"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-
 <html>
     <head>
-
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,14 +29,12 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
-
     </head>
     <body>
-        <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
-        
-        <% List<Booking> bookingPendingCheckin = (List<Booking>) session.getAttribute("bookingPendingCheckin");%>
+        <%List<Room> rooms = (List) session.getAttribute("allRoomList");        %> 
+
         <!-- Header and Navigation Bar-->
+        <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">  
@@ -68,36 +62,41 @@
         </div> <!-- Navigation Bar End Here-->
 
         <div class="container">
-
             <section>
-                <h1 class="page-header">Customer List</h1>
+                <h1 class="page-header">Manage Room</h1>
 
-
-
-                <table class="table table-striped table-bordered">
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <td>Name</td>
-                            <td>Check-in Date</td>
-                            <td>E-mail</td>
-                            <td></td>              
+                            <th> ID</th>
+                            <th> Room Number</th>
+                            <th> Room Type</th>
+
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% for (int i = 0; i < bookingPendingCheckin.size(); i++) {%>
+                        <% for (Room room : rooms) {%>
                         <tr>
+                            <td><%=room.getId()%></td>
+                            <td><%=room.getRoomnumber()%></td>
+                            <td><%=room.getRoomtype().getDescription()%></td>
+                            <td style="text-align: left">
+                                <form action="updateRoom.jsp?id=<%=room.getId()%>" method="post">
+                                    <button name="action" value="Update" class="btn btn-primary">Update</button>
 
-                            <td><%=bookingPendingCheckin.get(i).getCustomerId().getCustomername()%></td>
+                                    <button name="action" value="Delete" class="btn btn-danger">Delete</button>
 
-                            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(bookingPendingCheckin.get(i).getDatefrom())%></td>
-                            <td><%=bookingPendingCheckin.get(i).getCustomerId().getEmail()%></td>
-                            <td style="text-align: right"> <a href="#" class="btn btn-primary">Check-in</a>
-                                <a href="#" class="btn btn-danger">Cancel Reservation</a></td>
+                                </form>
+                            </td>
                         </tr>
-                        <%}%>
-
+                        <% }%>
                     </tbody>
+
                 </table>
+
+                <a href="addRoom.jsp" class="btn btn-primary pull-right">Add Room</a> 
+                <h2 class="red" id="h2message"><%= String.valueOf(session.getAttribute("message"))%></h2>
             </section>
         </div>
 
@@ -116,5 +115,9 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="js/formValidation.js"></script>
+        <script>
+
+
+        </script>
     </body>
 </html>

@@ -85,7 +85,7 @@ public class GuestReservation extends HttpServlet {
 
             //check room availability
             for (int i = 0; i < roomList.size(); i++) {
-                if (roomList.get(i).getRoomtype().getId().equals(roomType) && roomList.get(i).getAvailable()) {
+                if (roomList.get(i).getRoomtype().getId().equals(roomType)) {
                     newRoomList.add(roomList.get(i));
                 }
             }
@@ -153,7 +153,7 @@ public class GuestReservation extends HttpServlet {
             for (int i = 0; i < booklist.size(); i++) {
                 booklist.get(i).setBookingId(bookingDa.currentBooking());
                 bookinglistDa.addBookinglist(booklist.get(i));
-              //  roomDa.changeRoomtoNotAvailable(booklist.get(i).getRoomId().getId());
+
             }
             utx.commit();
 

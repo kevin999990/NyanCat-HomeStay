@@ -39,7 +39,6 @@ CREATE TABLE Room (
 	id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	roomnumber INTEGER not NULL,
 	roomtype INTEGER ,
-	available boolean,
 	PRIMARY KEY (id),
 	FOREIGN KEY (roomtype) REFERENCES roomtype (id) 
 );

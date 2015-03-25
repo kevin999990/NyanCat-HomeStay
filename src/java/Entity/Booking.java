@@ -182,5 +182,6 @@ public class Booking implements Serializable {
     public String toString() {
         return "Entity.Booking[ id=" + id + " ]";
     }
+
     
 }

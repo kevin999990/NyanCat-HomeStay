@@ -30,8 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Room.findAll", query = "SELECT r FROM Room r"),
     @NamedQuery(name = "Room.findById", query = "SELECT r FROM Room r WHERE r.id = :id"),
-    @NamedQuery(name = "Room.findByRoomnumber", query = "SELECT r FROM Room r WHERE r.roomnumber = :roomnumber"),
-    @NamedQuery(name = "Room.findByAvailable", query = "SELECT r FROM Room r WHERE r.available = :available")})
+    @NamedQuery(name = "Room.findByRoomnumber", query = "SELECT r FROM Room r WHERE r.roomnumber = :roomnumber")})
 public class Room implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,8 +42,6 @@ public class Room implements Serializable {
     @NotNull
     @Column(name = "ROOMNUMBER")
     private int roomnumber;
-    @Column(name = "AVAILABLE")
-    private Boolean available;
     @JoinColumn(name = "ROOMTYPE", referencedColumnName = "ID")
     @ManyToOne
     private Roomtype roomtype;
@@ -61,6 +58,12 @@ public class Room implements Serializable {
         this.roomnumber = roomnumber;
     }
 
+    public Room(int roomnumber, Roomtype roomtype) {
+        this.roomnumber = roomnumber;
+        this.roomtype = roomtype;
+    }
+    
+
     public Integer getId() {
         return id;
     }
@@ -75,14 +78,6 @@ public class Room implements Serializable {
 
     public void setRoomnumber(int roomnumber) {
         this.roomnumber = roomnumber;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
     }
 
     public Roomtype getRoomtype() {

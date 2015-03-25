@@ -47,9 +47,12 @@ public class RoomControl extends HttpServlet {
         HttpSession session = request.getSession();
 
         List<Room> roomList = new RoomDa(em).allRoom();
+        List<Roomtype> roomtypeList = new RoomtypeDa(em).allRoomtype();
 
         session.removeAttribute("allRoomList");
+        session.removeAttribute("allRoomTypeList");
         session.setAttribute("allRoomList", roomList);
+        session.setAttribute("allRoomTypeList", roomtypeList);
         response.sendRedirect("secureManager/roomMenu.jsp");
     }
 
@@ -65,6 +68,8 @@ public class RoomControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.setAttribute("message", "");
         processRequest(request, response);
     }
 
@@ -84,30 +89,33 @@ public class RoomControl extends HttpServlet {
             HttpSession session = request.getSession();
             RoomDa roomDa = new RoomDa(em);
             session.removeAttribute("message");
-            
-            
+
             String action = request.getParameter("action");
+
+            int roomNumber = Integer.parseInt(request.getParameter("roomNumber"));
+            Roomtype roomtype = getRoomtype(request.getParameter("roomtype"));
+
             if (action.equalsIgnoreCase("add")) {
-                Staff staff = new Staff(name, ic, phoneNumber, addredd, username, password, getTask(task));
+                Room room = new Room(roomNumber, roomtype);
                 utx.begin();
-                //staffDa.addStaff(staff);
+                roomDa.addRoom(room);
                 utx.commit();
                 session.setAttribute("message", "Success Add Room");
 
             } else if (action.equalsIgnoreCase("Update")) {
-               // int id = Integer.parseInt(request.getParameter("staffId"));
-                //Staff staff = new Staff(name, ic, phoneNumber, addredd, username, password, getTask(task));
-                //staff.setId(id);
+                int id = Integer.parseInt(request.getParameter("roomId"));
+                Room room = new Room(roomNumber, roomtype);
+                room.setId(id);
                 utx.begin();
-                //staffDa.updateStaff(staff);
+                roomDa.updateRoom(room);
                 utx.commit();
                 session.setAttribute("message", "Success Update Room");
 
             } else if (action.equalsIgnoreCase("Delete")) {
-              //  int id = Integer.parseInt(request.getParameter("staffId"));
+                int id = Integer.parseInt(request.getParameter("roomId"));
 
                 utx.begin();
-               // staffDa.deleteStaff(id);
+                roomDa.deleteRoom(id);
                 utx.commit();
                 session.setAttribute("message", "Success Delete Room");
             }
@@ -117,6 +125,17 @@ public class RoomControl extends HttpServlet {
             System.out.print(e.getMessage());
         }
 
+    }
+
+    public Roomtype getRoomtype(String roomType) {
+        List<Roomtype> roomtypeList = new RoomtypeDa(em).allRoomtype();
+        Roomtype rt = new Roomtype();
+        for (int i = 0; i < roomtypeList.size(); i++) {
+            if (roomtypeList.get(i).getDescription().equalsIgnoreCase(roomType)) {
+                rt = roomtypeList.get(i);
+            }
+        }
+        return rt;
     }
 
     /**
@@ -129,15 +148,4 @@ public class RoomControl extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public Task getTask(String t) {
-        List<Task> ts = new TaskDa(em).allTask();
-        Task task = new Task();
-        for (int i = 0; i < ts.size(); i++) {
-            if (ts.get(i).getTaskname().equalsIgnoreCase(t)) {
-                task = ts.get(i);
-
-            }
-        }
-        return task;
-    }
 }

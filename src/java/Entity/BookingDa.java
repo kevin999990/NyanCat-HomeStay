@@ -93,4 +93,12 @@ public class BookingDa {
         }
         return newbookList;
     }
+
+    public void query() {
+        em.createNativeQuery("select * from BOOKING b, BOOKINGLIST bb,"
+                + "where b.ID = bb.BOOKING_ID "
+                + "and b.DATETO >= user.checkin "
+                + "and b.STATUS= 1 "
+                + "or b.STATUS=2;", Booking.class);
+    }
 }

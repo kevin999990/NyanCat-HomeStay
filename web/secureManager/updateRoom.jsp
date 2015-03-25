@@ -26,24 +26,22 @@
         <![endif]-->
     </head>
     <body>
-        <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
-        <%
-            List< Staff> staffs = (List) session.getAttribute("allStaffList");
-            String staffId = request.getParameter("id");
-            Staff sta = new Staff();
-            if (staffId != null) {
 
-                for (int i = 0; i < staffs.size(); i++) {
-                    if (Integer.parseInt(staffId) == staffs.get(i).getId()) {
-                        sta = staffs.get(i);
-                    }
+        <%
+            List<Room> rooms = (List) session.getAttribute("allRoomList");
+            String roomId = request.getParameter("id");
+            Room room = new Room();
+
+            for (int i = 0; i < rooms.size(); i++) {
+                if (Integer.parseInt(roomId) == rooms.get(i).getId()) {
+                    room = rooms.get(i);
                 }
             }
-
-            List<Task> taskList = (List) session.getAttribute("allTaskList");
+            List<Roomtype> roomtypeList = (List) session.getAttribute("allRoomTypeList");
 
         %>
         <!-- Header and Navigation Bar-->
+        <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">  
@@ -58,7 +56,7 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="../StaffControl">Manage Staff</a></li>
+                        <li><a href="../RoomControl">Manage Room</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="disabled sr-only-focusable">Welcome ${loginStaff.staffname}</a></li>
@@ -71,96 +69,52 @@
 
         <div class="container">
             <section>
-                <h1 class="page-header"><%=request.getParameter("action")%> Staff</h1>
+                <h1 class="page-header"><%=request.getParameter("action")%> Room</h1>
 
-
-
-
-
-                <form id="manageStaffForm" action="../StaffControl"  class="form-horizontal" method="POST" role="form">
+                <form id="manageRoomForm" action="../RoomControl"  class="form-horizontal" method="POST" role="form">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-1">
 
                             <div class="row">
                                 <div class="col-sm-6 col-sm-offset-1">
-                                    <span class="small red">Fill all field with <span class=" h4" >*</span></span>
-                                </div>
-                            </div>
-                            <input hidden id="staffId" name="staffId" value="<%=sta.getId()%>">
-                            <div class="form-group">
-                                <label for="staffName" class="col-sm-4 control-label">Name<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staffName" name="staffName" value="<%=sta.getStaffname()%>">
+                                    <span class="small red">Fill all field with <span class="h4" >*</span></span>
                                 </div>
                             </div>
 
+                            <input id="roomId" hidden name="roomId"  value="<%=room.getId()%>">
+
                             <div class="form-group">
-                                <label for="staffIc" class="col-sm-4 control-label">IC<span class="red h4" > *</span></label>
+                                <label for="roomNumber" class="col-sm-4 control-label">Room Number<span class="red h4" > *</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly class="form-control" id="staffIc" name="staffIc" value="<%=sta.getIc()%>">
+                                    <input type="text" class="form-control" id="roomNumber" name="roomNumber" value="<%= room.getRoomnumber()%>">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="phoneNumber" class="col-sm-4 control-label">Phone Number<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="<%=sta.getPhonenumber()%>" maxlength="12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="staffAddress" class="col-sm-4 control-label">Address<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" id="staffAddress" name="staffAddress"><%=sta.getAddress()%></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="staffUsername" class="col-sm-4 control-label">User Name<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staffUsername" name="staffUsername" value="<%=sta.getUsername()%>">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="staffPassword" class="col-sm-4 control-label">New Password<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="staffPassword" name="staffPassword" value="<%=sta.getPassword()%>">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="staffPasswordAgain" class="col-sm-4 control-label">Retype Password<span class="red h4" > *</span></label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="staffPasswordAgain" name="staffPasswordAgain" value="<%=sta.getPassword()%>">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="task" class="col-sm-4 control-label">Task</label>
+                                <label for="roomtype" class="col-sm-4 control-label">Room Type</label>
                                 <div class="col-sm-8">
 
-                                    <select class="form-control" name="task" id="task">
-                                        <% for (int i = 0; i < taskList.size(); i++) {
-
-                                                if (taskList.get(i).getTaskname().equalsIgnoreCase(sta.getTask().getTaskname())) {
-                                        %>
-
-                                        <option selected><%=taskList.get(i).getTaskname()%></option><%} else {%>
-                                        <option><%=taskList.get(i).getTaskname()%></option><%}%>
-
-                                        <%}%>
+                                    <select class="form-control" name="roomtype" id="roomtype">
+                                        <% for (int i = 0; i < roomtypeList.size(); i++) {
+                                                if (roomtypeList.get(i).getDescription().equalsIgnoreCase(room.getRoomtype().getDescription())) {%>
+                                        <option selected><%=roomtypeList.get(i).getDescription()%></option>
+                                        <%} else {%>
+                                        <option><%=roomtypeList.get(i).getDescription()%></option><%}
+                                            }%>
                                     </select>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="reset"  id="resetbtn" class="btn btn-default" value="Reset"> Reset</button>
                         <button type="button" id="okbtn" class="btn btn-primary" >OK</button>
+                        
                         <%if (request.getParameter("action").equalsIgnoreCase("Delete")) {%>
                         <button type="submit" id="submitbtn" class="btn btn-danger" value="Delete" name="action">Delete</button>
                         <%} else {%><button type="submit" id="submitbtn" class="btn btn-primary" value="Update" name="action">Update</button><%}%>
+                        
                     </div>
 
                 </form>
@@ -192,9 +146,9 @@
                 if (actionbtn != "Delete") {
                     $("#submitbtn").hide();
                     $("#okbtn").click(function () {
-                        $("#manageStaffForm input").attr('readonly', 'true');
-                        $("#manageStaffForm textarea").attr('readonly', 'true');
-                        $("#manageStaffForm select").attr('disabled', 'true');
+                        $("#manageRoomForm input").attr('readonly', 'true');
+                        $("#manageRoomForm textarea").attr('readonly', 'true');
+                        $("#manageRoomForm select").attr('disabled', 'true');
                         alert("Please check the information is correct.");
                         $("#okbtn").hide();
                         $("#submitbtn").show();
@@ -203,36 +157,36 @@
                     $("#resetbtn").click(function () {
                         $("#submitbtn").hide();
                         $("#okbtn").show();
-                        $("#manageStaffForm input").removeAttr('readonly');
-                        $("#manageStaffForm textarea").removeAttr('readonly');
+                        $("#manageRoomForm input").removeAttr('readonly');
+                        $("#manageRoomForm textarea").removeAttr('readonly');
                         $("#disabledInput").attr('readonly', true);
-                        $("#manageStaffForm select").removeAttr('disabled');
+                        $("#manageRoomForm select").removeAttr('disabled');
 
                     });
 
                     $("#submitbtn").click(function () {
                         $("#submitbtn").hide();
                         $("#okbtn").show();
-                        $("#manageStaffForm input").removeAttr('readonly');
+                        $("#manageRoomForm input").removeAttr('readonly');
                         $("#disabledInput").attr('readonly', true);
-                        $("#manageStaffForm textarea").removeAttr('readonly');
-                        $("#manageStaffForm select").removeAttr('disabled');
+                        $("#manageRoomForm textarea").removeAttr('readonly');
+                        $("#manageRoomForm select").removeAttr('disabled');
                     });
 
 
                 } else {
                     $("#okbtn").hide();
-                    $("#manageStaffForm input").attr('readonly', 'true');
-                    $("#manageStaffForm textarea").attr('readonly', 'true');
-                    $("#manageStaffForm select").attr('disabled', 'true');
+                    $("#manageRoomForm input").attr('readonly', 'true');
+                    $("#manageRoomForm textarea").attr('readonly', 'true');
+                    $("#manageRoomForm select").attr('disabled', 'true');
 
                     $("#submitbtn").click(function () {
 
                         return  confirm("Are you sure wan to delete this staff?");
-                        $("#manageStaffForm input").removeAttr('readonly');
+                        $("#manageRoomForm input").removeAttr('readonly');
                         $("#disabledInput").attr('readonly', true);
-                        $("#manageStaffForm textarea").removeAttr('readonly');
-                        $("#manageStaffForm select").removeAttr('disabled');
+                        $("#manageRoomForm textarea").removeAttr('readonly');
+                        $("#manageRoomForm select").removeAttr('disabled');
                     });
                 }
 
