@@ -38,6 +38,18 @@ public class RoomDa {
         em.merge(room);
     }
 
+    public void changeToNotAvailable(int id) {
+        Room r = getRoom(id);
+        r.setAvailable(Boolean.FALSE);
+        updateRoom(r);
+    }
+
+    public void changeToAvailable(int id) {
+        Room r = getRoom(id);
+        r.setAvailable(Boolean.TRUE);
+        updateRoom(r);
+    }
+
     public List<Room> allRoom() {
         return em.createNamedQuery("Room.findAll").getResultList();
     }

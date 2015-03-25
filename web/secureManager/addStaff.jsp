@@ -144,7 +144,6 @@
 
             </section>
 
-
             <!--Footer-->
             <hr>
             <footer class="container">
@@ -155,8 +154,6 @@
                 </div>
                 <!-- /.row -->
             </footer>
-
-
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
             <script src="${pageContext.request.contextPath}/js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -192,13 +189,6 @@
                     $("#manageStaffForm textarea").removeAttr('readonly');
                     $("#manageStaffForm select").removeAttr('disabled');
                 });
-
-
-
-
-
-
-
-            </script>
+    </script>
     </body>
 </html>

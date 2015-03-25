@@ -1,16 +1,7 @@
-<%-- 
-    Document   : controlPanel
-    Created on : Mar 18, 2015, 12:14:57 AM
-    Author     : Kevin
---%>
-
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="Entity.*"%>
-<%@page import="java.util.*"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
-
+<%@page import="Entity.Bookinglist"%>
+<%@page import="Entity.Booking"%>
+<%@page import="java.util.List"%>
 <html>
     <head>
         <meta charset="utf-8">
@@ -28,8 +19,18 @@
     </head>
     <body>
         <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
+        <% List<Booking> bookingPendingCheckin = (List<Booking>) session.getAttribute("bookingPendingCheckin");
+            Booking currentBooking = new Booking();
+            String bookingId = request.getParameter("id");
+            for (Booking b : bookingPendingCheckin) {
+                if (b.getId() == Integer.parseInt(bookingId)) {
+                    currentBooking = b;
+                }
+            }
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 
+        %>
         <!-- Header and Navigation Bar-->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -45,7 +46,7 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="../ReservationControl">Manage Reservation</a></li>
+                        <li><a href="managerControlPanel.jsp">Manage Reservation</a></li>
                         <li><a href="../RoomControl">Manage Room</a></li>
                         <li><a href="../StaffControl">Manage Staff</a></li>
                     </ul>
@@ -56,13 +57,63 @@
                 </div><!-- .nav-collapse-->
             </div>
         </div> <!-- Navigation Bar End Here-->
-
         <div class="container">
             <section>
+                <h1 class="page-header">Cancel Reservation</h1>
+
+
+
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Customer Name:</td>
+                            <td><%=currentBooking.getCustomerId().getCustomername()%></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Email:</td>
+                            <td><%=currentBooking.getCustomerId().getEmail()%></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Phone Number:</td>
+                            <td><%=currentBooking.getCustomerId().getPhonenumber()%></td>
+                        </tr>
+                        <tr>
+                            <td>Booking Date:</td>
+                            <td><%=dateFormat.format(currentBooking.getBookingdate())%></td>
+                        </tr>
+                        <tr>
+                            <td>Date From:</td>
+                            <td><%=dateFormat.format(currentBooking.getDatefrom())%></td>
+                        </tr>
+                        <tr>
+                            <td>Date To:</td>
+                            <td><%=dateFormat.format(currentBooking.getDateto())%></td>
+                        </tr>
+                        <tr>
+                            <td>Booking Room</td>
+                            <td><%=currentBooking.getBookinglistList().size() + " " + currentBooking.getBookinglistList().get(0).getRoomtypeId().getDescription()%></td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+                <form id="manageRoomForm" action="../ReservationControl"  class="form-horizontal" method="POST" role="form">
+                    <input id="roomId" hidden name="bookingId"  value="<%=currentBooking.getId()%>">
+                    <div class="modal-footer">
+                        <a href="reservationMenu.jsp" class="btn btn-default">Back</a>
+                        <button type="submit" id="submitbtn" class="btn btn-danger" value="Cancel" name="action">Cancel Reservation</button>
+
+
+                    </div>
+
+                </form>
+
+
+
 
             </section>
         </div>
-
         <!--Footer-->
         <hr>
         <footer class="container">
@@ -80,3 +131,4 @@
         <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
     </body>
 </html>
+

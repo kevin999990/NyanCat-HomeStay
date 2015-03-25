@@ -33,6 +33,10 @@
         <servlet-name>CheckRoom</servlet-name>
         <servlet-class>Controller.CheckRoom</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReservationControl</servlet-name>
+        <servlet-class>Controller.ReservationControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Staff</servlet-name>
         <url-pattern>/Staff</url-pattern>
@@ -64,6 +68,10 @@
     <servlet-mapping>
         <servlet-name>CheckRoom</servlet-name>
         <url-pattern>/CheckRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReservationControl</servlet-name>
+        <url-pattern>/ReservationControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

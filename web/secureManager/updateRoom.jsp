@@ -108,13 +108,14 @@
                     </div>
 
                     <div class="modal-footer">
+                        <%if (request.getParameter("action").equalsIgnoreCase("Delete")) {%>
+                        <a href="roomMenu.jsp" class="btn btn-default">Back</a>
+                        <button type="submit" id="submitbtn" class="btn btn-danger" value="Delete" name="action">Delete</button>
+                        <%} else {%>
+                        <a href="roomMenu.jsp" class="btn btn-default">Back</a>
                         <button type="reset"  id="resetbtn" class="btn btn-default" value="Reset"> Reset</button>
                         <button type="button" id="okbtn" class="btn btn-primary" >OK</button>
-                        
-                        <%if (request.getParameter("action").equalsIgnoreCase("Delete")) {%>
-                        <button type="submit" id="submitbtn" class="btn btn-danger" value="Delete" name="action">Delete</button>
-                        <%} else {%><button type="submit" id="submitbtn" class="btn btn-primary" value="Update" name="action">Update</button><%}%>
-                        
+                        <button type="submit" id="submitbtn" class="btn btn-primary" value="Update" name="action">Update</button><%}%>
                     </div>
 
                 </form>
@@ -133,15 +134,12 @@
                 </div>
                 <!-- /.row -->
             </footer>
-
-
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
             <script src="${pageContext.request.contextPath}/js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js" type="text/javascript"></script>
             <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
             <script>
-
                 var actionbtn = $("#submitbtn").val();
                 if (actionbtn != "Delete") {
                     $("#submitbtn").hide();
@@ -161,9 +159,7 @@
                         $("#manageRoomForm textarea").removeAttr('readonly');
                         $("#disabledInput").attr('readonly', true);
                         $("#manageRoomForm select").removeAttr('disabled');
-
                     });
-
                     $("#submitbtn").click(function () {
                         $("#submitbtn").hide();
                         $("#okbtn").show();
@@ -172,28 +168,18 @@
                         $("#manageRoomForm textarea").removeAttr('readonly');
                         $("#manageRoomForm select").removeAttr('disabled');
                     });
-
-
                 } else {
                     $("#okbtn").hide();
                     $("#manageRoomForm input").attr('readonly', 'true');
                     $("#manageRoomForm textarea").attr('readonly', 'true');
                     $("#manageRoomForm select").attr('disabled', 'true');
-
                     $("#submitbtn").click(function () {
-
                         return  confirm("Are you sure wan to delete this staff?");
                         $("#manageRoomForm input").removeAttr('readonly');
                         $("#disabledInput").attr('readonly', true);
                         $("#manageRoomForm textarea").removeAttr('readonly');
                         $("#manageRoomForm select").removeAttr('disabled');
                     });
-                }
-
-
-
-
-
-            </script>
+                }</script>
     </body>
 </html>

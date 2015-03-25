@@ -29,7 +29,7 @@
 
         <%
             List<Roomtype> roomtypeList = (List) session.getAttribute("allRoomTypeList");
-          
+
         %>
         <!-- Header and Navigation Bar-->
         <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
@@ -110,7 +110,7 @@
             </section>
 
 
-            <!--Footer-->
+               <!--Footer-->
             <hr>
             <footer class="container">
                 <div class="row">
@@ -120,8 +120,6 @@
                 </div>
                 <!-- /.row -->
             </footer>
-
-
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
             <script src="${pageContext.request.contextPath}/js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -145,10 +143,7 @@
                     $("#manageRoomForm textarea").removeAttr('readonly');
                     $("#disabledInput").attr('readonly', true);
                     $("#manageRoomForm select").removeAttr('disabled');
-
-
                 });
-
                 $("#submitbtn").click(function () {
                     $("#submitbtn").hide();
                     $("#okbtn").show();
@@ -156,14 +151,6 @@
                     $("#disabledInput").attr('readonly', true);
                     $("#manageRoomForm textarea").removeAttr('readonly');
                     $("#manageRoomForm select").removeAttr('disabled');
-                });
-
-
-
-
-
-
-
-            </script>
+                });</script>
     </body>
 </html>

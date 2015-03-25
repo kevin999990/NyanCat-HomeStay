@@ -99,25 +99,20 @@
                 <h2 class="red" id="h2message"><%= String.valueOf(session.getAttribute("message"))%></h2>
             </section>
         </div>
-
-        <!--Footer-->
-        <hr>
-        <footer class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; NyanCat HomeStay 2015</p>
+            <!--Footer-->
+            <hr>
+            <footer class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Copyright &copy; NyanCat HomeStay 2015</p>
+                    </div>
                 </div>
-            </div>
-            <!-- /.row -->
-        </footer>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="js/formValidation.js"></script>
-        <script>
-
-
-        </script>
+                <!-- /.row -->
+            </footer>
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="${pageContext.request.contextPath}/js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
+            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
     </body>
 </html>

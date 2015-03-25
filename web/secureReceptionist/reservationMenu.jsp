@@ -1,18 +1,18 @@
 <%-- 
-    Document   : controlPanel
-    Created on : Mar 18, 2015, 12:14:57 AM
+    Document   : reservationMenu
+    Created on : Mar 25, 2015, 9:43:01 PM
     Author     : Kevin
 --%>
 
+<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="Entity.*"%>
-<%@page import="java.util.*"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-
 <html>
     <head>
+        <<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@
     <body>
         <jsp:useBean id="loginStaff" scope="session" class="Entity.Staff" />
 
-
+        <% List<Booking> bookingPendingCheckin = (List<Booking>) session.getAttribute("bookingPendingCheckin");%>
         <!-- Header and Navigation Bar-->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -56,12 +56,56 @@
                 </div><!-- .nav-collapse-->
             </div>
         </div> <!-- Navigation Bar End Here-->
-
         <div class="container">
             <section>
+                <h1 class="page-header">Customer List</h1>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Check-in Date</td>
+                            <td>Check-Out Date</td>
 
+                            <td>E-mail</td>
+                            <td></td>              
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (Booking bk : bookingPendingCheckin) {%>
+                        <tr>
+                            <td><%=bk.getCustomerId().getCustomername()%></td>
+                            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(bk.getDatefrom())%></td>
+                            <td><%=new SimpleDateFormat("dd/MM/yyyy").format(bk.getDateto())%></td>
+                            <td><%=bk.getCustomerId().getEmail()%></td>
+                            <td style="text-align: left"> 
+
+
+                                <% if (bk.getStatus().getId() == 2) { %>
+                                <button type="submit" value="Checkout" name="action"class="btn btn-info">Check-Out</button>>    
+                                <%} else if (bk.getDatefrom().before(new Date())) {%>
+                                <a href="cancelReservation.jsp?id=<%=bk.getId()%>"  class="btn btn-danger">Cancel Reservation</a>
+                                <%} else {%>
+                                <a href="checkinReservation.jsp?id=<%=bk.getId()%>" class="btn btn-primary">Check-In</a>
+                                <a href="cancelReservation.jsp?id=<%=bk.getId()%>"  class="btn btn-danger">Cancel Reservation</a>
+                                <%}%>
+
+
+
+
+                            </td>
+                        </tr>
+                        <%}%>
+
+                    </tbody>
+
+                </table>
+                <a href="#" class="btn btn-primary pull-right">Add Reservation</a> 
+                <h2 class="red" id="h2message"><%= String.valueOf(session.getAttribute("message"))%></h2>
             </section>
         </div>
+
+
+
 
         <!--Footer-->
         <hr>

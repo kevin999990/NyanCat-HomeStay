@@ -13,7 +13,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,11 +24,11 @@ import javax.transaction.UserTransaction;
  *
  * @author Kevin
  */
-public class LoginOut extends HttpServlet {
-
+public class ReservationControl extends HttpServlet {
+    
     @PersistenceContext
     EntityManager em;
-
+    
     @Resource
     UserTransaction utx;
 
@@ -44,20 +43,19 @@ public class LoginOut extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-
-            HttpSession session = request.getSession();
-            if (session != null) {
-                session.invalidate();
-            }
-            RequestDispatcher rd = request.getRequestDispatcher("index.html");
-            rd.forward(request, response);
-        }
+        HttpSession session = request.getSession();
+        BookingDa bookingDa = new BookingDa(em);
+        List<Room> roomList = new RoomDa(em).allRoom();
+        
+        List<Booking> pendingToCheckin = bookingDa.activeBooking();
+        session.removeAttribute("allRoomList");
+        session.removeAttribute("bookingPendingCheckin");
+        session.setAttribute("allRoomList", roomList);
+        session.setAttribute("bookingPendingCheckin", pendingToCheckin);
+        response.sendRedirect("./secureReceptionist/reservationMenu.jsp");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -69,6 +67,7 @@ public class LoginOut extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getSession().setAttribute("message", " ");
         processRequest(request, response);
     }
 
@@ -83,43 +82,36 @@ public class LoginOut extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession();
-        BookingDa bookingDa = new BookingDa(em);
-        StaffDa staffDa = new StaffDa(em);
-        String action = (String) request.getParameter("action");
-        
-        List<Booking> pendingToCheckin = bookingDa.activeBooking();
-        
-        //login
-        if (action.equalsIgnoreCase("login")) {
-            String username = (String) request.getParameter("userName");
-            String password = (String) request.getParameter("password");
-
+        try {
+            HttpSession session = request.getSession();
+            int bookingId = Integer.parseInt(request.getParameter("bookingId"));
+            session.removeAttribute("message");
+            String action = request.getParameter("action");
+            BookingDa bookingDa = new BookingDa(em);
+            RoomDa roomDa = new RoomDa(em);
             
-            List<Staff> staffs = staffDa.allStaff();
-            Staff staff = null;
-            boolean login = false;
-            for (int i = 0; i < staffs.size(); i++) {
-                if (staffs.get(i).getUsername().equalsIgnoreCase(username)) {
-                    if (staffs.get(i).getPassword().equals(password)) {
-                        login = true;
-                        staff = staffs.get(i);
-                        break;
-                    }
+            if (action.equalsIgnoreCase("cancel")) {
+                utx.begin();
+                bookingDa.setStatusToCancel(bookingId);
+                utx.commit();
+                session.setAttribute("message", "Success Cancel Reservation");
+                
+            } else if (action.equalsIgnoreCase("Checkin")) {
+                Booking currentBooking = (Booking) session.getAttribute("currentBooking");
+                
+                utx.begin();
+                for (Bookinglist bklist : currentBooking.getBookinglistList()) {
+                    roomDa.changeToNotAvailable(bklist.getRoomId().getId());
                 }
+                bookingDa.setStatusToCheckedin(currentBooking.getId());
+                utx.commit();
+                session.setAttribute("message", "Success Cancel Reservation");
+                
             }
-
-            if (login) {
-                session.setAttribute("loginStaff", staff);
-               // if (staff.getTask().getTaskname().equalsIgnoreCase("Manager")) {
-                    
-                    response.sendRedirect("./secureManager/managerControlPanel.jsp");
-            //    }
-            } else {
-                response.sendRedirect("./error/loginError.html");
-            }
-        }//end of login
+            
+            processRequest(request, response);
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -132,5 +124,4 @@ public class LoginOut extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
 }
