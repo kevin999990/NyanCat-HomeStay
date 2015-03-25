@@ -13,21 +13,21 @@ INSERT INTO ROOMTYPE VALUES (2,'Deluxe Suite',250);
 INSERT INTO ROOMTYPE VALUES (3,'Luxury Suite',350);
 
 
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (101,1);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (102,1);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (103,1);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (104,1);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (105,1);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (201,2);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (202,2);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (203,2);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (204,2);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (205,2);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (301,3);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (302,3);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (303,3);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (304,3);
-INSERT INTO ROOM (roomnumber,roomtype) VALUES (305,3);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (101,1,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (102,1,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (103,1,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (104,1,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (105,1,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (201,2,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (202,2,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (203,2,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (204,2,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (205,2,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (301,3,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (302,3,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (303,3,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (304,3,true);
+INSERT INTO ROOM (roomnumber,roomtype,available) VALUES (305,3,true);
 
 INSERT into customer(customerName,address,email,phoneNumber) VALUES
 	('Bobo Tan','Taman Rainfield','bobotan@bobomail.com','01126236672');

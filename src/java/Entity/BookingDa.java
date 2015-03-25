@@ -83,7 +83,7 @@ public class BookingDa {
         return book;
     }
 
-    public List<Booking> bookingPendingToCheckin() {
+    public List<Booking> activeBooking() {
         List<Booking> bookList = em.createNamedQuery("Booking.findAll").getResultList();
         List<Booking> newbookList = new ArrayList<>();
         for (int i = 0; i < bookList.size(); i++) {
@@ -99,6 +99,6 @@ public class BookingDa {
                 + "where b.ID = bb.BOOKING_ID "
                 + "and b.DATETO >= user.checkin "
                 + "and b.STATUS= 1 "
-                + "or b.STATUS=2;", Booking.class);
+                + "or b.STATUS=2;", Booking.class).getResultList();
     }
 }

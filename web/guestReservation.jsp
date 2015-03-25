@@ -50,9 +50,9 @@
                                         <td><%= new SimpleDateFormat("dd/MM/yyyy").format(newBooking.getDatefrom())%></td>
                                         <td><%= new SimpleDateFormat("dd/MM/yyyy").format(newBooking.getDateto())%></td>
                                         <td><%= session.getAttribute("numberOfNight")%></td>
-                                        <td><%= newBookinglist.get(i).getRoomId().getRoomtype().getDescription()%></td>
-                                        <td><%= newBookinglist.get(i).getRoomId().getRoomtype().getPrice()%></td>
-                                        <td><%= Integer.parseInt(session.getAttribute("numberOfNight").toString()) * newBookinglist.get(i).getRoomId().getRoomtype().getPrice()%></td>
+                                        <td><%= newBookinglist.get(i).getRoomtypeId().getDescription()%></td>
+                                        <td><%= newBookinglist.get(i).getRoomtypeId().getPrice()%></td>
+                                        <td><%= Integer.parseInt(session.getAttribute("numberOfNight").toString()) * newBookinglist.get(i).getRoomtypeId().getPrice()%></td>
                                     </tr>
                                     <% }%>
                                     <tr> 
@@ -206,6 +206,7 @@
             alert("Please check the information is correct.");
             $("#okbtn").hide();
             $("#submitbtn").show();
+            $("html, body").animate({scrollTop: 400}, 100);
         });
         $("#resetbtn").click(function () {
             $("#submitbtn").hide();

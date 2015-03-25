@@ -89,7 +89,7 @@ public class LoginOut extends HttpServlet {
         StaffDa staffDa = new StaffDa(em);
         String action = (String) request.getParameter("action");
         
-        List<Booking> pendingToCheckin = bookingDa.bookingPendingToCheckin();
+        List<Booking> pendingToCheckin = bookingDa.activeBooking();
         
         //login
         if (action.equalsIgnoreCase("login")) {
