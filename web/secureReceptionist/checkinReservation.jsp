@@ -25,6 +25,7 @@
             List<Booking> bookingPendingCheckin = (List) session.getAttribute("bookingPendingCheckin");
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            session.removeAttribute("allRoomList");
             List<Room> roomList = (List) session.getAttribute("allRoomList");
             List<Room> availableRoomList = new ArrayList();
             Booking currentBooking = new Booking();
@@ -35,8 +36,8 @@
                     currentBooking = bookingPendingCheckin.get(i);
                 }
             }
-
-            for (int i = 0; i < roomList.size(); i++) {
+            int x = roomList.size();
+            for (int i = 0; i < x; i++) {
                 if ((roomList.get(i).getRoomtype().getId() == currentBooking.getBookinglistList().get(0).getRoomtypeId().getId())) {
                     if (roomList.get(i).getAvailable()) {
                         availableRoomList.add(roomList.get(i));
@@ -66,7 +67,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="../ReservationControl">Manage Reservation</a></li>
-                       
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="disabled sr-only-focusable">Welcome ${loginStaff.staffname}</a></li>

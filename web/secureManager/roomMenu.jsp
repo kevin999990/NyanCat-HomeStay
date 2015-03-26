@@ -87,7 +87,7 @@
                             <td style="text-align: left">
                                 <form action="updateRoom.jsp?id=<%=room.getId()%>" method="post">
                                     <button name="action" value="Update" class="btn btn-primary">Update</button>
-                                    <%if (room.getAvailable()) {%>
+                                    <% if (room.getAvailable()) {%>
                                     <button name="action" value="Delete" class="btn btn-danger">Delete</button>
                                     <%}%>
                                 </form>

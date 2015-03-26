@@ -104,11 +104,15 @@ public class RoomControl extends HttpServlet {
 
             } else if (action.equalsIgnoreCase("Update")) {
                 int id = Integer.parseInt(request.getParameter("roomId"));
-                Room room = new Room(roomNumber, roomtype);
-                room.setId(id);
+                Room room = roomDa.getRoom(id);
+                room.setRoomnumber(roomNumber);
+                room.setRoomtype(roomtype);
+
                 utx.begin();
                 roomDa.updateRoom(room);
                 utx.commit();
+                List<Room> roomList = new RoomDa(em).allRoom();
+                session.setAttribute("allRoomList",roomList);
                 session.setAttribute("message", "Success Update Room");
 
             } else if (action.equalsIgnoreCase("Delete")) {
