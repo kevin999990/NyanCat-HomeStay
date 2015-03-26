@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/first_report.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.firstreport</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <template-parameter-definitions>
+        <template-parameter-definition name="NewTemplateParameterDefinition" id="28">
+            <property name="allowedType">Table</property>
+            <text-property name="description">Customer Listing</text-property>
+            <default>
+                <table id="29">
+                    <property name="width">100%</property>
+                    <property name="pageBreakInterval">50</property>
+                    <column id="49"/>
+                    <column id="50"/>
+                    <column id="51"/>
+                    <column id="52"/>
+                    <header>
+                        <row id="30">
+                            <cell id="31">
+                                <label id="32">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Contact</text-property>
+                                </label>
+                            </cell>
+                            <cell id="33">
+                                <label id="34">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">First</text-property>
+                                </label>
+                            </cell>
+                            <cell id="35">
+                                <label id="36">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Last</text-property>
+                                </label>
+                            </cell>
+                            <cell id="37">
+                                <label id="38">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Phone</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                    </header>
+                    <detail>
+                        <row id="39">
+                            <cell id="40"/>
+                            <cell id="41"/>
+                            <cell id="42"/>
+                            <cell id="43"/>
+                        </row>
+                    </detail>
+                    <footer>
+                        <row id="44">
+                            <cell id="45"/>
+                            <cell id="46"/>
+                            <cell id="47"/>
+                            <cell id="48"/>
+                        </row>
+                    </footer>
+                </table>
+            </default>
+        </template-parameter-definition>
+        <template-parameter-definition name="NewTemplateParameterDefinition1" id="78">
+            <property name="allowedType">Table</property>
+            <text-property name="description">Customer Listing Table</text-property>
+            <default>
+                <table id="79">
+                    <property name="width">100%</property>
+                    <property name="refTemplateParameter">NewTemplateParameterDefinition</property>
+                    <property name="pageBreakInterval">50</property>
+                    <column id="99"/>
+                    <column id="100"/>
+                    <column id="101"/>
+                    <column id="102"/>
+                    <header>
+                        <row id="80">
+                            <cell id="81">
+                                <label id="82">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Contact</text-property>
+                                </label>
+                            </cell>
+                            <cell id="83">
+                                <label id="84">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">First</text-property>
+                                </label>
+                            </cell>
+                            <cell id="85">
+                                <label id="86">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Last</text-property>
+                                </label>
+                            </cell>
+                            <cell id="87">
+                                <label id="88">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Phone</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                    </header>
+                    <detail>
+                        <row id="89">
+                            <cell id="90"/>
+                            <cell id="91"/>
+                            <cell id="92"/>
+                            <cell id="93"/>
+                        </row>
+                    </detail>
+                    <footer>
+                        <row id="94">
+                            <cell id="95"/>
+                            <cell id="96"/>
+                            <cell id="97"/>
+                            <cell id="98"/>
+                        </row>
+                    </footer>
+                </table>
+            </default>
+        </template-parameter-definition>
+        <template-parameter-definition name="NewTemplateParameterDefinition2" id="132">
+            <property name="allowedType">Table</property>
+            <text-property name="description">Customer Listing Table</text-property>
+            <default>
+                <table id="133">
+                    <property name="width">100%</property>
+                    <property name="refTemplateParameter">NewTemplateParameterDefinition1</property>
+                    <property name="pageBreakInterval">50</property>
+                    <column id="157"/>
+                    <column id="158"/>
+                    <column id="159"/>
+                    <column id="160"/>
+                    <header>
+                        <row id="134">
+                            <cell id="135">
+                                <label id="136">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Contact</text-property>
+                                </label>
+                            </cell>
+                            <cell id="137">
+                                <label id="138">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">First</text-property>
+                                </label>
+                            </cell>
+                            <cell id="139">
+                                <label id="140">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Last</text-property>
+                                </label>
+                            </cell>
+                            <cell id="141">
+                                <label id="142">
+                                    <property name="fontFamily">sans-serif</property>
+                                    <property name="fontWeight">bold</property>
+                                    <text-property name="text">Phone</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                    </header>
+                    <detail>
+                        <row id="143">
+                            <cell id="144">
+                                <data id="145"/>
+                            </cell>
+                            <cell id="146">
+                                <data id="147"/>
+                            </cell>
+                            <cell id="148">
+                                <data id="149"/>
+                            </cell>
+                            <cell id="150">
+                                <data id="151"/>
+                            </cell>
+                        </row>
+                    </detail>
+                    <footer>
+                        <row id="152">
+                            <cell id="153"/>
+                            <cell id="154"/>
+                            <cell id="155"/>
+                            <cell id="156"/>
+                        </row>
+                    </footer>
+                </table>
+            </default>
+        </template-parameter-definition>
+    </template-parameter-definitions>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="249">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.apache.derby.jdbc.ClientDriver</property>
+            <property name="odaURL">jdbc:derby://localhost:1527/NyanCatDB</property>
+            <property name="odaUser">nyan</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">bnlhbg==</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="250">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">CUSTOMERNAME</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">CUSTOMERNAME</text-property>
+                    <text-property name="heading">CUSTOMERNAME</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ROOMTYPE</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ROOMTYPE</text-property>
+                    <text-property name="heading">ROOMTYPE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ID</text-property>
+                    <text-property name="heading">ID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOOKINGDATE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">BOOKINGDATE</text-property>
+                    <text-property name="heading">BOOKINGDATE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TOTALPAID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TOTALPAID</text-property>
+                    <text-property name="heading">TOTALPAID</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">CUSTOMERNAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">ROOMTYPE</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">BOOKINGDATE</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">TOTALPAID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">CUSTOMERNAME</property>
+                    <property name="nativeName">CUSTOMERNAME</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">ROOMTYPE</property>
+                    <property name="nativeName">ROOMTYPE</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">ID</property>
+                    <property name="nativeName">ID</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">BOOKINGDATE</property>
+                    <property name="nativeName">BOOKINGDATE</property>
+                    <property name="dataType">date</property>
+                    <property name="nativeDataType">91</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">TOTALPAID</property>
+                    <property name="nativeName">TOTALPAID</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select NYAN.CUSTOMER.CUSTOMERNAME, 
+NYAN.ROOM.ROOMTYPE,
+NYAN.BOOKING.ID,
+NYAN.BOOKING.BOOKINGDATE,
+NYAN.BOOKING.TOTALPAID
+from NYAN.CUSTOMER,
+NYAN.BOOKING, 
+NYAN.ROOM,
+NYAN.BOOKINGLIST
+where NYAN.BOOKING.CUSTOMER_ID = NYAN.CUSTOMER.ID
+and NYAN.BOOKINGLIST.BOOKING_ID = NYAN.BOOKING.ID
+and NYAN.BOOKINGLIST.ROOM_ID = NYAN.ROOM.ID]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="110">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab" id="246">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab-cell" id="247">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <image id="248">
+            <property name="marginLeft">25pt</property>
+            <property name="height">2.3854166666666665in</property>
+            <property name="width">7.177083333333333in</property>
+            <property name="source">embed</property>
+            <property name="imageName">11015456_949751188382641_1404608530_n.jpg</property>
+        </image>
+        <label id="255"/>
+        <label id="245">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">x-large</property>
+            <property name="fontWeight">bold</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">medium</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">medium</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">medium</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">medium</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">Daily Transaction Report</text-property>
+        </label>
+        <label id="256"/>
+        <table id="163">
+            <property name="width">100%</property>
+            <property name="dataSet">Data Set</property>
+            <property name="refTemplateParameter">NewTemplateParameterDefinition2</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">ID</property>
+                    <text-property name="displayName">ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">BOOKINGDATE</property>
+                    <text-property name="displayName">BOOKINGDATE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["BOOKINGDATE"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">ROOMTYPE</property>
+                    <text-property name="displayName">ROOMTYPE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ROOMTYPE"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">TOTALPAID</property>
+                    <text-property name="displayName">TOTALPAID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["TOTALPAID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <property name="pageBreakInterval">50</property>
+            <column id="187"/>
+            <column id="188"/>
+            <column id="189"/>
+            <column id="190"/>
+            <header>
+                <row id="164">
+                    <cell id="165">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                        <label id="166">
+                            <property name="fontFamily">sans-serif</property>
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Booking ID</text-property>
+                        </label>
+                    </cell>
+                    <cell id="167">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                        <label id="168">
+                            <property name="fontFamily">sans-serif</property>
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Booking Date</text-property>
+                        </label>
+                    </cell>
+                    <cell id="169">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                        <label id="170">
+                            <property name="fontFamily">sans-serif</property>
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Room Type</text-property>
+                        </label>
+                    </cell>
+                    <cell id="171">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                        <label id="172">
+                            <property name="fontFamily">sans-serif</property>
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Amount Paid</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="173">
+                    <cell id="174">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                        <data id="251">
+                            <property name="resultSetColumn">ID</property>
+                        </data>
+                    </cell>
+                    <cell id="176">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                        <data id="252">
+                            <property name="resultSetColumn">BOOKINGDATE</property>
+                        </data>
+                    </cell>
+                    <cell id="178">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                        <data id="253">
+                            <property name="resultSetColumn">ROOMTYPE</property>
+                        </data>
+                    </cell>
+                    <cell id="180">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                        <data id="254">
+                            <property name="resultSetColumn">TOTALPAID</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="182">
+                    <cell id="183">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="184">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="185">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="186">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <label id="257"/>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">11015456_949751188382641_1404608530_n.jpg</property>
+            <property name="data">
+                /9j/4AAQSkZJRgABAgAAAQABAAD/4gIcSUNDX1BST0ZJTEUAAQEAAAIMbGNtcwIQAABtbnRyUkdCIFhZ
+                WiAH3AABABkAAwApADlhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxj
+                bXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApkZXNjAAAA/AAA
+                AF5jcHJ0AAABXAAAAAt3dHB0AAABaAAAABRia3B0AAABfAAAABRyWFlaAAABkAAAABRnWFlaAAABpAAA
+                ABRiWFlaAAABuAAAABRyVFJDAAABzAAAAEBnVFJDAAABzAAAAEBiVFJDAAABzAAAAEBkZXNjAAAAAAAA
+                AANjMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0ZXh0AAAAAEZCAABYWVogAAAAAAAA9tYAAQAAAADTLVhZ
+                WiAAAAAAAAADFgAAAzMAAAKkWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZ
+                WiAAAAAAAAAkoAAAD4QAALbPY3VydgAAAAAAAAAaAAAAywHJA2MFkghrC/YQPxVRGzQh8SmQMhg7kkYF
+                UXdd7WtwegWJsZp8rGm/fdPD6TD////bAEMACQYHCAcGCQgICAoKCQsOFw8ODQ0OHBQVERciHiMjIR4g
+                ICUqNS0lJzIoICAuPy8yNzk8PDwkLUJGQTpGNTs8Of/bAEMBCgoKDgwOGw8PGzkmICY5OTk5OTk5OTk5
+                OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5Of/CABEIAOUCsQMAIgABEQECEQH/
+                xAAbAAEAAgMBAQAAAAAAAAAAAAAABAUCAwYBB//EABgBAQEBAQEAAAAAAAAAAAAAAAABAgME/8QAGAEB
+                AQEBAQAAAAAAAAAAAAAAAAECAwT/2gAMAwAAARECEQAAAe4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAB57x98WQAAAEPRyp3oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOE52/4w+3YfKa
+                4+h0fKDoJvJD6jffEJRPuOO6w+igAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4HjO64UAAAAdRy/
+                Un0gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABh4cjwH0v5oSY30r5+RTaallWjpOb7k4bseO7s7Z
+                q1Eo0G95UVcMM4AAAAAAKvVq3LHLMAAAFXVoIFbVkIAAAAAGk3a6vdq2SvsJAgAAAAAAAABA37Tmvm32
+                /wCPEEAAADvuO+vFdNlCpxt67db41jEeXAnyY+Vu22f7El5jDRC0tvYW6N7TELGrnw7ZuwzBpNnlZt1Z
+                uGjQWozFXaVmlmjRosavVv1bMrcyyU9sZImBOI0SUWUMdVbpaVem9t9esTCNKpNW9a9mY1QNOrdee1cl
+                prxri3EAAAAAAIU0fHq/s+MAAF3SdWdrYgAqban1Zc3z2Ssn18jV814TSJOgDDZJq6tYk6rjcnQhY1lp
+                IIESK5YauvXFnldbxZkZemZrpL+u1dsnNJFjzI9u7VrsUr90ObbBxSamwVhmV1lVzFq9siTSL7KiJ7Pr
+                jHORoqbBn10kivk6tW2rptZlvwzwqzGIAAAAAAjSeDOQ0gAAyxH2vdy3UgCptlBETPPOo8pDNOM3fbDl
+                ZJI+uYGGaK3G0aVUiaK3OehFlIwrrRXnpEPCeoIVVqqLFtBqbURpHo89CNnuVWe2SvKi4RTbrNarLNJE
+                i2o0+b0a427fStnwqsBkAAAAABh8a+jfMAAAADp/pXxf7QACo1yt1M3yuK+Orf7HW3KmZlyphcqYXKmF
+                yphcqYXKmFyphcqYXKmFyphcqYXKmFyphcqYXKmFyphcqYXKmFyphcqYXKmFyphcqYS8I7V2WlOS5U0z
+                Gpo5+gAAAAD53yVhXnvkvwigAyxsa4fYfj30s6YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTuqT
+                5L4C8o74oZsK2KnZrvjRUZ4Dt+I6c+lARpI5O59oS6h+6Sx9qJJsnxczGwp5ZujebSr2Z2BB3SKE62s3
+                1xJ1x5ph5ogFtc1U4kAAAAAAAAAAAAAAAAAAAAAAAc/0FAfLQLyj3Gq5xkHP9LRXBz4FzTWp9cAKcuHH
+                TDpY3O4HSSuLkHQ7qCeWriuhLRz+4tayFDOxcbvOrcV05O1czmXsrlZB0eNTTHT6+eHXqLIu3JeHVw6H
+                Sdg5WQdK463LpyGw6tx2R17k9R2Lj5J06gvwAAAAAAAAAAABW2Xh8PW2srVn6ScpmZo5vtuaKtZ1xjb1
+                HUH0kDVtpSxh1F4eSq3EmY+1RbSeauTfuqhKkZ1Raaa3AnUdjONU+s9LLVXekibUbywxgaS09gRS7ias
+                jPZB0FyrLM8zjxSJPj0hv6mFkZ+Vk4kZqYn2PLXRhY+QS0VGRao0ItnKdESXIXJbOXtC0c96dApsS7Rq
+                kv1fELtU7CyABxnJW3MEzZXixVwslaLJWiyh6fTz6pz/AHoAq7QVld0g5G5tRytxJklLo6Ec5V9vTm6H
+                fCt8sxzenqoxz068HK7elFFOnii0dIOdx6Qcpu6UUsTpRzuHRYEOD0AoN9wOX39CKP27ELVZDnY3ViLz
+                fXDmY/XRiPW9GKa5CgidUOTy6ocvMvByEzoxFrL0c9r6UczjfazNLACusRzkbrBxdD9R44o5N1YlNN6X
+                0o7KUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/xAAxEAACAgECBAQEBwEAAwAAAAACAwEEAAUU
+                EBESEwYgITAVIiMzJDE0NUBQYDIlRXD/2gAIAQAAAQUC/wDmXOPbVYBj/wDF+IWErNPtjcr+xqNqKlbw
+                4Uy//F+JZ+fTrZU7AEJg1q1C/XK4YzXbE58Zu4rXnjlbV6r86o6dUuzcf4a+/wD4vxL93E6hZQg2GwvK
+                Nlwpzw5P4v8AxfiX7vteHv13+L8Sx6e14dj8b/i/EsfSxddzQ81rSG16ueGo+v8A2cmET/FkxjOsZzxA
+                HVRzQGBsLXTucUHcZdplTLha1hLaGeGh+U2LDAeJ8IcuSmYiCe7kBdQ+6TzYUhaCR58vY5yN7j3SK37r
+                GCsebrMlVWKqUzKf4pvq5fOsyn7WkgkKQNpBgWFHhEVhllYri4UzjQiK1SeaM5xEmUBETzjgRiGRMFHk
+                sHLDWELHiRQMCUFDC6AQcsXxselnhM8ooxz9ySgcYyFgpZWC/LJ9YEYCENlpce4HVkzERgGJx7ZIUciI
+                jhRBRdrHVf7FOsdp6lApfCIiMu/kv6to/UKX2cD61q7P0qk80Y90KGEyQ04mEuZChJgitbyljT7a6Ych
+                4tZChWsnzSj5bk8kqsrEONr7xPUOTcXh2+oaRj0YTiYxquzETzGu2Ww2yIFj29oa7e6GOZCghfUB/ajl
+                y4FPSNZ4KEDgxxrSYbEQHCz9Rp8gVQ9+3VVbXdqMpu82n6a25lKkqmHkv5UHpTlH/hhdK6g9KRnvWKU4
+                ZQA1wlp3WcgRHSm96iMd9tj0sXfXIjlHAWiWAM2W2WQtdWJitYT0LEB6I9ODOroYs5aNZQ5AjGWfsIX1
+                RYPoVVX213S5KP5KwH2qj19utHoCY7rKXAmAyxJTaM4As2vLOiwOd8gliZLKQx2YGBy0yYhCoUHX3rmV
+                /ndYnrP/AIu+/wCI7EEzzaBa7T/Lf9SiOUYj5LNv7DWdKUr7a6333/Vc1kJByphPUMZd5y1YQsLv5W5+
+                fhZb04YdIzIIUayNSiEU3fshPMeM/Nd4OjmqnPNFz8sj8RZs/YqR3CvR9Ep3ExHKK/07DD+lWWPYMhUF
+                eJKVHDBy6UQuBnb0p+hM8orD1k45aSggLcHBRXZC61UJxn633rLhroawnN8wlIklkNV5LMc7PByO5IpG
+                FKQCuFP1ye4t61T1FEFC0gE9rnYwxgx2vyjYlUS9rcQjt43rCwCiMsFCxIxgxEbIxH5Y2xC5qgXk7blS
+                5csXI2WYsIWLR611w7ap9ciIjg1INwVCK4iwuBrkRZ1Mq5Nth4mvPVnbao+hkoDvEC1isWKFmAEAMVVw
+                Wf8AV33vEVnmfseH3dyn52F0AM9UZaPoWkO2v+vUzuDhlADUGeXumUAFhsvf7Hh9vRd88+sfPXzdjilm
+                Z/2BgSz3YxnJlko9Pe113aoezWZ2bHkKy2J3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc
+                3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3T
+                c3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3Tc3TcQ02e54id1WciJnzcp5cKDO7S/wAX
+                fZ3buVT7dm0rsWfJYHor8PD7Oqj/AIpxdCfz46lHcHHB0oxYSxmqTG84eGj9eNhPfXWqExu8UNZ+oKS3
+                vgi6y8KsK+mEUG7i4ZhFtOpJcdh6666tsLMl+7PuynT7momCCZ3rk6knuGUAKdQS3EagpxL1RDCTqSXH
+                OpJ7jtTQov6/VS6NO4h9bSMd+25owRuTKTPh4eLle8ldRhabXt9iBuV2u08nWmosmyVWhyiD++1LCuxW
+                bFbUFMPKQv3JpMrxVWzo2oqJ1VyjK6iraRl1JPqENy2kVWnnXryNCKzYrIq2kZWrzBw4Zf8A12uz/wCN
+                46TME6Y5Scc9Iz9Lo3HRy6dR88OAhrN79fO9+LI+k/IR9J776flE+o7b9tXj1jIGInvjC32IVHkMoWDr
+                MLE56RCeof6TXP23ipkqbqq4G3/6OuqXO1pkTa46X+4cdTIxU1raeVAsLYgXlYpV+jO4zbyTlppq7Wpv
+                MovgT9tqLjTWqCab9x01bKCdDY/T2Tc1TSN892xZml1bdK7VjDsNEbiuxSSLUXr7CSdV1g2GBWNJekgp
+                UoNVzUNz1LkrBA5zlysm0mJIKBSytEw19uu11qNLMiU8zaERZsvZuWOaxxSUvBTHNrRPfr1irXIGvZm7
+                Z/k6kHcoeQvxGlK9dF0UIXhlJnx0n11HixYMw66jJenVF5Xo1qxQlY4ynXamKNaEV6VetJKAmbZPZasG
+                gilWrk9K7AEoCZtk9LNPqtbdUoiKhXapSgSC1AqNsmYDT6oKJQExqgcEJXDorqFJJWUdoO7Yo1rJto1n
+                A2ohqgQoEyhUiddTJFKxO6qsuNMUSa15YPYCQArNKvZk6NVigp11iVZJyGnVFiU9C9PR26ilipf8iY5w
+                3T7IN2FvPh9zPh9zNNp2BZWqWBoWq7g0v4dcz4fcwhkCzw8rru8dXZK6lRlXvbtUgGpJNp6ogC3itq7U
+                TC4NwK1vvLOwrU0tI9TQJtYKlr1JbM024djNRY9du9Y6qW8VtXaklJN1FKyfYJ8xEacM6jBI02yVmuLJ
+                +JFZGdRRqKXH8YrTnxBO1XfSa41JZZR1DrpjqiZw3ALrNtVafiSey3UB2YwA6O+8uuTLygTd1GRqTfUK
+                6zxsq+IH8Qr3l1is3VoNLRcoL6SgtRSIV76nktwMbY1BSGapYhk1oEUWrIzbK2mumzcWYrvpMGXl2K9G
+                8shnUkQ09TSBWf01YxFcXFSobiUpHUEyqtcCwfHUdZlTW3rTZi1YjN7azfW839vN/bzf2839vN/bzf28
+                a02lmjVdtT46ipjU13WjZXpMGxWr2kzUr9MHX6tUcoivBXPuIrugxqtik0LSamoJJ9ZEWTvUVEkXKMr1
+                2k2cOv1ao2vajK6G9xKLdXGJullVb+ugslUzoi++7T+b1KtNYio1a207GAp3Y08LAlFN3wtanvs6Osph
+                6iO7fqnLAU6aNpDD0y1WdFsl2wOyuxY07UAMypi4a3aL4ltGbN9V8OrQyElQfEbV9XGJYqhQTKa7U2lt
+                msQlknqA4upYpkKLa0uq2rcGu25k1mQEIuAgqrZpOEjqqrsF1aoYXl1HQuzVfNlB2Cu9buOq6a1TvaiJ
+                KdM0g+v2VpFbfIGnLFvlWkVt94x6wSsUq996RfH8CwnvhVqhWjyOo1X5OiU5wtBr4WgBj9N7Rr0vrGNG
+                5yOgLwdDqRg6TSjFV0p/xX//xAAhEQADAAIBAwUAAAAAAAAAAAAAAxQBAhEEMDFAUGBwgP/aAAgBAhEB
+                PwH7C49xx67Hex8KY3VfkrWWLLFlaytZWsrWVrK1laytZWsrWVrK1laytZWsrWVrK1laytZWsrWVrK1l
+                iyxZp1Om+eMfg3//xAAmEQACAgEDBAICAwAAAAAAAAAAAQIRExAhMRIwQVEDIDJhQHCA/9oACAEBEQE/
+                Af66SvsdP1SvRK+xXsar+GnucEuSt6GJFb0ULbfWittI8nSymkJWNFPVI/FaJWtFH2JWVtffhyMf5H7G
+                txbuyPInuPgSs44PA3tpFlng8HpHk4Jcjfo3Qty9hexexH676daWzll7ll6dXssssT0vbROi/pZ1CZ1e
+                hOiyzdC78YOXBhkL4ZGKXgwyMMjDIwyMMjDIwyMMjDIwyMMjDIwyMMjDIwyMMjDIwyMMjDIwyMMjDIxS
+                8j+KQ/iklf8Ag3//xAA/EAACAQMBBAcECAYCAQUAAAABAgMAERIhBBMiMRAyM0FRYXEgIzCBFDRCUmKR
+                obFAUGBygpJDosFjcHOD0f/aAAgBAAAGPwL/ANvZYl5xWv8A0ZszIbMGJFCQdb7Q8D8FpPtclHnU5J1I
+                v/RkA8jQf7B0YUHU3U8jWUjhR51aNWk/QVwJGv612g/1r3kaOPyqxbdt4NWVxjzvVx2a6KKm/t/oyH0P
+                RuY3st6ydix8/aaESHdtzHRIPwf0ZD/afhn+w/0ZAfX4bH8H9GQn8R6GdI2ZV5kD29/mGt1l8OiY/h/m
+                liy/n/Dc66wrL7rDoxuLqTepcOpkbdCpkFv3nlQV5EZj3L0tGA29ZbEdE7egrjdV9TXAGYeNtOjHIXq5
+                5VvRYJflQbx+NjCPnV8svnQvz+D/AHD2MFPCOfxrtWnAlNzvbnWvcf4bidD+tSqhN7aaH4YMspGRvjla
+                uG3+prhb9KKLog5mo8RbWliHNqZR3Cl6LXq7Gwq46eIgVccvZ3KfOsR7FybVdTei3hQY+xEem9O57/ia
+                kCsjW8k6vRY1ZRYU+mg5exjkL9FybdF1N/iXZAa4QB6UQeRpo2HofEfBWJO/mfAUqINFFh06Ck9aZ+5d
+                BTelfPoLfZSrd5NL0fi7hRlm1NuVC9ZGszyoK645cqLVvD1m9i5reS8u4Ux7idKI8aVNfYh9a1cVoGNM
+                uHPzrD7XQYo9PxVvFc3771lRJFtata/j5dHix5Crnn0X/Kmmm+QqBW5Vpy6STRve5NZLy6N1F8zUar1i
+                efQkI+dHwApx8fCUeh8KMb8u4+Pt5Dhj+9WMY1PNj3+ylDz16GHgaZvAUPPWsvspyp08DRY91b5/lWHe
+                aQeVIvia/wDTTl51CaRPvGrdL/h5ms26g7qt3nlWnM1kzZOTWNhardBw61IsjXyrq39a0UCnqJ79UUxr
+                zNW8TRHgtqFus3KgO++ta+FGZuX2ak9ei7ngXlWI0jHOsGt6VwSMtaSK3rVpkx8+6neRr25Cr21rQWrd
+                r1mrz76W3IdEsnyFLCP8qt94fwCQD7Op9vcMeGTl6+0gq3RInjrTUkadZhQWpvWli7hqa/YVvH65NKt+
+                fKkUc6CikbwNQt3X6cE65pNnXm2pryFPK/PuHhUdzzr50D5ewPwjpf0oeVIPFui/2Ep/Sgx5INK+dYL1
+                PtGrCpEPfypyp5ChcA31q50FGZu/l6VkOjHvNYnnjXzq9GZu/lW5j/yNEfh0o4m9qLHnejI3Wao/T47y
+                tyUU0j9Zjf2ww5jWkkHJhf2YukMGxYd9bvmDVxz8+iR/E05WPLLka3khu/7VY8quOdbw8h0FTyNEGQnw
+                8qxlQ3HfVokI86yY3eswmWlqzm+S+HRcCip763Yxt97pti16aR+s3sERWxP6Va/EKxayjxrEUy+NAHn3
+                1Y1YdHFz8qKAaGsFCsO41lM2Xl0Y45J3VZE1/Ot5LqfDoO6sVPdTKxuxoRhcAOZNWFAnmKxXlWVvl0f2
+                j467Mp5cTfBMZ5xn9PgFrXtQI7+iw5tpQX+YX5dBY91NIeb/ABizcgLmnlPNjf4OHdIPgWqwGcf7Vwox
+                Nb2X5D+Y7yLW/Na1RgaGQxjq3xivfIcfhRyfda/s9nXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ1
+                2ddnXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ12ddnXZ12dd
+                nXZ12ddnXZ12ddnXZ12dcS2+IsXcg6NPav3dML/h/oyZ/wAXRGx5Btaki+6fZ2cd5Bbpx+41v6Ld/uqT
+                7Gz7SP8AlTX1HRA33gf36FQc2NqZF6sQCD5dM6eh9jDeSR+aNY1tCNtm1+7ew95TzcRVGx9dbUUKyNj1
+                iq3C+tbbI50AT50gaGUyML7tBcio5Rm286qqOI1tUgV10UWYWI50AWkyEZaw6tqjVVk95yYrpfwreSGw
+                pwEkRk5h1tS//Af3pGhE7Zah2F7a99KyQbQhJ+0nnWwvg6X3nC4seVY4ylcsd5jw39aLMbKNSabSSOy5
+                XdbXHjWOMicOQyW2Q8qQKJOIc8dPSo1VZPecmK6X8KxxlK5Y7zHhv606kSEoeLFf5hOfK3sSL3wPl8j0
+                bOfxuP26DM3VhUvTMeZN+m33lPs7U5HC5BX8ql2VNnDI0mQkzHjflUywwo4kfIOWtb1raJjwvwmJr94o
+                bQdnL7xAHi3mNjUEywxZx3G6U20NbRLPEI95jYZXppAOEwFPnethXHiiYFhUUkSh2ifLEm16nlmhEe9t
+                9q9rUZLcG5KX870Nnx97iNL+dFEF2uP3rZ5AOFA16CfR1lKngleThH+NPEpGRFSQyQpApS3Wvc//AJSt
+                NCsW6QgWa+RNRxsg3ipb0NbCuPFEwLC/Kgn0dZSp4JXk4R/jW1b1AVke/qKaEXuoufD+Xv6j2HgPKZCv
+                zqx5io2+7MR+nR+PaW/T2IfW3wJCpvuyQfWklxxyF7dG4x+xnf50i4scu8DQevsouLHLvA0HrWe7/wCb
+                dc/Pn7Triwx7yOfpTzY5Y93SSALnnTyOGRUvfIVCbZCVwn5+yzsbKouahYDISuFHzotYmw5Cg1iLjkf5
+                LJ6j9/YSQc1N6Lr1JRmvzr/7/wDxSRDmxtQhTqQriPYg/u9iLduUZpVF62qMTSPopDNra9EmV7MnAsz3
+                LGlTadonSVlPDpY+lq2xt9McGYWLaHTma2LZ0Moyjy93oTUezvtNmeSxbK7IPC/jUqb15bRDVzcjWtlQ
+                MQpD3HjUW1HaZD722N9LZd9XQ4szBcvCnhM8kg3YbjN9b1HMzHcspUjz51sQkdryB3YXpPPbf/NbVtP0
+                iRNy5VUU2/Otpd9qkiSDQBDa+lRRZzX3Qb3ZxvfxNKHlEjjRmBp5BtTDCY2W+lr1tVpLEziNSfsVtK/S
+                nl4Rwubka1CHneTeoSwPK/lWzyZEIH4vyqLZ5HYSb3Ntfs2vb9akdpZLrmdG5+tbIElkLPKhBc3x0qeB
+                ppJAFVgXN6XdlxBbj3dsv1qHZ/pcm73W8zGjNrWywGZl3hYGQc2AraozPKRCWxbLracj41seEshZ5EIL
+                m+OlbbFv5HxiDAsdRSRb+RF+jhmxPnUGznaGThYs4PEbG1S+9aRVkKozc7VtW0NtMkQhYqiIbcvGmj+k
+                unuVJx8a+jbyYvEi9k2Nz4k1Bs2+d2wuxgOrH1rZ4fpPvd9YkNcgeBraYRNI1nQB21YXraCZ5BdOBZHu
+                /rW+XamZsL491/SkMZIijS7/ANx7v4qdfw+yD9vZ2t/iam/DKDUu2P1YV09aLtzJv7EHr7C5i+JyHrTM
+                yAllxPpRxgXXTXWsoogreN709l7Q3bzpYniBROr5UYRCu7PdV4Y8Ty50khHEnI1ucPd3vb9aKSLkp7qy
+                iixPjesJFut70khHEnI0Fw0D5jXvoyvCC5pkj2CVpgMEe3D+dRJNGGMagX5UEjUKo7hRCC1zepAUBEhu
+                3nTRrCMW5686RyOJOqfCsJFyWjMF94RYmmhC8DXuPWowV0jN18qMtuMjG/lWcsWTeN6RHhBCdXutQieI
+                FF5DwrcqgEdrWqNcdI9V8qYsly64H0rMLxBcL+VLG2wyzDVhgL61xrgzMWx8KkWPYJfpDcO8I4fWswOI
+                gAmgZogxHfypY2hXBeXdSKkQAQ5D1qTKMHeWy86ZVhFmFjrRIF7DkKs62eXicetLGgsq8v4mx76dFgkY
+                A6ELX1eT8q+ryflX1eT8qeOWFxHKhUm3KtrieF7mxXzqHZYoXLHiewr6u9fV5PyoqwII7j0GTuRfYuHZ
+                OIarV4tu2qZgCcGJ1/SoHF/fGy0FCS4s2Ikx4SaK2kJVsWsvKjtOuA5+NIgg2jCxuMOt6VtmSyMSQbIL
+                20qGzSaoWFuqRUYVZLPpljpfwojGVkU2aQLwijI5so5mmAhnyC5AYasPKmV45bgniK2HpWzbm50YlPvU
+                m0QObZqdPWjtOuA5+NY4yMQLtivV9aK4SswAayr3VFDszYmVcy/3Vp3l2mWRWsFD6m9SMkM+aaFcNRQL
+                o4YAXZlsG9KlUtwCIG19KQLMDGsbFrN+9YhZFuLqWWwb0oWWU38F/St/x2vjjbiv4VI7B4t31hItiKbC
+                GdsRfROdbzaA64DicrYH0o5JMlrdZbaeNRxfae9qQSX472sKEmEty2ITHivUkqRy3F1tjqp862grFMjl
+                Rm0n2q3eEsjWuQi3sKjkGb7zqKo1NbyCOW578Orr30rSLKhbkjLxH5VvFDAcrNzrdbifDHlh335+lbSr
+                iRvfsTit8R50Ewkke17RrewpZE6rVB1vfEhflWVnN2KKoGrW8KVQHVmv1hbUd1SRrzjteihWRyBdsFvj
+                61DDu5mjc3OA648BSBEZFtorcxUke07TNsyr1Aml/O9RcbzFurbVmrZZwHxEuq215VIzZxbvrLILEVtE
+                YSVG3LMM1tcVBBaS+Ns7cJIFYBZGGWOYXhvTDGXgbFiF6tS/2GtiUmTLdXAXkdO+oZBe0xstbwtKVeQr
+                xa2qSRs492bEOLGjHu5Y3te0i2uPYaLZ1BK6FjV3nf5G1aTy/wCxr6xL/tX1iT/avrEn+1fWJP8AavrE
+                n519Yk/OvrEn519Yk/OspGLN4noGXXfiPsLuhkyOHte16tLsm6X728BqQP2KAiL/ACpF+jIzJoJXkuAP
+                IVOJUFnmLC+ulbpT7k2mdfOtnlA4UDXrbSRbe9X8q2cstsYMDryNbHHjxxSKzC9JsrRqIhIBnl19fCii
+                WyuCAe+t/Ls4jG7w696lDC15WYelbPIBwIGvR+j2wkYF0PrzFbpT7k2mdfOtqgSFXSdi28ztap3kXHeR
+                qBr5a1FIkIkbd4OmVrVHO4R5EfIRDTT1raWliCb7UANfyqKNxZlXWpJJ4w0eIC6025RY42gKXHjUW+iW
+                IQKbcV8ja1bDwWaInP507IOU5kUZWyBHjUi/QIwh/wCPecTfOpN6hjj0xQvnb51HDYb1GyxJ56077Rs4
+                SOSPAjO9NPI2X/Gh/CK2aQDhTK9RywJe18kVsL3862iP6OkWSkIitc/M1uVF5MQLVJIsG/jktw7zGopx
+                DE7qpQxqbW9KdHRd632VPnSYbJvrcmEuBFIJzeTvrfW4NzjfzvW2pjxyuzL5+FbzcmdXVck3mOo/egJV
+                RD91OQqRlHHG94RfzvWzSRRiYohVlytUryqI5I5N6hBvQz7R+J/U1tAhiV12j7Ra2NbEF1WHmfl0NGdn
+                jm8HysLeYqKSKNZyEKst8ba30qK0AZ45i9suYNPM6LG9gFjvfkb61LI2zBM4GjtmDWwhR2RGX5VHs42d
+                SIXDB8+trW2R48UkjMvnTqBxlCPnWxsV0jhxbXkdKYt2Md2i9WrZgV6k5Y692tSyoobjR1BPWsK2iR4R
+                vVjAEYb/AM12H/bpeWNS0TG+nd8OwFzSy7SLKOSePwpZBfKTnf2VkaWeTE3UO9wPalkF8pOd/jlfEWpY
+                16qi38Aoe9lYN/A47yRNb3RrGmxLMzaszG5Ps3eFb+PKuTj/ACrSSQVptDf61jvb/wCNX33/AFrt/wDr
+                XFO3yFa7xvnXY39Sa93Ei+g/or//xAAsEAEAAgEDAgUDBQEBAQAAAAABABEhMUFRYfAQIHGBoTCRsWDB
+                0eHxQFBw/9oACAEAAAE/If8A5kggpboc/T5Xg9f0ZaC8j2lBgMfRReavVQypAl3b/RnvJ/EFlvqM/mCr
+                LYbk6iHVRdV8/wAk0dfRUyX7NI17QylMpvR+8RbqGpipkYf3r3ixdP5/Rmj7r8N2+DWToRkv7u/MTruO
+                PCrmfuP0YM/Zf03j5/Mfoz7b/j6d3Ef5P0Z6GD48NwHAB5wKQBA7Ph6AJ8/+pSCeH/magSGmf3mktd+3
+                gmgqrenWbJ2Xi/AkL+tt6zIIq5UOvgYbmgxKYOW/D3j+SfhQIj6M1+58KbaXbUMsRVDTqgHaC/qrRbpG
+                2MauUi+gt8M0LVM+v0RIVr9j+vJSfWCvV6G7DJO35jRSCbMrHAP+Vqs6QyiXSG+M4NUz4WmnkVcrfla6
+                sh6Gh6TQBebn71EaR9xFzffEeCpS+ZuFMwEsfhnoOz58EhAXQvWLahAJLHR8SLE6sMKK0Tyl29cGjg+f
+                JREOWV4DpMf3SAeC8eT1M18+Nwti5a1Sr6hVmdWo1zG3We2cc/1AAAUEAgWOGHahBOguXk+Dt+FCQ5WW
+                Vd4mNJp9S4B6wWheBUEqwpiNgH8Q/RBjl9wYC0J4lrQW20TQz3ZO7hocqO/SvAXfATB1ionoOzw5koXG
+                ZRHKxslJFzQE33Cw3h16LkOCMesVcv4fJ9u5zLQsqlOsFDtC6Yja0mWsQRBMj44P3yTfRwZhohmIpVxT
+                3rJrnw9RFwjm6X1II7EuF8BQlDurmQZzACjQckSuANNeDh5dByy1KqXZpL2lPK+/8SolcMV4mgADeExe
+                wIWS/FhWczMT4XYY1hbPhxJb0frobvBqukIi9VeD58mBtK/YidT1J5Tory/tLxvmmsx8G0F63zS61HXU
+                xA7rsmmzCrnxg13n6E99EwDWOY6fUnv2vmJB9v8AsABoY8cMWtZpGR7ZDnZ0JlkL0uZeUCwByhkqAACg
+                8NkcLlsstticscqfGwQ36E0XWYqUbrVEMVN9nWci7p+FOYtpC3+VcsYSqDKKIwwf3iwPDhD0FXcCCqy5
+                lOSxZFPzubIOBADIaHMY1QUtCAFVlzUKQgt4hrLxbErWL6oj0L9vAWnMuXTfog4Wn7P9f8GSd+/dDz3v
+                4k/v/HmwPXMqxoFeGZdDv3jr2vzNUBQrYhbxqvWd11YE3ue/eBaM6HFmQa9CG/hw5j2SY95tEQoWdGxW
+                v7eNLWw42jasre+8QltgDmBHmekuY9KAesN34DKG3Hkwnf2+NW6pUuSTN+gX4dZ0OvgCidN6oiE2KxQV
+                r7vSAAUGk9xkFVFTR0Z6zwLmHAaBA9pxPEUsQus+HOfglBwPxLAcKAy0C2OfyvbLKfswG4P4P7jTkKfW
+                Jpq45Yc/ps7r1+vupiuXYjiXYednaUD1mkyx5WBWMfnxBQ2yIEuoWLUry8HefesTox8BPTFcQpO1qSn7
+                hQrdRYsUYOvgJMG/FO6QE00pvMAx3wVkW/EpHlqraAalNDSEERLGGmWaW4JoECpanh4QIBbQ158LvTZj
+                DAUKXTg8hfwurAurWHrCetRvD+jzzGE1GI4qtUACAjswCgA2PCsbA3iiJrSnI6kzLNhpEEraFpZNqaA4
+                Zp3TwW0u3baNCOf8jr3KiqX6vMWC7CNMLBQmajm7ODw7/vn6+mR95t9G8Wh92T9/oe34g6KF+F7wQnMw
+                Z9f/AECYFhpPDRIE3ll+31l2pydJr6v0fRv25J7mf5+gBEWOs1k7NawtjitTRKnt/wDotA+SjjcVqZhl
+                mt2AACg+tUTRPZq/ScHYgRLNHxdIhBTsE7BOwTsk7BOwTsE7BOyTsE7BOwTsE7BOyTsk7BOwTsE7BOyT
+                sk7BOwTsE7BOyTsE7BOyTsk7BOwTsk7BOyTsE7JOyTsE7BOwTsk7JOyTsE7BOwTsk7BOwTsE7BOwTsk7
+                BOyTsE7JGHR7/Ur91b6v9V4I0Fenm2vVXjzEkfUx5alEqVKlSpUqVKlSiVKlSpUqVKlSpUqVKlSpUqVK
+                lEqVKJUqVKlSpUqVKlEolSpUqVKJUolSvq54sWHoYPA9LD2bx0t0PTbylubfdx+PG73r92f3/Rf+NARV
+                K6viWghPt3wEXePt4NJcD3n45Rj+b8fao/Pk5ALmi4NK1lXmXDm3BahRkA+/FtB6zF7qnAcwzTPz+sHo
+                VV6m5UEQT3eAhvFssrGpzBgzDYK8uYjpuDdXglafM8L0jpFaE+Mq/cD1ax/BCrjyODUPrH+yMA1IPjle
+                2gfxbGxGLEbFB2dItDrLUDflG7xk3gW25gwZhsFeXMHxyvbRXtcLKMZ9MwRBNH/z3AcvzNeTpCj7H58B
+                e6PYeBWr89dprppe/jb7Rfh8taJ8vWqMGkJUsVgsH2t3YatdIsSNVhRx68wlCAYznk6Q7Zz0VaOl4l3g
+                0A0ifxDB5hfUhwGbRgpv8wcon5x5gwAGAbsKYdchLbrTY7GLUDrLfw4XWgX4l6wl3ooVFD12HqwSgKr0
+                sbjmqBz7GmkEID4UFexLAXi6bDmHXRaYU3+Yoeuw9WMHEg0lRCQR3rC9D1/8+jqj8+Rj6/LRGYKSkn+l
+                WH9vBw7fA9/PkRXK+4foYa0PA1J69mXXh61vfRU1x1Mik+zy646mRSfZK6nNZ7H+PNrh4YBh902EN5Ve
+                YqE38AqtUGX1lrvBUYNzpDTUZuq5eW+ECcBL9HYarYzV4jRa+k0eI0Unr/4pvofheTShY9ppP5un9rlZ
+                9IaHrjHwQvz308hvyccAiOr8x5FvGzVKfxLhNU+q2BodIrQNCCqs1hNcy3uFHwjdloVvXNHRbpNGQv1N
+                i9DWbEYdCF96xrAhOKBUBoy+YD1SoMRWl3WdUz4mzj+5lRLWAYPq5I9k6sMgh7XM/ZPvhEwZ9hM8rmAg
+                a7srXe+JblNYbe7YDEp194s8QWi3iUZ3zjbSAtyDwEMx18moI3eksj1HEVo2l6RAjhFa/aWsCzsU+1dJ
+                ZvvEBccjEya2jStOhLEjAgt37QOoCV2XtCqYse7Y1zpASuGbOKeWFr2DIZxak54NenQmrJj6N3XEI7eo
+                C/g9YBLKsWoL9ISKaC0K33lRMGNdHVbK2k0ZbH7Z4jA9ERbMp2mdOAgFquAbzWt6MU+o+s00koptr7Ym
+                tV59++GnpEitlNK40cKsld7FzuPT/qUAtuntn9vKt2tvg+Zhf7IqUHzPUu/mPpbk9fIKHr+PIKMN6A0Z
+                k9q9+E2/KrOHvHrgVkXzCDRZk1JUOclC2/drLsgt5PN6xmRizZs95YzuzaXrMWmlF3W/3QXmrUNCMSiW
+                maZ0p6Sxndm0vWBC0Ktvu5rQcbc+2k9IrE1C226w2SGysHJNLu0Kgd3nd1jQ6Jc2gbFdbXu11lie/Juw
+                yvKwaekH6ddSVAdYOd0GugG9RggBNdfcgwQFZD8MKFVAuj2nQ+Veyorckjw6xRG8G3IKId6xbc8IBrFF
+                vtlsCoaic23cpopI5uCWkBo9eq60j/V1NQ0mDIBZXxNsKJo9yYgGW+i+vvGCpC/DSHbapKnrdksjyjWa
+                2m+IVKzs6cSjEqF3R/0k+QFMehcURIP4+lF84TBbMOaplah2mW8roOtff8T/AA4lJigshSeC0Gc31cfz
+                5NB11qQvM1QiSAHWC5EIAzpefSZBgb0wZvXpozq14uC3gLRMExVcxLLGbqxT0E1GUtANrwTUSNrYanPE
+                uwWiw8jzNRQB36sDWe0iGTq6hV5Zlf6jopeLcxceqPAKv34lDLIKrMEf4gt4C0TBMVXMao6y1X4TVeSJ
+                UXftNLeg931dI37kVeWDm5dJljLRRTiZ1uQDnlCuy1MGXMFNd3A2bIDu9Via9UMjJxkz+6CioVXxrmYh
+                R1gaYmR2FMgWrCb5Z1Z/dEtSjvjR6Iqbb1NgNWOzfcl1t8zcRtajUqKs3TbV3wIsdcSX5M6QjQ/fLMCb
+                kn7cEWBV8EAS2jtFeujuDoh16WhQRqZ2zt/Q/ui6XRJZVxaFrb3kY2dhZiIhSpJo6rmaDaG2qnEoq4Dr
+                j1S0RoPa3aaXWyDzwgxPXx031Idt/iBiKTAL6oDCSm6frcQ1FgmuLFcwgUF1M2anCjAA1IerhKrkAPMx
+                mU7w4XFm1t4NlrxMUO0mcz2tE+7pLnoSrNvPpvDtptkWfjGIUNBq10x1lJA1b5DyLEjU89Ce2gofE0ZS
+                D0+9n+2n+un+un+/n+/n+/n+/mD1VZnwSir2Xg8lLIk9A6XNFd/pSKZXQXU/bSKWqfgqMR8g1LWKYzXU
+                4I2H3cy2UW70sKld+irMmMPLbejoVKLSgDALf5msvh2VwNn9S/0dCKN1DjmkAZm7m/aQvJxA3UbvSwqM
+                ZirVSB+LMZrqcEbD7uYUHAQy7JqytnSY0iB94bXC0qjhHSB3HwoUquqLpaANGsH4mHUgu6mYqN3ZvEMK
+                yhDWVcYRorkuDQgGGhLMUbesdcWUX5CtjCtrOV05ZbEIL9y9EoQ6fAo2r9JSqXAyn+37S3LDr01938QZ
+                Ln70sKnPh4sVv2Zm7FogjexEe/M4q4sg9jWIVnklC9Isriz8w/uqsAwdWLSI6u+6gJzMrvfGd8T52XVl
+                tADlmDFEA4cYb8IQm6aBsQH7YQyZ/TWvaCkrqM1tRetxJ0aytbr5qFWTLfenW9dGqyb+0K/PL6xj4Eiq
+                tpgA8CTMclttoqUVJADu+tTeF/0ah1lGZG8vUhkbIRMGKw5lUJjbTn1ld1YWYKV+JgmIL4Q8AzG0IHTN
+                8g+2fvC72Xpi1H5lO8PplCdJXUm3Fq06L3ncPi6RG835+mYcmgFrN9eJquv0niSjdwUB5dZSxj08zxJR
+                u4KA+uCagyTWWj0hf/Bo1ADqnPT/AITN0aJqzKfuZPlcV3sy+JpXpIX+aH9pTUnqH958isP3m3XbrDA7
+                /vMdX6JPzY/jF7+4pn2ecn6K/9oADAMAAAERAhEAABDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+                zzzzzzzzzTzzzyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxBTCCQTzzzzzzzzzzzzzzzzzzzzz
+                zzzzzzzzzzzzzzzzwAAAAATzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzQCgQihDTLPzzzzzzj7zz
+                zz3znzzzzzz7J3zzzzzzzzzwSyACAAhyJpeRaFXWR7pIbTn8bnP/AG+lG8y8ypf8888888sAAAEc8ulo
+                oc5gIV9CWG86dmZMzV2/Y+0R1mP8888888oQAAQc8t8PpuddsdNfeNc/8tvOe8tdvO9P/wDZfPPPPPPC
+                AAAAGPN/7zv/AL/77/8A/wD/AL//AO++/wD/AL77/wD/APzne/PPPPPAJAAAEPLDDDDDDDDDDDDDDDDD
+                DDDDDDDDDDDDDPPPPPOAEBFCAPLLPEJDAEMPDGGPPPPPPPPPPPPPPPPPPPPPPPPAEKFAEPPONNCPOAON
+                KHLOMMEOMOMONNPPPPPPPPPPPPKBCIPDAPKHBPGECMLINGGFKLFCLAJHOEPPOMMNNOMOPPGAEAIBDPPD
+                PJLOHHODPDHDDDPDDLPLPHCDPPPLHHDEDPLHEPFLPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/E
+                ACERAAMAAgICAwEBAAAAAAAAAAABEXGRITEQUTBBYXBA/9oACAECEQE/EP50lflJXwlfgi+xqf40+R8R
+                D7JzBiROYRi458tE48diMjSEqNEfjoSOl4Sq8JexKk4vz9huj7H7Gqxcui7E+R9ISp10fQ3x4YrPo+j0
+                j7Oh9jfo5QuS8C9i9iR+fOnPFcO2XkpX4vspSifi8eE4Jl80omX0JwpStC6+dYnfP5TPpi/XTPTdMz6Z
+                n0zPpmfTM+mZ9Mz6Zn0zPpmfTM+mZ9Mz6Zn0zPpmfTM+mZ9Mz6Zn0zPpmfTM+mZ9M9t0xs96Yi2r/H88
+                IQhCEIQhCEIQhCEIQhCEIQhP7F//xAAkEQEAAgICAwACAgMAAAAAAAABABFxkSExEEFRIGEwQHCAsf/a
+                AAgBAREBPxD/AByC9Rek6/M+2vx5HhPzAvBKnCliv6d4DqLwJwUrSBSktLY9CDS5xWi3AVoiQeeYNuHm
+                E6Jc2RIoLGc1QFaIiNMtLY+jt8Ij7iVA9pcqF1/O6YrbgvKPFrtgM8BdepZvLK+p0RFROP2MSqn2Ih8M
+                XFPbBTj9i1X7EqF1X9x4ftguAGhyReAYr0kUsle09l3UDTChR8/nuX44P1C5PMxS3L9wanL6jxoKl6gj
+                qKFeKcA8JAyW3cVW/Fqq5b1KOEjwoVEgr6lruWjOIv8AQlj3A/Nyo4G5j3Me5j3Me5j3Me5j3Me5j3Me
+                5j3Me5j3Me5j3Me5j3Me5j3Me5j3Me5j3Me4N0NxfzcuT/v+hv8A/8QALBABAAEDBAAFBAIDAQEAAAAA
+                AREAITFBUWGREHGBocEgMLHw0eFAUGDxcP/aAAgBAAABPxD/AOZAdTyN4Zjf7cizFnkUrB5RD/xk8wBX
+                EP5UgxUZwZ9HJw/ZQwT5gW9DL5UnhdJZEr3/AMY2xPcUcaFBv5DZk61aNENiyYaVm2nHpOaMQZAk3rd7
+                U+mkp7BQ9q258n+KIEguzj9z2pi2FDCeDbuKPASooAlZ2in7SCNpu+YHpBXIFP8AjD8k3s8MwOIWfKOC
+                b+a1mAQ19v1QJDyrGbbcxnXw5R3r/jJzTodD+ftxf8YAlZXmXv8AbXSve/8AGM2m7Afx4ECeXrCfxf6g
+                VAutPggWJYuOxb2PCT+6X9P9pxosD1QiCMjh/wAX3Lmmi8aBohuMjsM/I8DTbHAhZFxGvFJreXy16I4j
+                wFhjNRXEjBzQBhloRMgidPBIDIyUOnKl+kbgzGvl4QrMmfIT+Ss60TAr3qH7wCeUE+lDaUigKwwBMLtO
+                KJUFR0KZwiUCjd9bWawIsG0/dBEAEq6VI7wK3pNj80YeTdI9j2pJgURMEL/ZUaMAvo9139CnBMAwwXX1
+                t95tB2MmwU4klhTX+XtUGBxsiE4xSNFFd2gfl/xUEoBlaBPMkF7TS1a4qwLJGngSJJJDDk+hGQt1n6W+
+                LzCDCYFtSFeVY9UnuiCnZ/OKbIcFn9aHdMvJQzgyuuKITZ+ibe/4q8A8e6fariz7BeGaVcB8hrQ9rBYX
+                8UUAYhhPEK9YsT5URVJRI/TAelt6ceRr1UQrI6rd+hGf6kFXPfEqb0K1xQ3dKlovJhZT4+iGrA/15+IY
+                4y9KQtMU+7+T7h5SwkHukGgLBycBShG7b8htQywoAIAoUA0HCNF0wgZpQk4GUvnr6EwpbBFM7efg6Bcw
+                g9aQnFkzpFJyiyQSH1+5MnGXMfSgJZgI9qkLAW4kNKZKtiaw+Wdn7LPBVlYsn7dgq0AULwGrv47UsAl3
+                eav3VTJ3L1Mfy9a4VHtVl2X4fnwvtVh0Ux7y9VEEQQZYvXLAnovxHgMYP/aPFPPKPYiCSdvKtwkU6NQ9
+                KMgv6NCGQOoSSHnRtyzTMXienanHE2jroO6lUQsubvlv19Dm84PKqFY7kwR8Hu1E5lCYj99qW5MCV0kf
+                io0CZhnXWc8UyACRNTxgkwQmdKJAQOXO1qkBA1gB96MAubze2I+aWBiojdp6eFnESZ4GUPah3fkpg/us
+                1jkXykTSmSQ6mb84qFDIVaWnLxSAC4klKEthZVTEtPCc278IW1ojPSUIBpjmIKlTPVbNnSo2EQaUceK5
+                UMqCpDTrTBBEynNSYa2IR2fBu18E43h0Of1n7m4TEaTb+vBtoTMaf+A91FAKA8iAqMyNseZ/r750SS22
+                +XxhpQCWcNyc7mn1q2nHmUyaj0VFQLIc32OD6VkoZT0pL5ffUx7RSARw2pSebnUfFRVlE84t71IWdTzx
+                7BRDXRtFy/uxSLxbnmT9c090FMbuhQ0yNzi2HyKXSoYG58x+amCzBet/mp7EHUfNCMZs2ga/vG9bQkp4
+                h/NI5GT0goSsCA2DxQQHgF2Zh1xTHBJWvHy0RkkE00X0rOZrgOBeioE0UtghbdUdYqAAba0JIQAaB4aD
+                xvxz/FJIvgpvXjT2owuLUPtj2qBsWIz8VAuL7lFaYUbllM7UyiH6lt/dWRmPsaFABuYA2L/x3UgtU5sp
+                2mQCzKxPoR7UjL6skFaE4Ep0ApEky3QP16zxQQcE+/8AzwS3zJgZ5b59Cpncks/vQ9aGnSSsgWk2pUrT
+                oSOrVo5bNej5pjoULkfihmHPwAKT/XdBq7mZhjNMgAgRK5alVsdyW7akSRz8fkVImXu3uZ78MiImcH9B
+                UlViY0F4+eqmBgxGhFn+AhWlvsB7F/U+tYKeZtiLdLeZ9SWSCHqh8UGDIeR4afCh9ZPb2U0LVD0qQMRs
+                kC/rRshxWqz/AB6UIMxUbFBnP3ah4LHeH+KbBlDtNvx7U5CMWWAT+KkFbgN1B+KxjG7u6tCcuaNJv8UB
+                9/eC8XNm3GRfnbunZLJ/uLUlCz3D/lplgZ4E/iffehIMJrK07pXGue580F+CD1PogZcnTl/8eLi5YvQm
+                hkpUO5+a4Qpv+zSgSwBTs920WnbfyKUfozVjRD01T89UTEnECE/KUA5ChY4f3+ywDAGhV4one1JUj0fa
+                iicJJsfmmDPlBiZgzwFacMFEuwVEmEj9v3mroRDdGvhLSIHUAZn4okw3prNkUBWSPc/NMfDk2CrgzAdG
+                J+PRphZaWDqfvlvQ9whlrYLQMkqIbDSjyKgleAtUpq0klz+3wUbhlv8Av2svrl8QcrB61NFpeXQ4MH1s
+                kFLQMjS3DA3JMfSFGqy2dft4h2iA8nZUirFl1daYo5E0ocUoCrAZoNm6a+rTeAwWDV/sxR4psDDsfv8A
+                NDpLCa1KjEhwcU/HFvTZHy+E2YIdzkpDWC8RtLS+XrQMIQEQ6ZSuMgODzwe9ONdnclmJ/NWsvErp1sx/
+                dLlcvfW7RNgQjhKlGlSqjsVrnxxzVthsjccX+KZ2QKIlv4Mnolgk2mfihUJKWfg/o8W9mrp/hCe/905g
+                gxSJ+GipKswk+iv4oybLqyt2sotPNpQ7FkJm6/xFDxaEJEongsEB4KgIgaGNqhxBLpWSFnei9i6AQ7Pm
+                jMRyrPPjgpSy4iOKzlwNonnTyasOTUlHsU4pVkMw7v8AHgzMmLE+yiErLWCdH7rSgSZoUNi2f1KN5V1y
+                t2i5rCwG015mGSru0n0okN5fz4GUuQLtb75LUQJqsXyJfU+zfIcBf1H7C7CCYMTekokg8nwlVNtZvl/d
+                6leLyO67/sFiptZRPBn4mPPFIBvR+uZ9vvEMaDQEv4qcuwHRoehB6fZhgIK+U9jt9gUQkDhKJ5OKen5V
+                O4rGD8K0bI/hHy/2IyRe7HnOa5SRjPqz7VLEe7+vrQkhQBofesngb/0CPX7Suwtcg3OpokghImp4pEhK
+                GKjGhgka5fauX2qzn2rldqw39qy39q5farOfauV2rDf2rLf2rl9q5farufasN3ast3auX2rl9q5fasN/
+                ast3auV2qzn2rl9qw39qy39q5XarOfauX2rDd2rLd2rl9q5fauV2rDf2rLd2rl9qs5dq5XasN/ast/au
+                X2rldq5XasN3ast/auX2rl9q5XasN/ast/auX2qzn2rl9qw3dqy39q5XarOfauV2oxcC0M/cR+tqef8A
+                Ds+Fs9LAlgJfb6rHIu8xPjPjKpwS9x+iDYqGx1XAdVDY6qGx1UNjqobHVQ2OqhsdVDY6qGx1UNjqobHV
+                cB1UNjqobHVQ2OqhsdVDY6qGx1UNjqobHVQ2OqhsdVDY6qGx1UNjqobHVQ2OqhsdVDY6qGx1UNjqobHV
+                cB1UNjqobHVcB1UNjqobHVQ2OqhsdVDY6qGx1UNjqobHVQ2OqhsdVwHVcB1UNjqobHVQ2OqhsdVDY6rg
+                OqhsdVwHVQ2OqhsdUAYPuRGkq7n4A8IgrSdWwOloAIOdSlepD9KPt5UuezxzQrAtiA91/wAWwGQfUfin
+                KlFXd8bwSF5X4zwHS7zdQ/EeB0zbvVAfmoBwFOYAz4iiWyJ5QfyfQUi2lQxpN7XxQM8JaVIZDLfikkNH
+                YKJBIIqOnlpTblDTuItRfDR8CQ3THqlt/dHY+y7gBAJk9KQIJCUoG8RnT2q/UD5Akksy+9QkachEuoXH
+                E1iMc3UE4tMEnNTuEAElgNVrAcOmKqJchNR8HwNqVXsriC4QKLY2qS2ycEASsIsbyQlQn4VhwGRjcpWC
+                CnJnGTe2KSqFCACVahTopj0rebjm+KUzNT5kmyL6UhURwMmSuQiCSdaxGObqCcWmCTmlYIKcmcZN7YrQ
+                d/plNmDBKjI2pmpCR4/18aSCfK+X0YQO+4cjyy8DTJIPqR2vgExOLhAg/L6UhUufKl/Pis/hvI/A/SCC
+                Dg2NjJe16zOJEICV5tvQIN+C3sSEEsUGRAiBZXZCLMLFTMcSZOXPJLOS1YFqgKgLYcnF8UWHIOBwU1Au
+                1m1KkF2S8AjONcUT1o6uczDGyZofMwgEJArAmRaWpXYAzCJUhktRCVIGxYRnBmIqIGC8bUCME5odLnCy
+                7G2DVh08yK2ZZhxSbRWJyoMhuql51qXR5nMEHhiHhoiIGEiKMLCIy3KVgz1NmRaMw3vroL+AhGRgWFlF
+                G8tCJB1gZzMKbJpNorE5UGQ3VS860wHEWEVy9pmzRXqyLtEZyBYjH+vYp/WX4+gFAmuCEvZ70vxBGiWS
+                hvk+geEDBi7rqfRzdrHkL7Aj4zCIZuHJfFXyQp8jSYJ68EwKU3hLDCPNmdK8zqGBK0ODd+nzOoYErQ4N
+                2pAIbEy+S9ek6/VzTAzlK0GHmpmRFHOBmGM7UOBATwTQwmEJBLWC16myGWlbkSqyJmobWFaBTG+MWz9I
+                1EHFgStr4Kxb1kCuG+C1s1wtpTJgaroVytpTJgaJqf6V45Mh4+gZuPOZTQQWGFkJaAKa3ayswB2Fu+hL
+                UAAX4ED+B9CIcHoX6HLj223DRua0XCTq/MsATbCYqJg07JDFYXCsNIG1Oa5cjkJxYvMnaq4C2Grnytas
+                nSDIgLAbqrpSJW5AbgxdZYZtSP4lLKV+a5aiuhAmRjWFkq0SmdsDU9pwQFQJSrNmWcE0ePsDQwUaIC38
+                KGnQyjkRsHRTc5CysHsBBpelb6fuvirKtCuJy5LH/lA9IaoizWJg6czkDxTKssCEAytilJbQBityaggz
+                DrrS4mUSWBguQMEFOQmjyVvsBKxiamrjI5kzyKQBNMtMts8izbkpQrhjxTIaw2Thq3BESQhcghi0UDuf
+                HCJkzAWGhip0hTYIBBuBVpAlFCO0otpSCu2mQzZRBBynRphe5KwBSgOc46d1G0xB0tzjW5UGJ24rhEAW
+                H4qyo+tAAwRJMcUf1IaKKeiYQMRTt8yN0JFmTWExbWrESjTReGArnVolToS0FIXK3oR9WwUai4rbVcAF
+                U7yELVKwlgNKBBEwkxfmgCFXSaNg2XshoXkm+5S1TCA04toiGwFi0UWPTgxrgagWBdM0CcIRAbLhhCCw
+                5aGL2ZBKYiYuMs1GVQWxYNJjL5/5UyQC3bH0pBLlRffeRigutjTyKYfAnosHMMemuUxRJl+hxNH0T8fQ
+                aMDVSTNjZoAlEmhKiMZcxNWOJylKyEmPSKkbgIQ2FselGKFxmATm1gxFGoo0AAIC6Am94vQyQlSoYkbj
+                eZqK+cPkmGTrRRTmYJIWTDIGawkgS1nTM7s8YoGkQWzr+daEZZRIJFVksZmNKhKvKpdSY68loopzMEkL
+                JhkDNHhNJCbV3W2OKClEOByQyeYmgK9SrdJLDCFsXKMDl4ACJBTWG16xwIEEuXl5aieJ5MvKuuXTFXqt
+                vEYTdtgxFyc1AK1MgMBTZJiaKbkQWcAwyb00TJshKkxRmZyWRwRjQ6NqKWM78N8yTLhtpFSoFYs1M3gX
+                M0GUAFbhQRjK3iaifehabME+tSkKSmwKGOKhtVDNoi5CejT8yBSQiTMqzmZpCzLopM3gdZq0+Aq+uDa6
+                3L80LyQAwGSExnXNEIgf2kARLeMcWoTGjKAzYtYjyxR2aSkJQ5hyGJ5kqJxNVlwiYMuCg4PAjNlQpw08
+                6qy1PMIN9b31o8CZsgDIzKhjL2p8lfVBPGYEluQ0wzTKrkEgsYSrxPiTCsOWIqHAjHN9hsIhpFQAZnoG
+                kqr6/wCSO0oG42aIyBCTZGIZIoaT1mV/6HwjcHvCF28k96HQeb3XlaHyqDClkZCdWR6eDZsvoT/FLCaU
+                I2Rx4JiahaWh17PoLPV6qbF8TaHyp4lXM4UghdrlRgMIgqSJsQZiY5qGdiwWwSby8U3le4EN+gSg14qf
+                myFYk5WlBE6lWmAXui6l1LkTc2nrza2QgCS86U4HuorPM3DsvRXZ4+sUkxOME0ZZlnMQguihYc2mtGWq
+                A+fKsAqawUDBLxN6daLGBiocRhImzLR0pPRDYjWC+aoQMKQQB+sK1L1PzZCsScrSgidSrYjS94Tk82ai
+                AcTaoCSAF5iJM0uIO/OKBvMNmcZHuOhiLnUnEERfejHwFbhE2S+Za9QyLAaGYGy17GSgl2ISs0MDzR4V
+                JDXAshvi9EQlpASlOBfBShkmb+I4t4pYsTdKQbMi4FIF2TmiAc7hc6JzpF6OIM7/AIFIpIywezUxZpW6
+                gIywQGaEI0qNHzdbmlfLAZJJ2DQdWiyAWVEwLywC3VDTAez0MunnrvWK3zCuDNi0tTiiQGyyqbm4Fkma
+                ivPKnmJBR9Q3S2li3BmoQH3XXJxcWbua38r+USS3LTqowWBCCxc3oBSQkiMqlOmC6LYoAMTkIhJAJH+K
+                FnFZAuADS/Z/YMcm82oMo2sUJltci05KguXZrQgb8mKX8E2CGa7YMxw1KVcHirB1QL7SUSRTTThJIRfy
+                p7GNWRCSKwpaAoDiISDyKz6tJyu9FLyAcWC3NWWVEjZsgPnanzmggXZzJjNHQdMk5EjpHG5QCpYnPBpZ
+                FSG1PQR7zVluIdKASBVVYz3Z2GsWJQUkMwNbasNqSkREE0vpLFFSKSDUTZvUKFdCZphNrGxYjWiOhI5G
+                YQ2M4Ety1CJ0FkExvXZ8UdoPskYzIkofQjgFkRyBtiXqj6MTEK9IFAwBsfzUbEDlfmg/3vev0z5+qw6o
+                opG6BSkGL+CNK4kuE9g91+iAipmWZLC80CuYtjdCCb1MYqjN5UJtDhml6lDkWm227AzM5orYtAyMX1JJ
+                uRQqRuLQB1I1ihwwDiRbcsw4oktBPIrlsXXNS+ni8YLN7GSTmo8AlkRmYYJWqMOgBkQF1LLO6p+Jphik
+                84qKRZWY1AEKpB60MdHQSlq25o3p7hxgUQRlmNNqsjagHBFAUgNc3aFSNxaAOpGsU7g7BCYLBFoo8BPS
+                bKC4RfWpim0YyjKIbn6PcAEXcCyMy40dKKfQ4M0xF4FJa9RMIipNpLPpQZUxaS4DNp1NbUSdTKJoC7IX
+                YbFKgJjtAho5Yb49FdZFbikGLkxLehmRhhYBTemFjXiglNKILOeMQRN+bUoFBLwSCWFa34osLEZiViS6
+                KW7m5PBUIvYiYhXBovLEZ2KHOeeLzWN2UcVCusGS6AYVuSLvTcKRCFLIVSHzlo9iW6CqKVjA0oRkwrst
+                rUhcvioVgStF2QgB6ozZPTq2gAUhQL6UkQDIU3BspZZzpTCBBYJQdQgLrTDgvODQBEziWYihj08iFzgm
+                NcTeKXlK+YmNOoExK2qbyQF25yGYttRgtXg3ItpQujPRpgZyCNa7L0edrcAohrpe6o2m2aV1RbLc6WPS
+                oCCMNXua51Cl+4GEAyxMsu0+ATD1MlghlQsx75RMxhCcywE8oMXqUmS8UxihdxkmIo1cRkzKG11iPWKX
+                lARTlVsQqnGsVEIIFeE3vtmaGy5SDEMxTlFCiK+UgumCdzVsAxBcwJxlzTaRAwFETe43JLVYrWSQQPtA
+                mhAchiVMt8LF7nNCHiwHJ+q4i2pTCzARItyGWLlfs/j8VnKEyVKDMS2e/tpY+FkbAU4qkv5MR0OMuv2l
+                RZwIaQWAm18v0ZpqRN/TEQXNJfqVFnAhpBYCbXy/fcX4MASJHRvQGjUsgRLy5f8AAf6NRA2QsvLJ/guI
+                yTAgkTe0Lao5dyMljBi+n05ySGr6wWpD1O+ZpN4caQUAsfxDwah7A76oBA1xANyfkVoAmmsYPQoVcGyd
+                TS1iojnbP/Ff/9k=
+</property>
+        </structure>
+    </list-property>
+</report>
