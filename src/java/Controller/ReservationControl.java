@@ -46,9 +46,9 @@ public class ReservationControl extends HttpServlet {
         HttpSession session = request.getSession();
         BookingDa bookingDa = new BookingDa(em);
         List<Room> roomList = new RoomDa(em).allRoom();
-
+        
         List<Booking> pendingToCheckin = bookingDa.activeBooking();
-        session.removeAttribute("allRoomList");
+        
         session.removeAttribute("bookingPendingCheckin");
         session.setAttribute("allRoomList", roomList);
         session.setAttribute("bookingPendingCheckin", pendingToCheckin);

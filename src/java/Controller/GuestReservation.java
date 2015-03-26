@@ -95,6 +95,7 @@ public class GuestReservation extends HttpServlet {
             session.setAttribute("newBooklist", newBooklist);
             session.setAttribute("newBooking", newBooking);
             session.setAttribute("numberOfNight", numberOfNight);
+
             if (session.getAttribute("action").toString().equalsIgnoreCase("staff")) {
                 response.sendRedirect("secureReceptionist/Reservationform.jsp");
             } else {
@@ -138,7 +139,6 @@ public class GuestReservation extends HttpServlet {
                 newBooking.setNeedtopay(0);
             }
 
-            
             utx.begin();
             customerDa.addCustomer(newCustomer);
             newBooking.setCustomerId(customerDa.currentCustomer());
@@ -152,6 +152,8 @@ public class GuestReservation extends HttpServlet {
 
             session.removeAttribute("newBooking");
             session.removeAttribute("newBooklist");
+            session.setAttribute("newBooking", bookingDa.allBooking());
+            session.setAttribute("newBooklist", bookinglistDa.allBookinglist());
             if (session.getAttribute("action").toString().equalsIgnoreCase("staff")) {
                 response.sendRedirect("ReservationControl");
             } else {
