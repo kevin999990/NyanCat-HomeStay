@@ -63,20 +63,20 @@
             <section>
                 <table class="table">
                     <tr>
-                        <td></td>
-                        <td><a href="#" class="btn btn-primary">Generate Report</a></td>
+                        <td>Customer Transaction Summary</td>
+                         <td><a href="http://localhost:8080/NyanCat_HomeStay/preview?__report=report/CustomerTransactionSummary.rptdesign&__format=html" class="btn btn-primary">Generate Report</a></td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td><a href="#" class="btn btn-primary">Generate Report</a></td>
+                        <td>Monthly Reservation Cancellation</td>
+                       <td><a href="http://localhost:8080/NyanCat_HomeStay/preview?__report=report/Exception.rptdesign&__format=html" class="btn btn-primary">Generate Report</a></td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td><a href="#" class="btn btn-primary">Generate Report</a></td>
+                        <td>Monthly Reservation </td>
+                        <td><a href="http://localhost:8080/NyanCat_HomeStay/preview?__report=report/MonthlyReservationSummary.rptdesign&__format=html" class="btn btn-primary">Generate Report</a></td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td><a href="#" class="btn btn-primary">Generate Report</a></td>
+                        <td>Daily Transaction Report</td>
+                        <td><a href="http://localhost:8080/NyanCat_HomeStay/preview?__report=report/Transaction.rptdesign&__format=html" class="btn btn-primary">Generate Report</a></td>
                     </tr>
                 </table>
             </section>
