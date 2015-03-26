@@ -49,7 +49,7 @@
                         <li><a href="../RoomControl">Manage Room</a></li>
                         <li><a href="../StaffControl">Manage Staff</a></li>
                         <li><a href="managerControlPanel.jsp">Report</a></li>
-                        
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="disabled sr-only-focusable">Welcome ${loginStaff.staffname}</a></li>
@@ -61,10 +61,24 @@
 
         <div class="container">
             <section>
-                <a href="#" class="btn btn-primary">Generate Report</a>
-                <a href="#" class="btn btn-primary">Generate Report</a>
-                <a href="#" class="btn btn-primary">Generate Report</a>
-                <a href="#" class="btn btn-primary">Generate Report</a>
+                <table class="table">
+                    <tr>
+                        <td></td>
+                        <td><a href="#" class="btn btn-primary">Generate Report</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="#" class="btn btn-primary">Generate Report</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="#" class="btn btn-primary">Generate Report</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="#" class="btn btn-primary">Generate Report</a></td>
+                    </tr>
+                </table>
             </section>
         </div>
 
