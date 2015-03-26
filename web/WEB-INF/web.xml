@@ -86,35 +86,34 @@
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
 
-<!-- 
-
-<context-param>
-    <param-name>BIRT_VIEWER_LOCALE</param-name>
-    <param-value>en-US</param-value>
-</context-param>
+<!--
+    <context-param>
+        <param-name>BIRT_VIEWER_LOCALE</param-name>
+        <param-value>en-US</param-value>
+    </context-param>
 
 	
-	<context-param>
-		<param-name>BIRT_VIEWER_TIMEZONE</param-name>
-		<param-value></param-value>
-	</context-param>
+    <context-param>
+        <param-name>BIRT_VIEWER_TIMEZONE</param-name>
+        <param-value></param-value>
+    </context-param>
 
-	<context-param>
-		<param-name>BIRT_VIEWER_WORKING_FOLDER</param-name>
-		<param-value></param-value>
-	</context-param>
+    <context-param>
+        <param-name>BIRT_VIEWER_WORKING_FOLDER</param-name>
+        <param-value></param-value>
+    </context-param>
 	
 
-	<context-param>
-		<param-name>BIRT_VIEWER_DOCUMENT_FOLDER</param-name>
-		<param-value></param-value>
-	</context-param>
+    <context-param>
+        <param-name>BIRT_VIEWER_DOCUMENT_FOLDER</param-name>
+        <param-value></param-value>
+    </context-param>
 
 
-	<context-param>
-		<param-name>WORKING_FOLDER_ACCESS_ONLY</param-name>
-		<param-value>true</param-value>
-	</context-param>
+    <context-param>
+        <param-name>WORKING_FOLDER_ACCESS_ONLY</param-name>
+        <param-value>true</param-value>
+    </context-param>
 
 
     <context-param>
@@ -268,6 +267,6 @@
             <taglib-location>/WEB-INF/tlds/birt.tld</taglib-location>
         </taglib>
     </jsp-config>	
+    -->
     
-    -->	
 </web-app>

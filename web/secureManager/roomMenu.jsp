@@ -49,7 +49,7 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                      <li><a href="../ReservationControl">Manage Reservation</a></li>
+                        <li><a href="../ReservationControl">Manage Reservation</a></li>
                         <li><a href="../RoomControl">Manage Room</a></li>
                         <li><a href="../StaffControl">Manage Staff</a></li>
                         <li><a href="managerControlPanel.jsp">Report</a></li>
@@ -87,9 +87,9 @@
                             <td style="text-align: left">
                                 <form action="updateRoom.jsp?id=<%=room.getId()%>" method="post">
                                     <button name="action" value="Update" class="btn btn-primary">Update</button>
-
+                                    <%if (room.getAvailable()) {%>
                                     <button name="action" value="Delete" class="btn btn-danger">Delete</button>
-
+                                    <%}%>
                                 </form>
                             </td>
                         </tr>
@@ -102,20 +102,20 @@
                 <h2 class="red" id="h2message"><%= String.valueOf(session.getAttribute("message"))%></h2>
             </section>
         </div>
-            <!--Footer-->
-            <hr>
-            <footer class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; NyanCat HomeStay 2015</p>
-                    </div>
+        <!--Footer-->
+        <hr>
+        <footer class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; NyanCat HomeStay 2015</p>
                 </div>
-                <!-- /.row -->
-            </footer>
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <script src="${pageContext.request.contextPath}/js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
-            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-            <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js" type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
+            </div>
+            <!-- /.row -->
+        </footer>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="${pageContext.request.contextPath}/js/jquery_1.11.2_jquery.min.js" type="text/javascript"></script>  
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/formValidation.js"></script>
     </body>
 </html>

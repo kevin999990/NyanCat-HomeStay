@@ -83,45 +83,83 @@ public class LoginOut extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            HttpSession session = request.getSession();
+            BookingDa bookingDa = new BookingDa(em);
+            StaffDa staffDa = new StaffDa(em);
+            String action = (String) request.getParameter("action");
 
-        HttpSession session = request.getSession();
-        BookingDa bookingDa = new BookingDa(em);
-        StaffDa staffDa = new StaffDa(em);
-        String action = (String) request.getParameter("action");
+            List<Booking> pendingToCheckin = bookingDa.activeBooking();
 
-        List<Booking> pendingToCheckin = bookingDa.activeBooking();
+            //login
+            if (action.equalsIgnoreCase("login")) {
+                String username = (String) request.getParameter("userName");
+                String password = (String) request.getParameter("password");
 
-        //login
-        if (action.equalsIgnoreCase("login")) {
-            String username = (String) request.getParameter("userName");
-            String password = (String) request.getParameter("password");
-
-            List<Staff> staffs = staffDa.allStaff();
-            Staff staff = null;
-            boolean login = false;
-            for (int i = 0; i < staffs.size(); i++) {
-                if (staffs.get(i).getUsername().equalsIgnoreCase(username)) {
-                    if (staffs.get(i).getPassword().equals(password)) {
-                        login = true;
-                        staff = staffs.get(i);
-                        break;
+                List<Staff> staffs = staffDa.allStaff();
+                Staff staff = null;
+                boolean login = false;
+                for (int i = 0; i < staffs.size(); i++) {
+                    if (staffs.get(i).getUsername().equalsIgnoreCase(username)) {
+                        if (staffs.get(i).getPassword().equals(password)) {
+                            login = true;
+                            staff = staffs.get(i);
+                            break;
+                        }
                     }
                 }
-            }
+                if (login) {
+                    session.setAttribute("loginStaff", staff);
+                    if (staff.getTask().getTaskname().equalsIgnoreCase("Manager")) {
+                        response.sendRedirect("./secureManager/managerControlPanel.jsp");
 
-            if (login) {
-                session.setAttribute("loginStaff", staff);
-                if (staff.getTask().getTaskname().equalsIgnoreCase("Manager")) {
-                    response.sendRedirect("./secureManager/managerControlPanel.jsp");
+                    } else if (staff.getTask().getTaskname().equalsIgnoreCase("Receptionist")) {
+                        response.sendRedirect("ReservationControl");
+                    } else if (staff.getTask().getTaskname().equalsIgnoreCase("Staff")) {
+                        response.sendRedirect("./error/cannotEnter.html");
+                    }
 
-                } else if (staff.getTask().getTaskname().equalsIgnoreCase("Receptionist")) {
-                    response.sendRedirect("ReservationControl");
                 } else {
                     response.sendRedirect("./error/loginError.html");
                 }
-            }
-        }
+            } else if (action.equalsIgnoreCase("forgot")) {
+                List<Staff> staffs = staffDa.allStaff();
+                session.removeAttribute("allStaffList");
+                session.setAttribute("allStaffList", staffs);
+                session.removeAttribute("message");
+                session.setAttribute("message", " ");
+                response.sendRedirect("resetPassword.jsp");
 
+            } else if (action.equalsIgnoreCase("reset")) {
+                List<Staff> staffs = staffDa.allStaff();
+                String username = request.getParameter("userName");
+                String ic = request.getParameter("userIc");
+                String password = request.getParameter("password");
+                boolean success = false;
+                for (Staff s : staffs) {
+                    if (s.getIc().equalsIgnoreCase(ic) && s.getUsername().equalsIgnoreCase(username)) {
+                        s.setPassword(password);
+                        utx.begin();
+                        staffDa.updateStaff(s);
+                        success = true;
+                        utx.commit();
+                        session.removeAttribute("message");
+                        response.sendRedirect("loginPage.jsp");
+                    }
+
+                }
+
+                if (!success) {
+                    session.removeAttribute("message");
+                    session.setAttribute("message", "Wrong username or password");
+                    response.sendRedirect("resetPassword.jsp");
+
+                }
+
+            }
+
+        } catch (Exception e) {
+        }
     }
 
     /**

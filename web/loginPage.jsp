@@ -37,6 +37,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="submit" name="action" value="forgot"  class="btn btn-danger pull-left">Forgot Password</button>
                         <a href="index.html" class="btn btn-default">Cancel</a>
                         <button type="submit"  value="login" name="action" class="btn btn-primary">Submit</button>
 

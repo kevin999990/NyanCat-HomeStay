@@ -114,3 +114,28 @@ $("#manageStaffForm").validate({
             equalTo: "The password must be same"}
     }
 });
+
+
+resetForm
+
+$("#resetForm").validate({
+    rules: {
+        userName: "required",
+        userIc: "required",
+        password: "required",
+        
+        password2: {
+       
+            required: true,
+            equalTo: "#password"}
+    },
+    messages: {
+        userName: "Please enter your username",
+        userIc: "Please enter your ic",
+       
+        password: "Please enter your password",
+        password2: {
+            required: "Please confirm your password",
+            equalTo: "The password must be same"}
+    }
+});
